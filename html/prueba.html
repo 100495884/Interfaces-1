@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaje de Papá Noel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Papá Noel</div>
+            <ul class="menu">
+                <li class="active"><a href="#home">Inicio</a></li>
+                <li><a href="#papa-noel">Papá Noel</a></li>
+                <li><a href="#cartas">Las cartas</a></li>
+                <li><a href="#envia-carta">Envía tu carta</a></li>
+                <li><a href="#juega">¡Juega!</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button disabled>Iniciar sesión</button> 
+                <button disabled>Registrarse</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Bienvenido al Viaje de Papá Noel</h1>
+            <p>148 días 04 h 09 min 58 s</p>
+            <button disabled>Empezar</button>
+        </section>
+
+        <section id="papa-noel">
+            <h2>Papá Noel</h2>
+            <div class="content">
+                <div class="left-column">
+                    <img src="imgs/santa.jpg" alt="Papá Noel">
+                </div>
+                <div class="right-column">
+                    <p>Papá Noel, también conocido como Santa Claus, es una figura legendaria que trae regalos a los niños durante la Navidad. 
+                       Vive en el Polo Norte junto a sus elfos y renos, quienes le ayudan a preparar los regalos y a repartirlos por todo el 
+                       mundo en la noche del 24 de diciembre. Papá Noel es conocido por su generosidad y su espíritu festivo, y es una figura 
+                       central en las celebraciones navideñas de muchas culturas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cartas">
+            <h2>Las cartas</h2>
+            <div class="letters">
+                <div class="letter">
+                    <div class="letter-header">
+                        <h3>Carta 1</h3>
+                    </div>
+                    <div class="letter-content">
+                        <img src="imgs/nino1.jpg" alt="Remitente 1">
+                        <div>
+                            <p>Juan, Madrid, España</p>
+                            <p>Querido Papá Noel, este año me he portado muy bien y me gustaría recibir un tren de juguete.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="letter">
+                    <div class="letter-header">
+                        <h3>Carta 2</h3>
+                    </div>
+                    <div class="letter-content">
+                        <img src="imgs/nina1.jpg" alt="Remitente 2">
+                        <div>
+                            <p>María, Barcelona, España</p>
+                            <p>Hola Papá Noel, me encantaría tener una bicicleta nueva para Navidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="letter">
+                    <div class="letter-header">
+                        <h3>Carta 3</h3>
+                    </div>
+                    <div class="letter-content">
+                        <img src="imgs/nino2.jpg" alt="Remitente 3">
+                        <div>
+                            <p>Carlos, Valencia, España</p>
+                            <p>Querido Papá Noel, espero que puedas traerme un libro de aventuras.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="letter">
+                    <div class="letter-header">
+                        <h3>Carta 4</h3>
+                    </div>
+                    <div class="letter-content">
+                        <img src="imgs/nina2.jpg" alt="Remitente 4">
+                        <div>
+                            <p>Lucía, Sevilla, España</p>
+                            <p>Hola Papá Noel, me gustaría recibir una muñeca para jugar con mis amigas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="letter">
+                    <div class="letter-header">
+                        <h3>Carta 5</h3>
+                    </div>
+                    <div class="letter-content">
+                        <img src="imgs/nino3.jpg" alt="Remitente 5">
+                        <div>
+                            <p>Pedro, Bilbao, España</p>
+                            <p>Querido Papá Noel, este año quiero un balón de fútbol para jugar con mis amigos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="letter">
+                    <div class="letter-header">
+                        <h3>Carta 6</h3>
+                    </div>
+                    <div class="letter-content">
+                        <img src="imgs/nina3.jpg" alt="Remitente 6">
+                        <div>
+                            <p><strong>Ana, Zaragoza, España</strong></p>
+                            <p>Hola Papá Noel, me encantaría tener un set de pinturas para dibujar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="envia-carta">
+            <h2>Envía tu carta</h2>
+            <form>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" name="ciudad">
+                <label for="pais">País:</label>
+                <input type="text" id="pais" name="pais">
+                <label for="carta">Carta para Papá Noel:</label>
+                <textarea id="carta" name="carta"></textarea>
+                <button type="submit" disabled>Envía</button>
+            </form>
+        </section>
+
+        <section id="juega">
+            <h2>¡Juega!</h2>
+            <div class="content">
+                <div class="left-column">
+                    <ul class="game-menu">
+                        <li>Juego 1</li>
+                        <li>Juego 2</li>
+                        <li>Juego 3</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <img src="juego.jpg" alt="Juego">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Redes sociales</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

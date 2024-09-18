@@ -1,0 +1,217 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header {
+    background-color: green;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5em;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu li.active a {
+    font-weight: bold;
+}
+
+.auth-buttons button {
+    margin-left: 10px;
+}
+
+main {
+    padding: 80px 20px 20px;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Estilos específicos para la primera sección (home) */
+#home {
+    text-align: center;
+}
+
+#home h1 {
+    margin-top: 20px;
+    font-size: 3em;
+}
+
+#home p {
+    font-size: 1.2em;
+}
+
+#home button {
+    margin-top: 20px;
+}
+
+/* Estilos para el contenido */
+.content {
+    display: flex;
+    gap: 20px;
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    margin: 0 20px;
+}
+
+.left-column, .right-column {
+    flex: 1;
+}
+
+.left-column img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+/* Estilos específicos para la sección de cartas */
+.letters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    width: calc(100% - 80px);
+    max-width: 1500px;
+    margin: 0 40px;
+}
+
+.letter {
+    border: 1px solid #ccc;
+    border-radius: 5%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columna */
+    gap: 20px;
+}
+
+.letter-header {
+    display: flex;
+    flex-direction: column; /* Organiza el header en columna */
+    gap: 10px;
+}
+
+.letter-content {
+    display: flex;
+    flex-direction: row; /* Organiza el contenido en fila */
+    gap: 20px;
+}
+
+.letter img {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+}
+
+
+
+/* Estilos para formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Estilos específicos para los títulos de las secciones (excepto la primera) */
+section:not(#home) {
+    align-items: flex-start;
+}
+
+section:not(#home) h2 {
+    margin-left: 40px;
+}
+
+section:not(#home) .content {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .letters {
+        grid-template-columns: 1fr;
+    }
+
+    .letter {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .auth-buttons {
+        margin-top: 10px;
+    }
+}
