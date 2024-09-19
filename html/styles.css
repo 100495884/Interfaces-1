@@ -7,47 +7,117 @@ body {
 }
 
 header {
+    display: flex;
     background-color: green;
     color: white;
-    padding: 10px 0;
+    padding: 10px;
     position: fixed;
-    top: 0;
     width: 100%;
-    z-index: 1000;
+    justify-content: space-between;
+    flex-direction: row;
+    max-height: 8vh;
+    align-items: center;
+}
+
+header img {
+    max-width: 125px;
+    max-height: 125px;
+    border-radius: 100%;
+
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-right: 2.5%;
+
 }
 
 nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    color: white;
+    gap: 10px;
 }
 
-.logo {
-    font-size: 1.5em;
+
+nav div {
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-}
-
-.menu li a {
+nav div a {
     color: white;
     text-decoration: none;
 }
 
-.menu li.active a {
-    font-weight: bold;
+/* Cambia el fondo al pasar el ratón por los botones de navegación */
+nav div:hover {
+    background-color: #0c5805; /* Color verde  al pasar el ratón */
 }
 
+/* Opcional: Cambia también el color del texto al pasar el ratón */
+nav div:hover a {
+    color: white;
+}
+
+/* Estilo del botón activo (opcional) */
+nav .active {
+    background-color: darkgreen;
+}
+
+nav .active a {
+    color: white;
+}
+
+/* Estilos de los botones de autenticación (login y registro) */
 .auth-buttons button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     margin-left: 10px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Personalización del botón de iniciar sesión */
+.auth-buttons .login-btn {
+    background-color: white;
+    color: green;
+}
+
+.auth-buttons .login-btn:hover {
+    background-color: lightgreen; /* Cambia el fondo al pasar el ratón */
+    color: white;  /* Cambia el color del texto al pasar el ratón */
+}
+
+.auth-buttons .login-btn:active {
+    background-color: darkgreen; /* Fondo más oscuro al hacer clic */
+    color: white;
+}
+
+/* Personalización del botón de registrarse */
+.auth-buttons .register-btn {
+    background-color: green;
+    color: white;
+}
+
+.auth-buttons .register-btn:hover {
+    background-color: darkgreen; /* Fondo más oscuro al pasar el ratón */
+    color: white;
+}
+
+.auth-buttons .register-btn:active {
+    background-color: #004d00; /* Fondo aún más oscuro al hacer clic */
+    color: white;
 }
 
 main {
-    padding: 80px 20px 20px;
+    padding: 0 10%;
 }
 
 section {
@@ -57,61 +127,84 @@ section {
     justify-content: center;
     align-items: center;
     margin: 0;
-    padding: 20px;
     box-sizing: border-box;
+    
+}
+section h2 {
+    width: 100%;
+    font-size: 2em;
+    margin-bottom: 2.5%;
+    align-items: left;
 }
 
 /* Estilos específicos para la primera sección (home) */
 #home {
     text-align: center;
-}
+   }
 
 #home h1 {
-    margin-top: 20px;
-    font-size: 3em;
+    font-size: 4em;
+    margin-bottom: 5px;
 }
 
 #home p {
-    font-size: 1.2em;
+    font-size: 1.6em;
 }
 
 #home button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     margin-top: 20px;
 }
 
-/* Estilos para el contenido */
+
+
+/* Estilos para el contenedor de contenido */
 .content {
     display: flex;
-    gap: 20px;
-    width: calc(100% - 40px);
-    max-width: 1200px;
-    margin: 0 20px;
+    justify-content: center; /* Asegurar que ambas columnas estén centradas */
+    align-items: top; /* Alinear verticalmente el contenido */
+    gap: 7.5%; /* Espacio entre las columnas */
 }
 
+/* Estilos para las columnas */
 .left-column, .right-column {
-    flex: 1;
+    flex: 1; /* Hacer que ambas columnas ocupen el mismo espacio */
 }
 
+/* Estilos para la imagen */
 .left-column img {
-    width: 100%;
+    width: 100%; /* La imagen ocupa el 100% del contenedor */
     height: auto;
-    max-width: 400px;
-    max-height: 400px;
     object-fit: cover;
-    margin-right: 20px;
+    border-radius: 10px; /* Bordes redondeados opcionales */
+}
+
+/* Estilos para el texto */
+.right-column p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify; /* Justificar el texto */
 }
 
 /* Estilos específicos para la sección de cartas */
 .letters {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
-    width: calc(100% - 80px);
     max-width: 1500px;
-    margin: 0 40px;
 }
 
 .letter {
+    background-image: url('imgs/carta.jpg'); /* Reemplaza con la ruta de tu imagen de fondo */
+    background-size: cover; /* Ajusta la imagen para que cubra todo el área del contenedor */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
     border: 1px solid #ccc;
     border-radius: 5%;
     padding: 20px;
@@ -120,16 +213,19 @@ section {
     gap: 20px;
 }
 
+.letter:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .letter-header {
     display: flex;
     flex-direction: column; /* Organiza el header en columna */
-    gap: 10px;
 }
 
 .letter-content {
     display: flex;
     flex-direction: row; /* Organiza el contenido en fila */
-    gap: 20px;
+    gap: 30px;
 }
 
 .letter img {
@@ -171,24 +267,20 @@ footer ul li a {
     text-decoration: none;
 }
 
-/* Estilos específicos para los títulos de las secciones (excepto la primera) */
-section:not(#home) {
-    align-items: flex-start;
-}
 
-section:not(#home) h2 {
-    margin-left: 40px;
-}
-
-section:not(#home) .content {
-    margin-left: 40px;
-    margin-right: 40px;
-}
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .content {
-        flex-direction: column;
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    }
+
+    .left-column, .right-column {
+        width: 100%; /* Asegurarse de que ocupen todo el ancho */
+    }
+
+    #papa-noel h2 {
+        text-align: center; /* Centrar el título en pantallas pequeñas */
     }
 
     .letters {
