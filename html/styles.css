@@ -19,6 +19,7 @@ header {
     flex-direction: row;
     max-height: 10vh;
     align-items: center;
+    z-index: 1000;
 }
 
 header img {
@@ -30,7 +31,7 @@ header img {
 }
 
 header img:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgb(0, 0, 0);
 }
 
 .menu {
@@ -165,9 +166,19 @@ section h2 {
     color: white;
     border: none;
     padding: 1% 2%;
-    border-radius: 5%;
+    border-radius: 10px;
     cursor: pointer;
     width: 15%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#home button:hover {
+    background-color: darkred;
+}
+
+#home button:active {
+    background-color: #660000;
+    transform: scale(1.05);
 }
 
 
@@ -189,14 +200,21 @@ section h2 {
 /* Estilos para la imagen */
 .left-column img {
     width: 100%; /* La imagen ocupa el 100% del contenedor */
-    height: auto;
+    height: 100%;
     object-fit: cover;
     border-radius: 3%; /* Bordes redondeados opcionales */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.left-column img:active {
+    box-shadow: 0 0 20px rgba(0, 86, 224, 0.808); /* Sombra al pasar el ratón */
+    transform: scale(1.03);
+    cursor: pointer;
 }
 
 .right-column {
     border-radius: 3%;
-    padding: 2.5%;
+    padding: 0 2.5% 0 2.5%;
     background-color: rgba(128, 128, 128, 0.309);
 }
 
@@ -212,50 +230,60 @@ section h2 {
     line-height: 1.6;
     text-align: justify; /* Justificar el texto */
 }
-
 /* Estilos específicos para la sección de cartas */
 .letters {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-template-rows: auto auto; /* 2 filas automáticas */
     gap: 50px;
-
+    justify-items: center; /* Centra las cartas dentro del grid */
 }
 
 .letter {
-    background-image: url('imgs/carta.jpg'); /* Reemplaza con la ruta de tu imagen de fondo */
-    background-size: cover; /* Ajusta la imagen para que cubra todo el área del contenedor */
+    background-image: url('imgs/carta.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* La imagen cubrirá todo el contenedor */
     background-position: center; /* Centra la imagen en el contenedor */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     border: 1px solid #ccc;
-    border-radius: 0%;
     cursor: pointer;
-    padding: 5%;
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column; /* Organiza el contenido en columna */
+    height: 0;
+    padding-top: 56.03%; /* Mantiene la relación de aspecto de la imagen (343/612) */
+    position: relative;
+    box-sizing: border-box; /* Para incluir el padding en el cálculo del tamaño */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Añade transición para ambos efectos */
 }
 
 .letter:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(5, 141, 0, 0.698);
+    transform: scale(1.05);
 }
 
 .letter-header {
     display: flex;
-    flex-direction: column; /* Organiza el header en columna */
+    flex-direction: column;
 }
 
 .letter-content {
+    position: absolute;
+    top: 0; /* Alinea el contenido en la parte superior */
+    bottom: 0; /* Alinea el contenido en la parte inferior */
+    left: 0; /* Alinea el contenido al borde izquierdo */
+    right: 0; /* Alinea el contenido al borde derecho */
+    padding: 15px; /* Añade espacio interno */
     display: flex;
-    flex-direction: row; /* Organiza el contenido en fila */
-    gap: 30px;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px; /* Espacio entre la imagen y el texto */
+    box-sizing: border-box;
+    color: black; /* Hace que el texto sea visible sobre el fondo */
 }
 
 .letter img {
-    width: 70px;
-    height: 70px;
-    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Hace que la imagen sea circular */
 }
 
 
