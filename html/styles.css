@@ -8,22 +8,29 @@ body {
 
 header {
     display: flex;
-    background-color: green;
+    background-image: url("imgs/fondo1.jpg");
+    background-size: cover;
+    background-position: center;
     color: white;
-    padding: 10px;
+    padding: 0.5%;
     position: fixed;
     width: 100%;
     justify-content: space-between;
     flex-direction: row;
-    max-height: 8vh;
+    max-height: 10vh;
     align-items: center;
 }
 
 header img {
-    max-width: 125px;
-    max-height: 125px;
+    max-width: 30%;
+    max-height: 30%;
     border-radius: 100%;
+    margin : 0 10%;
 
+}
+
+header img:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .menu {
@@ -45,7 +52,7 @@ nav {
 nav div {
     padding: 10px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.4s ease;
 }
 
 nav div a {
@@ -65,7 +72,7 @@ nav div:hover a {
 
 /* Estilo del botón activo (opcional) */
 nav .active {
-    background-color: darkgreen;
+    background-color: rgb(25, 163, 3);
 }
 
 nav .active a {
@@ -116,55 +123,58 @@ nav .active a {
     color: white;
 }
 
-main {
-    padding: 0 10%;
-}
 
 section {
+    background-image: url('imgs/fondo.jpg');
+    background-size: cover;
+    background-position: center;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+    padding: 0 10%;
     box-sizing: border-box;
-    
+    padding-top: 10vh;
+    justify-content: center;
 }
+
 section h2 {
     width: 100%;
     font-size: 2em;
     margin-bottom: 2.5%;
-    align-items: left;
 }
 
 /* Estilos específicos para la primera sección (home) */
 #home {
+    
     text-align: center;
-   }
+    align-items: center;
+}
 
 #home h1 {
-    font-size: 4em;
+    font-family: 'Great Vibes', cursive; /* Fuente navideña */
+    font-size: 6em;
     margin-bottom: 5px;
 }
 
 #home p {
-    font-size: 1.6em;
+    font-size: 2.5em;
 }
 
 #home button {
-    background-color: green;
+    background-color: red;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 1% 2%;
+    border-radius: 5%;
     cursor: pointer;
-    margin-top: 20px;
+    width: 15%;
 }
 
 
 
 /* Estilos para el contenedor de contenido */
 .content {
+    
     display: flex;
     justify-content: center; /* Asegurar que ambas columnas estén centradas */
     align-items: top; /* Alinear verticalmente el contenido */
@@ -181,12 +191,24 @@ section h2 {
     width: 100%; /* La imagen ocupa el 100% del contenedor */
     height: auto;
     object-fit: cover;
-    border-radius: 10px; /* Bordes redondeados opcionales */
+    border-radius: 3%; /* Bordes redondeados opcionales */
+}
+
+.right-column {
+    border-radius: 3%;
+    padding: 2.5%;
+    background-color: rgba(128, 128, 128, 0.309);
 }
 
 /* Estilos para el texto */
+.right-column h3 {
+    font-size: 1.5em;
+    margin-bottom: 2.5%;
+}
+
 .right-column p {
-    font-size: 1.2em;
+
+    font-size: 1.3em;
     line-height: 1.6;
     text-align: justify; /* Justificar el texto */
 }
@@ -197,7 +219,7 @@ section h2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
-    max-width: 1500px;
+
 }
 
 .letter {
@@ -206,11 +228,13 @@ section h2 {
     background-position: center; /* Centra la imagen en el contenedor */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     border: 1px solid #ccc;
-    border-radius: 5%;
-    padding: 20px;
+    border-radius: 0%;
+    cursor: pointer;
+    padding: 5%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column; /* Organiza el contenido en columna */
-    gap: 20px;
 }
 
 .letter:hover {
@@ -235,15 +259,45 @@ section h2 {
 }
 
 
-
-/* Estilos para formularios */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* Estilos para el formulario */
+.grid-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
+    gap: 20px; /* Espacio entre los elementos del grid */
     width: 100%;
-    max-width: 600px;
 }
+
+/* Los elementos que ocuparán toda la fila */
+.full-width {
+    grid-column: span 2; /* Hace que los últimos elementos ocupen las dos columnas */
+}
+
+.grid-form textarea {
+    width: 100%;
+    height: 100px;
+    background-color: #ff0000;
+ 
+}
+
+/* Estilos generales para los campos del formulario */
+.form-group {
+    display: flex;
+    flex-direction: column; /* Etiquetas y campos en columna */
+    color: #ff0000;
+    
+}
+
+.grid-form button {
+    width: 25%;
+    padding: 0.75%;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: center;
+}
+
 
 /* Estilos para el pie de página */
 footer {
@@ -251,6 +305,9 @@ footer {
     color: white;
     padding: 10px 20px;
     text-align: center;
+    width: 100%;
+
+    
 }
 
 footer ul {

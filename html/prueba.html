@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
 </head>
 <body>
     <header>
-        <a href="#home"><img src="imgs/logo.png" alt="Logo"></a>
+        <a href="#home"><img src="imgs/logo.jpg" alt="Logo"></a>
         <div class="menu">
             <nav>
                 <div class="active"><a href="#home">Inicio</a></div>
@@ -116,18 +117,30 @@
 
         <section id="envia-carta">
             <h2>Envía tu carta</h2>
-            <form>
+            <form class="grid-form">
+            <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre">
+            </div>
+            <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
                 <label for="ciudad">Ciudad:</label>
                 <input type="text" id="ciudad" name="ciudad">
+            </div>
+            <div class="form-group">
                 <label for="pais">País:</label>
                 <input type="text" id="pais" name="pais">
+            </div>
+            <div class="form-group full-width">
                 <label for="carta">Carta para Papá Noel:</label>
                 <textarea id="carta" name="carta"></textarea>
+            </div>
+            <div class="form-group full-width">
                 <button type="submit" disabled>Envía</button>
+            </div>
             </form>
         </section>
 
@@ -157,3 +170,6 @@
     </footer>
 </body>
 </html>
+
+
+<!-- Para comentar ctrl+k+c -->
