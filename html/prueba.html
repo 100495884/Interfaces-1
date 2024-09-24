@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viaje de Papá Noel</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Merienda&family=Patrick+Hand&family=Rock+Salt&family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -16,7 +17,7 @@
                 <div><a href="#papa-noel">Papá Noel</a></div>
                 <div><a href="#cartas">Las cartas</a></div>
                 <div><a href="#envia-carta">Envía tu carta</a></div>
-                <div><a href="#juega">¡Juega!</a></div>
+                <div><a href="#game1">¡Juega!</a></a></div>
             </nav>
             <div class="auth-buttons">
                 <button class="login-btn">Iniciar sesión</button> 
@@ -111,56 +112,75 @@
 
         <section id="envia-carta">
             <h2>Envía tu carta</h2>
-            <form class="grid-form">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre">
+            <div class="form-container">
+                <form class="grid-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="ciudad">Ciudad:</label>
+                        <input type="text" id="ciudad" name="ciudad">
+                    </div>
+                    <div class="form-group">
+                        <label for="pais">País:</label>
+                        <input type="text" id="pais" name="pais">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="carta">Carta para Papá Noel:</label>
+                        <textarea id="carta" name="carta"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" disabled><strong>Envía</strong></button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-            </div>
-            <div class="form-group">
-                <label for="ciudad">Ciudad:</label>
-                <input type="text" id="ciudad" name="ciudad">
-            </div>
-            <div class="form-group">
-                <label for="pais">País:</label>
-                <input type="text" id="pais" name="pais">
-            </div>
-            <div class="form-group full-width">
-                <label for="carta">Carta para Papá Noel:</label>
-                <textarea id="carta" name="carta"></textarea>
-            </div>
-            <div class="form-group full-width">
-                <button type="submit" disabled>Envía</button>
-            </div>
-            </form>
         </section>
+        
 
         <section id="juega">
             <h2>¡Juega!</h2>
-            <div class="content">
-                <div class="left-column">
-                    <ul class="game-menu">
-                        <li>Juego 1</li>
-                        <li>Juego 2</li>
-                        <li>Juego 3</li>
-                    </ul>
-                </div>
-                <div class="right-column">
-                    <img src="juego.jpg" alt="Juego">
+            <div class="juegos">
+                <ul class="game-menu">
+                    <li><a href="#game1">Juego 1</a></li>
+                    <li><a href="#game2">Juego 2</a></li>
+                    <li><a href="#game3">Juego 3</a></li>
+                </ul>
+                <div class="bloque-juegos">
+                    <div class="game-image" id="game1">
+                        <img src="imgs/juego1.jpg" alt="Juego 1">
+                    </div>
+                    <div class="game-image" id="game2">
+                        <img src="imgs/juego2.jpg" alt="Juego 2">
+                    </div>
+                    <div class="game-image" id="game3">
+                        <img src="imgs/juego3.jpg" alt="Juego 3">
+                    </div>
                 </div>
             </div>
         </section>
+        
     </main>
 
     <footer>
-        <ul>
-            <li><a href="">Política de privacidad</a></li>
-            <li><a href="">Redes sociales</a></li>
-            <li><a href="">Contacto</a></li>
-        </ul>
+        <div class="contact-info">
+            <p>+34 600 123 456</p>
+            <p>correo@ejemplo.com</p>
+        </div>
+        <div class="social-media">
+            <img src="imgs/twitter.png" alt="Red social 1" />
+            <img src="imgs/instagram.png" alt="Red social 2" />
+            <img src="imgs/youtube.png" alt="Red social 3" />
+            <img src="imgs/facebook.png" alt="Red social 4" />
+        </div>
+        <div class="legal-links">
+            <p><a href="url-politica-privacidad">Política de privacidad</a></p>
+            <p><a href="url-terminos-condiciones">Términos y condiciones</a></p>
+        </div>
     </footer>
 </body>
 </html>

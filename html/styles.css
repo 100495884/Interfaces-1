@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    scroll-behavior: smooth; /* Suaviza el desplazamiento */
 }
 
 header {
@@ -53,7 +54,7 @@ nav {
 nav div {
     padding: 10px 15px;
     border-radius: 5px;
-    transition: background-color 0.4s ease;
+    transition: background-color 0.5s ease;
 }
 
 nav div a {
@@ -63,7 +64,7 @@ nav div a {
 
 /* Cambia el fondo al pasar el ratón por los botones de navegación */
 nav div:hover {
-    background-color: #0c5805; /* Color verde  al pasar el ratón */
+    background-color: green; /* Color verde  al pasar el ratón */
 }
 
 /* Opcional: Cambia también el color del texto al pasar el ratón */
@@ -71,14 +72,6 @@ nav div:hover a {
     color: white;
 }
 
-/* Estilo del botón activo (opcional) */
-nav .active {
-    background-color: rgb(25, 163, 3);
-}
-
-nav .active a {
-    color: white;
-}
 
 /* Estilos de los botones de autenticación (login y registro) */
 .auth-buttons button {
@@ -96,31 +89,33 @@ nav .active a {
 .auth-buttons .login-btn {
     background-color: white;
     color: green;
+    border: 2px solid green; /* Añade un borde al botón */
 }
 
 .auth-buttons .login-btn:hover {
-    background-color: lightgreen; /* Cambia el fondo al pasar el ratón */
-    color: white;  /* Cambia el color del texto al pasar el ratón */
+    background-color: rgb(232, 232, 232); /* Cambia el fondo al pasar el ratón */
+    color: green;  /* Cambia el color del texto al pasar el ratón */
 }
 
 .auth-buttons .login-btn:active {
-    background-color: darkgreen; /* Fondo más oscuro al hacer clic */
-    color: white;
+    background-color: rgb(219, 219, 219); /* Fondo más oscuro al hacer clic */
+    color: green;
 }
 
 /* Personalización del botón de registrarse */
 .auth-buttons .register-btn {
     background-color: green;
     color: white;
+    border: 2px solid white; /* Añade un borde al botón */
 }
 
 .auth-buttons .register-btn:hover {
-    background-color: darkgreen; /* Fondo más oscuro al pasar el ratón */
+    background-color: rgb(0, 111, 0); /* Fondo más oscuro al pasar el ratón */
     color: white;
 }
 
 .auth-buttons .register-btn:active {
-    background-color: #004d00; /* Fondo aún más oscuro al hacer clic */
+    background-color: rgb(0, 98, 0); /* Fondo aún más oscuro al hacer clic */
     color: white;
 }
 
@@ -140,8 +135,11 @@ section {
 
 section h2 {
     width: 100%;
-    font-size: 2em;
-    margin-bottom: 2.5%;
+    font-size: 3em; /* Cambia el tamaño de la fuente */
+    margin-bottom: 2%;
+    text-align: center;
+    color: black; /* Cambia el color del texto */
+    font-family: 'Merienda', cursive; /* Cambia la fuente */
 }
 
 /* Estilos específicos para la primera sección (home) */
@@ -164,16 +162,19 @@ section h2 {
 #home button {
     background-color: red;
     color: white;
-    border: none;
     padding: 1% 2%;
-    border-radius: 10px;
+    border-radius: 15px;
     cursor: pointer;
     width: 15%;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 5px solid green; /* Añade un borde al botón */
+    font-size: 1.1em;
 }
 
 #home button:hover {
     background-color: darkred;
+    border: 5px solid darkgreen; /* Añade un borde al botón */
+
 }
 
 #home button:active {
@@ -183,39 +184,52 @@ section h2 {
 
 
 
+
+
 /* Estilos para el contenedor de contenido */
 .content {
-    
     display: flex;
-    justify-content: center; /* Asegurar que ambas columnas estén centradas */
-    align-items: top; /* Alinear verticalmente el contenido */
+    justify-content: space-between; /* Asegurar que ambas columnas estén distribuidas */
+    align-items: stretch; /* Asegura que ambas columnas tengan la misma altura */
     gap: 7.5%; /* Espacio entre las columnas */
+    width: 100%; /* Asegura que el contenedor principal use todo el ancho */
+    height: 80vh;
 }
 
 /* Estilos para las columnas */
 .left-column, .right-column {
-    flex: 1; /* Hacer que ambas columnas ocupen el mismo espacio */
+    width: 50%; /* Ambas columnas ocuparán el 50% del ancho del contenedor */
+    height: 90%; /* Ambas columnas ocuparán el 100% de la altura del contenedor */
+    box-sizing: border-box; /* Asegurar que padding y border se incluyan en el tamaño total */
+    padding: 0; /* Asegurarnos de que el padding sea igual en ambas columnas */
 }
 
 /* Estilos para la imagen */
 .left-column img {
-    width: 100%; /* La imagen ocupa el 100% del contenedor */
-    height: 100%;
-    object-fit: cover;
+    object-fit: fill; /* Deformar la imagen para que cubra todo el espacio */
     border-radius: 3%; /* Bordes redondeados opcionales */
     transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%; /* Asegurarse de que la imagen ocupe todo el ancho de la columna */
+    height: 100%; /* Asegurarse de que la imagen ocupe todo el alto de la columna */
 }
 
 .left-column img:active {
-    box-shadow: 0 0 20px rgba(0, 86, 224, 0.808); /* Sombra al pasar el ratón */
+    box-shadow: 0 0 20px rgba(0, 86, 224, 0.808); /* Sombra al hacer clic */
     transform: scale(1.03);
     cursor: pointer;
 }
 
+/* Estilos para la columna derecha */
 .right-column {
     border-radius: 3%;
-    padding: 0 2.5% 0 2.5%;
-    background-color: rgba(128, 128, 128, 0.309);
+    background-image: url('imgs/fondonieve.jpg'); /* Añadir imagen de fondo */
+    padding: 2% 5.5%; /* Espaciado interno */
+    background-size: cover; /* Ajustar la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centrar la imagen */
+    color: white;
+    display: flex;
+    flex-direction: column; /* Para organizar el texto dentro */
+    justify-content: center; /* Alinear verticalmente el contenido */
 }
 
 /* Estilos para el texto */
@@ -225,11 +239,15 @@ section h2 {
 }
 
 .right-column p {
-
-    font-size: 1.3em;
+    font-size: 1.2em;
     line-height: 1.6;
     text-align: justify; /* Justificar el texto */
 }
+
+
+
+
+
 /* Estilos específicos para la sección de cartas */
 .letters {
     width: 100%;
@@ -287,70 +305,216 @@ section h2 {
 }
 
 
-/* Estilos para el formulario */
+
+
+/* Estilos para el contenedor del formulario */
+.form-container {
+    background-image: url('imgs/fondoformulario.jpg'); /* Imagen de fondo */
+    background-size: 100% 100%; /* Asegura que la imagen cubra todo el contenedor */
+    background-position: center; /* Centramos la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    border-radius: 15px; /* Bordes redondeados */
+    width: 100%; /* Ajustar al ancho completo */
+    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    padding: 5% 10%; /* Padding interno */
+    box-sizing: border-box; /* Asegura que el padding se incluya dentro del tamaño total */
+}
+
+
+/* Estilos para el formulario en formato de grid */
 .grid-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
     gap: 20px; /* Espacio entre los elementos del grid */
-    width: 100%;
+    padding: 5%;
 }
 
 /* Los elementos que ocuparán toda la fila */
 .full-width {
-    grid-column: span 2; /* Hace que los últimos elementos ocupen las dos columnas */
+    grid-column: span 2; /* Hace que los elementos ocupen ambas columnas */
 }
 
 .grid-form textarea {
-    width: 100%;
-    height: 100px;
-    background-color: #ff0000;
- 
+    height: 150px; /* Ajusta la altura según sea necesario */
 }
 
 /* Estilos generales para los campos del formulario */
 .form-group {
     display: flex;
     flex-direction: column; /* Etiquetas y campos en columna */
-    color: #ff0000;
-    
+    color: #000000; /* Color del texto */
 }
 
 .grid-form button {
     width: 25%;
     padding: 0.75%;
     background-color: green;
+    border: 2px solid red; /* Añadir borde rojo */
     color: white;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     align-self: center;
 }
+
+input, textarea {
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    resize: none; /* Evita que se pueda redimensionar el textarea */
+}
+
+label {
+    color: green; /* Color del texto */
+    font-size: 1.2em; /* Tamaño de fuente más grande */
+    font-family: 'Roboto', sans-serif; /* Cambia la fuente a Roboto */
+    font-weight: bold; /* Hace que el texto sea negrita */
+}
+
+
+/* Sección de los juegos */
+#juega {
+    text-align: center; /* Centra el contenido */
+}
+
+.juegos {
+    display: flex; /* Usamos flex para alinear las columnas */
+    flex-direction: column; /* Cambiar a columna para que los botones estén debajo de las imágenes */
+    align-items: center; /* Centra horizontalmente los elementos */
+}
+
+.bloque-juegos {
+    flex: 1; /* Hace que ambos bloques ocupen el mismo espacio */
+    width: 60%; /* Asegura que ocupen todo el ancho */
+}
+
+/* Estilos para el menú de juegos */
+.game-menu {
+    list-style: none; /* Elimina el estilo de lista */
+    display: flex; /* Disposición en fila */
+    flex-direction: row; /* Coloca los botones en fila */
+    gap: 10px; /* Espacio entre los botones */
+    padding-inline-start: 0; /* Elimina el padding del borde izquierdo */
+    margin-bottom: 2%; /* Espacio inferior */
+    margin-block-start: 0; /* Elimina margen superior */
+}
+
+.game-menu a {
+    padding: 10px 20px; /* Padding para mejorar la zona clickeable */
+    background-color: red; /* Fondo claro */
+    border: 1px solid darkred; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Permite el padding */
+    transition: background-color 0.3s; /* Transición suave */
+    color: white; /* Cambia el color del texto */
+    font-family: 'Arial', sans-serif; /* Cambia la fuente */
+    font-size: 1.2em; /* Cambia el tamaño del texto */
+    font-weight: bold; /* Cambia el peso de la fuente */
+}
+
+.game-menu a:hover {
+    background-color: darkred; /* Cambio de color al pasar el ratón */
+}
+
+.game-image {
+    display: none; /* Oculta todas las imágenes por defecto */
+}
+
+.game-image img {
+    width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    height: auto; /* Mantiene la proporción */
+}
+
+#game1 {
+    display: block; /* Muestra la imagen del Juego 1 por defecto */
+}
+
+/* Mostrar solo la imagen activa */
+#game1:target,
+#game2:target,
+#game3:target {
+    display: block; /* Muestra la imagen seleccionada */
+}
+
+/* Asegúrate de que al seleccionar un juego, las demás se oculten */
+#game1:not(:target) {
+    display: none; /* Asegura que no se muestre ninguna otra imagen */
+}
+
+
+
 
 
 /* Estilos para el pie de página */
 footer {
     background-color: #333;
     color: white;
-    padding: 10px 20px;
-    text-align: center;
-    width: 100%;
-
-    
+    padding: 1% 5%;
+    justify-content: space-between;
+    display: flex; /* Usamos flex para alinear las secciones */
 }
 
-footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Sección de contacto */
+.contact-info {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    flex-direction: column; /* Alinea los elementos en columna */
+    align-items: center; /* Centra horizontalmente */
+    gap: 5px; /* Espacio entre los elementos reducido */
 }
 
-footer ul li a {
+/* Estilo para el texto de contacto */
+.contact-info p {
     color: white;
     text-decoration: none;
+    margin: 0; /* Elimina el margen superior e inferior */
 }
+
+/* Sección de redes sociales */
+.social-media {
+    display: flex;
+    gap: 15px; /* Espacio entre las imágenes */
+    flex-direction: row; /* Alinea las imágenes en fila */
+}
+
+/* Estilo para las imágenes de redes sociales */
+.social-media img {
+    width: 40px; /* Ajusta el tamaño de las imágenes */
+    height: 40px; /* Mantén la proporción de las imágenes */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover para imágenes de redes sociales */
+.social-media img:hover {
+    transform: scale(1.1); /* Aumenta el tamaño al pasar el ratón */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+/* Sección de enlaces legales */
+.legal-links {
+    display: flex;
+    flex-direction: column; /* Alinea los enlaces en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+    gap: 5px; /* Espacio entre los elementos reducido */
+}
+
+/* Estilo para los enlaces legales */
+.legal-links a {
+    color: white;
+    text-decoration: none;    
+}
+
+/* Estilo para el texto de enlaces legales */
+.legal-links p {
+    margin: 0; /* Elimina el margen superior e inferior */
+    padding: 0; /* Eliminar padding */
+}
+
+/* Efecto hover para enlaces legales */
+.legal-links a:hover {
+    text-decoration: underline; /* Subraya el enlace al pasar el ratón */
+}
+
+
 
 
 
