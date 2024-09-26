@@ -16,18 +16,19 @@ header {
     padding: 0.5%;
     position: fixed;
     width: 100%;
-    justify-content: space-between;
     flex-direction: row;
-    max-height: 10vh;
+    height: 10vh;
     align-items: center;
     z-index: 1000;
+    justify-content: space-between;
 }
 
 header img {
-    max-width: 30%;
-    max-height: 30%;
+    justify-self: flex-start;
+    width: 5vw;
+    height: 5vw;
     border-radius: 100%;
-    margin : 0 10%;
+    margin : 0 5vw;
 
 }
 
@@ -36,25 +37,27 @@ header img:hover {
 }
 
 .menu {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    margin-right: 2.5%;
-
+    display: flex; /* Flex para alinear los elementos del menú */
+    align-items: center; /* Alinea los elementos verticalmente */
+    gap: 20px; /* Espacio entre los elementos del menú y botones */
+    font-size: 1.3vw;
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    color: white;
-    gap: 10px;
+    display: flex; /* Flex para que los elementos del menú estén en fila */
+    align-items: center; /* Alinea los elementos verticalmente */
+    gap: 15px; /* Espacio entre los elementos del menú */
 }
 
+.active {
+    background-color: green; /* Fondo para el elemento activo */
+}
 
 nav div {
-    padding: 10px 15px;
+    padding: 0.5rem 1rem; /* Espaciado interno de los elementos del menú */
     border-radius: 5px;
     transition: background-color 0.5s ease;
+    white-space: nowrap; /* Previene que el texto se divida en varias líneas */
 }
 
 nav div a {
@@ -64,7 +67,7 @@ nav div a {
 
 /* Cambia el fondo al pasar el ratón por los botones de navegación */
 nav div:hover {
-    background-color: green; /* Color verde  al pasar el ratón */
+    background-color: green; /* Color verde al pasar el ratón */
 }
 
 /* Opcional: Cambia también el color del texto al pasar el ratón */
@@ -72,15 +75,18 @@ nav div:hover a {
     color: white;
 }
 
-
 /* Estilos de los botones de autenticación (login y registro) */
+.auth-buttons {
+    display: flex; /* Asegura que los botones estén en fila */
+    gap: 10px; /* Espacio entre los botones de autenticación */
+}
+
 .auth-buttons button {
-    padding: 10px 20px;
+    white-space: nowrap; /* Previene que el texto se divida en varias líneas */
+    padding: 0.5rem 1rem; /* Ajusta el padding para que se vea bien */
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 10px;
-    border: none;
-    font-size: 16px;
+    font-size: 1.3vw;
     font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -127,7 +133,7 @@ section {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 0 10%;
+    padding: 0 10vh;
     box-sizing: border-box;
     padding-top: 10vh;
     justify-content: center;
@@ -135,7 +141,7 @@ section {
 
 section h2 {
     width: 100%;
-    font-size: 3em; /* Cambia el tamaño de la fuente */
+    font-size: 3vw; /* Cambia el tamaño de la fuente */
     margin-bottom: 2%;
     text-align: center;
     color: black; /* Cambia el color del texto */
@@ -151,12 +157,12 @@ section h2 {
 
 #home h1 {
     font-family: 'Great Vibes', cursive; /* Fuente navideña */
-    font-size: 6em;
+    font-size: 6vw;
     margin-bottom: 5px;
 }
 
 #home p {
-    font-size: 2.5em;
+    font-size: 2.5vw;
 }
 
 #home button {
@@ -168,7 +174,7 @@ section h2 {
     width: 15%;
     transition: background-color 0.3s ease, transform 0.3s ease;
     border: 5px solid green; /* Añade un borde al botón */
-    font-size: 1.1em;
+    font-size: 1.3vw;
 }
 
 #home button:hover {
@@ -184,35 +190,37 @@ section h2 {
 
 
 
-
-
 /* Estilos para el contenedor de contenido */
 .content {
     display: flex;
     justify-content: space-between; /* Asegurar que ambas columnas estén distribuidas */
     align-items: stretch; /* Asegura que ambas columnas tengan la misma altura */
-    gap: 7.5%; /* Espacio entre las columnas */
     width: 100%; /* Asegura que el contenedor principal use todo el ancho */
-    height: 80vh;
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+    gap: 2%; /* Espacio entre las columnas */
 }
 
 /* Estilos para las columnas */
 .left-column, .right-column {
-    width: 50%; /* Ambas columnas ocuparán el 50% del ancho del contenedor */
-    height: 90%; /* Ambas columnas ocuparán el 100% de la altura del contenedor */
+    flex: 1; /* Ambas columnas ocuparán el mismo espacio disponible */
     box-sizing: border-box; /* Asegurar que padding y border se incluyan en el tamaño total */
-    padding: 0; /* Asegurarnos de que el padding sea igual en ambas columnas */
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch; /* Alinear verticalmente el contenido para que ocupe el 100% de la columna */
+    height: 100%; /* Asegura que la columna ocupe toda la altura del contenedor */
+    width: calc(50% - 1%); /* Asegura que ambas columnas ocupen el mismo ancho, restando el gap */
 }
 
 /* Estilos para la imagen */
 .left-column img {
-    object-fit: fill; /* Deformar la imagen para que cubra todo el espacio */
+    object-fit: fill; /* Cambia a 'fill' para permitir que la imagen se deforme y ocupe todo el espacio */
     border-radius: 3%; /* Bordes redondeados opcionales */
     transition: background-color 0.3s ease, transform 0.3s ease;
     width: 100%; /* Asegurarse de que la imagen ocupe todo el ancho de la columna */
-    height: 100%; /* Asegurarse de que la imagen ocupe todo el alto de la columna */
+    height: 100%; /* Asegura que la imagen ocupe toda la altura de la columna */
 }
 
+/* Efecto al hacer clic en la imagen */
 .left-column img:active {
     box-shadow: 0 0 20px rgba(0, 86, 224, 0.808); /* Sombra al hacer clic */
     transform: scale(1.03);
@@ -223,26 +231,35 @@ section h2 {
 .right-column {
     border-radius: 3%;
     background-image: url('imgs/fondonieve.jpg'); /* Añadir imagen de fondo */
-    padding: 2% 5.5%; /* Espaciado interno */
+    /* padding: 2vw 4vw; */
     background-size: cover; /* Ajustar la imagen para cubrir todo el contenedor */
     background-position: center; /* Centrar la imagen */
     color: white;
     display: flex;
     flex-direction: column; /* Para organizar el texto dentro */
-    justify-content: center; /* Alinear verticalmente el contenido */
+    justify-content: stretch; /* Alinear verticalmente el contenido para que ocupe el 100% de la columna */
+    height: 100%; /* Asegura que la columna ocupe toda la altura del contenedor */
+    width: calc(50% - 1%); /* Asegura que ambas columnas ocupen el mismo ancho, restando el gap */
 }
 
 /* Estilos para el texto */
 .right-column h3 {
-    font-size: 1.5em;
-    margin-bottom: 2.5%;
+    font-size: 2vw; /* Ajusta el tamaño de la fuente en función del ancho de la ventana de visualización */
+    margin-bottom: 1%;
+    padding: 0 4vw;
+    padding-top: 2vw;
 }
 
 .right-column p {
-    font-size: 1.2em;
-    line-height: 1.6;
+    font-size: 1.3vw; /* Ajusta el tamaño de la fuente en función del ancho de la ventana de visualización */
+    line-height: 1.4; /* Ajusta la altura de la línea */
     text-align: justify; /* Justificar el texto */
+    padding: 0 4vw;
+    padding-bottom: 2vw;
 }
+
+
+
 
 
 
@@ -378,7 +395,7 @@ label {
 
 .juegos {
     display: flex; /* Usamos flex para alinear las columnas */
-    flex-direction: column; /* Cambiar a columna para que los botones estén debajo de las imágenes */
+    flex-direction: row; /* Cambiar a columna para que los botones estén debajo de las imágenes */
     align-items: center; /* Centra horizontalmente los elementos */
 }
 
@@ -391,11 +408,12 @@ label {
 .game-menu {
     list-style: none; /* Elimina el estilo de lista */
     display: flex; /* Disposición en fila */
-    flex-direction: row; /* Coloca los botones en fila */
+    flex-direction: column; /* Coloca los botones en fila */
     gap: 10px; /* Espacio entre los botones */
     padding-inline-start: 0; /* Elimina el padding del borde izquierdo */
     margin-bottom: 2%; /* Espacio inferior */
     margin-block-start: 0; /* Elimina margen superior */
+    margin-right: 10%; /* Espacio derecho */
 }
 
 .game-menu a {
@@ -421,7 +439,7 @@ label {
 }
 
 .game-image img {
-    width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    width: 80%; /* Ajusta el tamaño máximo de la imagen */
     height: auto; /* Mantiene la proporción */
 }
 
