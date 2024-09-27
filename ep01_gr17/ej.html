@@ -10,18 +10,20 @@
 </head>
 <body>
     <header>
-        <a href="#home"><img src="imgs/logo.jpg" alt="Logo"></a>
-        <div class="menu">
-            <nav>
-                <div class="active"><a href="#home">Inicio</a></div>
-                <div><a href="#papa-noel">Papá Noel</a></div>
-                <div><a href="#cartas">Las cartas</a></div>
-                <div><a href="#envia-carta">Envía tu carta</a></div>
-                <div><a href="#game1">¡Juega!</a></a></div>
-            </nav>
-            <div class="auth-buttons">
-                <button class="login-btn">Iniciar sesión</button> 
-                <button class="register-btn">Registrarse</button>
+        <div class="head">
+            <a href="#home"><img src="imgs/logo.png" alt="Logo"></a>
+            <div class="menu">
+                <nav>
+                    <div class="active"><a href="#home">Inicio</a></div>
+                    <div><a href="#papa-noel">Papá Noel</a></div>
+                    <div><a href="#cartas">Las cartas</a></div>
+                    <div><a href="#envia-carta">Envía tu carta</a></div>
+                    <div><a href="#game1">¡Juega!</a></a></div>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="login-btn">Iniciar sesión</button> 
+                    <button class="register-btn">Registrarse</button>
+                </div>
             </div>
         </div>
     </header>
@@ -130,11 +132,11 @@
                         <label for="pais">País:</label>
                         <input type="text" id="pais" name="pais">
                     </div>
-                    <div class="form-group full-width">
+                    <div class="form-full-width">
                         <label for="carta">Carta para Papá Noel:</label>
                         <textarea id="carta" name="carta"></textarea>
                     </div>
-                    <div class="form-group full-width">
+                    <div class="form-full-width">
                         <button type="submit" disabled><strong>Envía</strong></button>
                     </div>
                 </form>
@@ -145,11 +147,11 @@
         <section id="juega">
             <h2>¡Juega!</h2>
             <div class="juegos">
-                <ul class="game-menu">
-                    <li><a href="#game1">Juego 1</a></li>
-                    <li><a href="#game2">Juego 2</a></li>
-                    <li><a href="#game3">Juego 3</a></li>
-                </ul>
+                <div class="game-selection">
+                    <a href="#game1" class="game-button">Juego 1</a>
+                    <a href="#game2" class="game-button">Juego 2</a>
+                    <a href="#game3" class="game-button">Juego 3</a>
+                </div>
                 <div class="bloque-juegos">
                     <div class="game-image" id="game1">
                         <img src="imgs/juego1.jpg" alt="Juego 1">
@@ -163,6 +165,8 @@
                 </div>
             </div>
         </section>
+        
+        
         
     </main>
 
