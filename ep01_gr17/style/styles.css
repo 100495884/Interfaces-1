@@ -8,7 +8,7 @@ body {
 
 header {
     display: flex;
-    background-image: url("imgs/fondo1.jpg");
+    background-image: url("../images/fondo1.jpg");
     background-size: cover;
     background-position: center;
     position: fixed;
@@ -129,7 +129,7 @@ nav div:hover a {
 /* Estilos generales para las secciones */
 
 section {
-    background-image: url('imgs/fondo.jpg');
+    background-image: url('../images/fondo.jpg');
     background-size: 100% 100%;
     background-position: center;
     height: 100vh;
@@ -233,7 +233,7 @@ section h2 {
 /* Estilos para la columna derecha */
 .right-column {
     border-radius: 3%;
-    background-image: url('imgs/fondonieve.jpg'); /* Añadir imagen de fondo */
+    background-image: url('../images/fondonieve.jpg'); /* Añadir imagen de fondo */
     background-size: cover; /* Ajustar la imagen para cubrir todo el contenedor */
     background-position: center; /* Centrar la imagen */
     color: white;
@@ -284,7 +284,7 @@ section h2 {
 }
 
 .letter {
-    background-image: url('imgs/carta.jpg'); /* Ruta de la imagen de fondo */
+    background-image: url('../images/carta.jpg'); /* Ruta de la imagen de fondo */
     background-size: cover; /* La imagen cubrirá todo el contenedor */
     background-position: center; /* Centra la imagen en el contenedor */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -339,7 +339,7 @@ section h2 {
     align-items: center;
 }
 .form-container {
-    background-image: url('imgs/fondoformulario.png'); /* Imagen de fondo */
+    background-image: url('../images/fondoformulario.png'); /* Imagen de fondo */
     background-size: 100% 100%; /* Asegura que la imagen cubra todo el contenedor */
     background-position: center; /* Centramos la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -580,7 +580,7 @@ footer {
     }
 
     body {
-        background-image: url('imgs/fondogirado.jpg');
+        background-image: url('../images/fondogirado.jpg');
         background-position: center;
         background-repeat: repeat-y; /* Repetir la imagen solo verticalmente */
         background-size: 100% auto; /* Ajusta el ancho al 100% de la pantalla, el alto se ajusta proporcionalmente */
@@ -666,7 +666,7 @@ footer {
         padding: 0 15%; /* Padding interno */
     }
     .form-container {
-        background-image: url('imgs/fondoformulariogirado.png'); /* Imagen de fondo */
+        background-image: url('../images/fondoformulariogirado.png'); /* Imagen de fondo */
         padding: 13% 17%; /* Padding interno */
     }
     
