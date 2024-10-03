@@ -1,134 +1,128 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+body { /*definiciones generales para el cuerpo de la pagina */
+    font-family: Arial, sans-serif; /* tipo de letra */
+    margin: 0; 
     width: 100%;
-    scroll-behavior: smooth; /* Suaviza el desplazamiento */
+    scroll-behavior: smooth;  /* Suaviza el desplazamiento  */
 }
 
-header {
+header { /*definiciones para el encabezado de la pagina */
     display: flex;
     background-image: url("../images/fondo1.jpg");
-    background-size: cover;
-    background-position: center;
+    background-size: cover; /* ajusta la imagen al tamaño del contenedor */
+    background-position: center; /* centra la imagen */
     position: fixed;
     width: 100%;
     height: 10vh;
     z-index: 1000;
 }
 
-.head {
+.head { /*definiciones para el titulo de la pagina */
     display: flex;
-    padding: 0.5vw 2vw;
+    padding: 0.5vw 2vw; /* espacio interno de un elemento */
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-between; /* separa los elementos a cada extremo del contenedor */
     align-items: center;
     font-size: 1.1vw;
 
 
 }
 
-header img {
+header img { /*espacio que ocupara la imagen del logo */
 
     width: 3.5vw;
     height: 3.5vw;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* tiempo del fecto de transición al pasar el ratón */
 }
 
-header img:hover {
-    scale: 1.2;
+header img:hover { /* efecto al pasar el ratón */
+    scale: 1.2; /* tamaño de la imagen al pasar el ratón */
 }
 
-.menu {
-    display: flex; /* Flex para alinear los elementos del menú */
-    align-items: center; /* Alinea los elementos verticalmente */
-    gap: 4vw; /* Espacio entre los elementos del menú */
+.menu { /* define las caracteristicas del menu de la pagina */
+    display: flex; 
+    align-items: center;
+    gap: 4vw; 
 }
 
-nav {
-    display: flex; /* Flex para que los elementos del menú estén en fila */
-    align-items: center; /* Alinea los elementos verticalmente */
-    gap: 1vw; /* Espacio entre los elementos del menú */
+nav { /* define las caracteristicas del menu de navegación */
+    display: flex; 
+    align-items: center; 
+    gap: 1vw;
 }
-nav .active {
-    background-color: green; /* Color de fondo verde para el elemento activo */
+nav .active { /* pone el boton de inicio verde */
+    background-color: green;
 }
 
-nav div {
-    padding: 0.5vw 1vw; /* Espaciado interno de los elementos del menú */
-    border-radius: 5px;
+nav div { /* define las caracteristicas de los botones del menu de navegación */
+    padding: 0.5vw 1vw; 
+    border-radius: 5px; /* redondea los bordes de los botones */
     transition: background-color 0.5s ease;
     white-space: nowrap; /* Previene que el texto se divida en varias líneas */
 }
 
-nav div a {
+nav div a { /* define todos los botones excepto el inicio */
     color: white;
     text-decoration: none;
 }
 
-nav div:hover {
-    background-color: green; /* Color verde al pasar el ratón */
+nav div:hover {  /* pone los botones verdes al pasar el ratón */
+    background-color: green; 
 }
 
-nav div:hover a {
-    color: white;
+
+.auth-buttons {  /* define las caracteristics generales del espacio de los botones de iniciar sesion y registro */ 
+    display: flex; 
+    gap: 2vw;
 }
 
-/* Estilos de los botones de autenticación (login y registro) */
-.auth-buttons {
-    display: flex; /* Asegura que los botones estén en fila */
-    gap: 2vw; /* Espacio entre los botones de autenticación */
-}
-
-.auth-buttons button {
-    white-space: nowrap; /* Previene que el texto se divida en varias líneas */
+.auth-buttons button { /* define las caracteristicas de los botones de iniciar sesion y registro */
+    white-space: nowrap;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.1vw;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold; /* hace que el texto de los botones sea negrita */
+    transition: background-color 0.3s, color 0.3s; /* determina las caracteristicas de la transicion al pasar el raton */
     padding: 0.5vw 1vw;
 }
 
-/* Personalización del botón de iniciar sesión */
-.auth-buttons .login-btn {
+
+.auth-buttons .login-btn { /* define las caracteristicas del boton de iniciar sesion */
     background-color: white;
     color: green;
     border: 2px solid green; /* Añade un borde al botón */
 }
 
-.auth-buttons .login-btn:hover {
-    background-color: rgb(232, 232, 232); /* Cambia el fondo al pasar el ratón */
-    color: green;  /* Cambia el color del texto al pasar el ratón */
+.auth-buttons .login-btn:hover { /* aplica la transicion al pasar el raton */
+    background-color: rgb(232, 232, 232); 
+    color: green;  
 }
 
-.auth-buttons .login-btn:active {
+.auth-buttons .login-btn:active { /* mantiene activo el fondo del boton */
     background-color: rgb(219, 219, 219); /* Fondo más oscuro al hacer clic */
     color: green;
 }
 
-/* Personalización del botón de registrarse */
-.auth-buttons .register-btn {
+.auth-buttons .register-btn { /* define las caracteristicas del boton de registro */
     background-color: green;
     color: white;
-    border: 2px solid white; /* Añade un borde al botón */
+    border: 2px solid white; 
 }
 
-.auth-buttons .register-btn:hover {
-    background-color: rgb(0, 111, 0); /* Fondo más oscuro al pasar el ratón */
+.auth-buttons .register-btn:hover { /* aplica la transicion al pasar el raton */
+    background-color: rgb(0, 111, 0); 
     color: white;
 }
 
-.auth-buttons .register-btn:active {
-    background-color: rgb(0, 98, 0); /* Fondo aún más oscuro al hacer clic */
+.auth-buttons .register-btn:active { /* mantiene activo el fondo del boton */
+    background-color: rgb(0, 98, 0);
     color: white;
 }
 
 
 
-/* Estilos generales para las secciones */
 
-section {
+
+section { /* define las caracteristicas generales de las secciones de la pagina */
     background-image: url('../images/fondo.jpg');
     background-size: 100% 100%;
     background-position: center;
@@ -141,128 +135,119 @@ section {
     justify-content: center;
 }
 
-section h2 {
+section h2 {  /* define las caracteristicas de los titulos de las secciones */ 
     width: 100%;
-    font-size: 3vw; /* Cambia el tamaño de la fuente */
-    margin-bottom: 2%;
+    font-size: 3vw; 
+    margin-bottom: 2%; 
     text-align: center;
-    color: black; /* Cambia el color del texto */
-    font-family: 'Merienda', cursive; /* Cambia la fuente */
+    color: black; 
+    font-family: 'Merienda', cursive; /* Cambia el tipo de letra*/
 }
 
-/* Estilos específicos para la primera sección (home) */
-#home {
+
+#home { /* define las caracteristicas de primera sección */
     text-align: center;
     align-items: center;
 }
 
-#home h1 {
-    font-family: 'Great Vibes', cursive; /* Fuente navideña */
+#home h1 { /* define las caracteristicas del titulo de la primera sección */
+    font-family: 'Great Vibes', cursive; 
     font-size: 6vw;
     margin-bottom: 5px;
 }
 
-#home p {
+#home p { /* tamaño de letra del contador */
     font-size: 2.5vw;
 }
 
-#home button {
+#home button { /* define las caracteristicas del boton de la primera sección */
     background-color: red;
     color: white;
     padding: 1% 2%;
     border-radius: 15px;
-    cursor: pointer;
+    cursor: pointer; /* cambia el cursor a una mano al pasar el raton  */
     width: 15%;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    border: 5px solid green; /* Añade un borde al botón */
+    border: 5px solid green; 
     font-size: 1.3vw;
 }
 
-#home button:hover {
+#home button:hover { /* aplica la transicion al pasar el raton */
     background-color: darkred;
-    border: 5px solid darkgreen; /* Añade un borde al botón */
-
-}
-
-#home button:active {
-    background-color: #660000;
-    transform: scale(1.05);
+    border: 5px solid darkgreen;
 }
 
 
-
-/* Estilos para el contenedor de contenido */
-.content {
+.content { /* define las caracteristicas de los contenidos de la segunda pagina */
     display: flex;
-    justify-content: space-between; /* Asegurar que ambas columnas estén distribuidas */
-    align-items: stretch; /* Asegura que ambas columnas tengan la misma altura */
-    width: 100%; /* Asegura que el contenedor principal use todo el ancho */
-    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
-    gap: 15%; /* Espacio entre las columnas */
-    max-height: 75%;
+    justify-content: space-between; /* separa los elementos a cada extremo del contenedor */
+    align-items: stretch; /* mantiene las dos columnas a la misma altura */
+    width: 100%; 
+    box-sizing: border-box;
+    gap: 15%;
+    max-height: 75%; /* altura máxima del contenido */  
     padding: 0 7%;
     
 }
 
-/* Estilos para las columnas */
-.left-column, .right-column {
-    flex: 1; /* Ambas columnas ocuparán el mismo espacio disponible */
-    box-sizing: border-box; /* Asegurar que padding y border se incluyan en el tamaño total */
+.left-column, .right-column { /* define las caracteristicas de las dos columnas */
+    flex: 1; /* ambas columnas ocuparan el mismo espacio disponible */
+    box-sizing: border-box; 
     display: flex;
     flex-direction: column;
-    justify-content: stretch; /* Alinear verticalmente el contenido para que ocupe el 100% de la columna */
-    height: 100%; /* Asegura que la columna ocupe toda la altura del contenedor */
+    justify-content: stretch; /* alinea verticalmente el contenido para que ocupe el maximo de la columna */
+    height: 100%; 
 }
 
-/* Estilos para la imagen */
-.left-column img {
-    object-fit: fill; /* Cambia a 'fill' para permitir que la imagen se deforme y ocupe todo el espacio */
-    border-radius: 3%; /* Bordes redondeados opcionales */
+
+.left-column img { /* define las caracteristicas de la imagen de la primera columna */
+    object-fit: fill; /* permite que la imagen se deforme para ocupar todo el espacio */
+    border-radius: 3%; 
     transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 100%; /* Asegurarse de que la imagen ocupe todo el ancho de la columna */
-    height: 100%; /* Asegura que la imagen ocupe toda la altura de la columna */
+    width: 100%; 
+    height: 100%; 
 }
 
-/* Efecto al hacer clic en la imagen */
-.left-column img:active {
-    box-shadow: 0 0 20px rgba(0, 86, 224, 0.808); /* Sombra al hacer clic */
+
+.left-column img:active { /* aplica un efecto al hacer clic en la imagen */
+    box-shadow: 0 0 20px rgba(0, 86, 224, 0.808); /* sombra al hacer clic */
     transform: scale(1.03);
     cursor: pointer;
 }
 
-/* Estilos para la columna derecha */
-.right-column {
+
+.right-column { /* define las caracteristicas de la columna derecha */
     border-radius: 3%;
-    background-image: url('../images/fondonieve.jpg'); /* Añadir imagen de fondo */
-    background-size: cover; /* Ajustar la imagen para cubrir todo el contenedor */
-    background-position: center; /* Centrar la imagen */
+    background-image: url('../images/fondonieve.jpg'); /* añade una imagen de fondo */
+    background-size: cover; /* ajusta la imagen para cubrir todo el contenedor */
+    background-position: center; /* centra la imagen */
     color: white;
     display: flex;
-    flex-direction: column; /* Para organizar el texto dentro */
-    justify-content: stretch; /* Alinear verticalmente el contenido para que ocupe el 100% de la columna */
+    flex-direction: column; /* organiza el texto dentro del contenedor */
+    justify-content: stretch; /* alinea verticalmente el contenido para que ocupe el maximo de la columna */
     transition: background-color 0.3s ease, transform 0.3s ease;
 
 }
 
-/* Estilos para el texto */
-.right-column h3 {
-    font-size: 1.4vw; /* Ajusta el tamaño de la fuente en función del ancho de la ventana de visualización */
+.right-column h3 { /* titulo de la columna derecha */
+    font-size: 1.4vw; 
     margin-bottom: 1%;
     margin: 0 15%;
     margin-top: 10%;
     margin-bottom: 5%;
-}
+    /* margenes para que el texto no toque los bordes del contenedor, ni el texto de abajo */
+} 
 
-.right-column p {
-    font-size: 1.05vw; /* Ajusta el tamaño de la fuente en función del ancho de la ventana de visualización */
-    line-height: 1.2; /* Ajusta la altura de la línea */
-    text-align: justify; /* Justificar el texto */
+.right-column p { /* texto de la columna derecha */
+    font-size: 1.05vw; 
+    line-height: 1.2; 
+    text-align: justify;
     margin: 0 15%;
     margin-bottom: 15%;
 }
 
-.right-column:active {
-    box-shadow: 0 0 20px rgba(0, 86, 224, 0.808); /* Sombra al hacer clic */
+.right-column:active { /* aplica un efecto al hacer clic en la columna derecha */
+    box-shadow: 0 0 20px rgba(0, 86, 224, 0.808); /* sombra al hacer clic */
     transform: scale(1.03);
     cursor: pointer;
 }
@@ -273,115 +258,112 @@ section h2 {
 
 
 
-/* Estilos específicos para la sección de cartas */
-.letters {
+
+.letters { /* define las caracteristicas de la seccion de las cartas */
     width: 100%;
-    display: grid;
+    display: grid; /* organiza las cartas en columnas */
     grid-template-columns: repeat(3, 1fr); /* 3 columnas */
     grid-template-rows: auto auto; /* 2 filas automáticas */
     gap: 3vw;
-    justify-items: center; /* Centra las cartas dentro del grid */
+    justify-items: center; /* centra las cartas dentro del grid */
 }
 
-.letter {
-    background-image: url('../images/carta.jpg'); /* Ruta de la imagen de fondo */
-    background-size: cover; /* La imagen cubrirá todo el contenedor */
-    background-position: center; /* Centra la imagen en el contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+.letter { /* define las caracteristicas de las cartas */
+    background-image: url('../images/carta.jpg');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; /* evita que la imagen se repita */
     border: 1px solid #ccc;
     cursor: pointer;
     width: 100%;
     height: 0;
-    padding-top: 56.03%; /* Mantiene la relación de aspecto de la imagen (343/612) */
+    padding-top: 56.03%; /* mantiene la relación de aspecto de la imagen (343/612) */
     position: relative;
-    box-sizing: border-box; /* Para incluir el padding en el cálculo del tamaño */
-    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Añade transición para ambos efectos */
+    box-sizing: border-box; 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.letter:hover {
+.letter:hover { /* transicion de las cartas al pasar el raton */ 
     box-shadow: 0 0 20px rgba(5, 141, 0, 0.698);
     transform: scale(1.05);
 }
 
-.letter-header {
+.letter-header { /* define las caracteristicas de la cabecera de las cartas */
     display: flex;
     flex-direction: column;
 }
 
-.letter-content {
+.letter-content { /* define las caracteristicas del contenido de las cartas */ 
     position: absolute;
-    top: 0; /* Alinea el contenido en la parte superior */
-    bottom: 0; /* Alinea el contenido en la parte inferior */
-    left: 0; /* Alinea el contenido al borde izquierdo */
-    right: 0; /* Alinea el contenido al borde derecho */
-    padding: 5%; /* Añade espacio interno */
+    top: 0; /* alinea el contenido en la parte superior */
+    bottom: 0; /* alinea el contenido en la parte inferior */
+    left: 0; /* alinea el contenido al borde izquierdo */
+    right: 0; /* alinea el contenido al borde derecho */
+    padding: 5%; 
     padding-right: 8%;
     display: flex;
-    flex-direction: row;
+    flex-direction: row;  /* organiza los contenidos dentro de cada carta en filas  */
     align-items: center;
-    gap: 7%; /* Espacio entre la imagen y el texto */
+    gap: 7%; 
     box-sizing: border-box;
-    color: black; /* Hace que el texto sea visible sobre el fondo */
-    font-size: 1vw; /* Tamaño de fuente más grande */
+    color: black; 
+    font-size: 1vw;
 }
 
-.letter img {
+.letter img { /* define las caracteristicas de las imagenes de las cartas */
     width: 4vw;
     height: 4vw;
-    border-radius: 50%; /* Hace que la imagen sea circular */
+    border-radius: 50%; /*hace la imagen circular */
 }
 
 
-
-
-/* Estilos para el contenedor del formulario */
-#envia-carta {
+#envia-carta { /* define las caracteristicas de la seccion de envio de cartas */
     align-items: center;
 }
-.form-container {
-    background-image: url('../images/fondoformulario.png'); /* Imagen de fondo */
-    background-size: 100% 100%; /* Asegura que la imagen cubra todo el contenedor */
-    background-position: center; /* Centramos la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    border-radius: 15px; /* Bordes redondeados */
-    width: 90%; /* Ajustar al ancho completo */
-    padding: 8% 10%; /* Padding interno */
-    box-sizing: border-box; /* Asegura que el padding se incluya dentro del tamaño total */
+.form-container { /* define las caracteristicas de los elementos dentro de la seccion envio de cartas */
+    background-image: url('../images/fondoformulario.png');
+    background-size: 100% 100%; /* asegura que la imagen cubra todo el contenedor */
+    background-position: center; 
+    background-repeat: no-repeat; 
+    border-radius: 15px; 
+    width: 90%;
+    padding: 8% 10%; 
+    box-sizing: border-box; 
 }
 
 
-/* Estilos para el formulario en formato de grid */
-.grid-form {
+
+.grid-form { /* define las caracteristicas de los elementos dentro de la seccion envio de cartas*/
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
-    gap: 1vw; /* Espacio entre los elementos del grid */
-    font-size: 1.1vw; /* Tamaño de fuente más grande */
+    gap: 1vw; 
+    font-size: 1.1vw; 
     max-height: 100%;
 }
 
-/* Los elementos que ocuparán toda la fila */
-.form-full-width {
+
+.form-full-width { /* define las caracteristicas de carta para papa noel y el boton */
     display: flex;
-    flex-direction: column; /* Alinea los elementos en columna */
-    grid-column: span 2; /* Hace que los elementos ocupen ambas columnas */
+    flex-direction: column;
+    grid-column: span 2; /* hace que los elementos ocupen ambas columnas */
 }
 
-.grid-form textarea {
-    height: 8vw; /* Ajusta la altura según sea necesario */
+.grid-form textarea { /* espacio para el texto de los elementos*/
+    height: 8vw; 
 }
 
-/* Estilos generales para los campos del formulario */
-.form-group {
+
+.form-group { /* define las caracteristicas de los demas elementos*/
     display: flex;
-    flex-direction: column; /* Etiquetas y campos en columna */
-    color: #000000; /* Color del texto */
+    flex-direction: column; 
+    color: #000000; 
 }
 
-.form-full-width button {
+.form-full-width button { /* define las caracteristicas exclusivas del boton de envio de cartas */
     width: 10vw;
     padding: 0.75%;
     background-color: green;
-    border: 2px solid red; /* Añadir borde rojo */
+    border: 2px solid red;
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -389,87 +371,79 @@ section h2 {
     font-size: 1vw;
 }
 
-input, textarea {
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid #ddd; /* Borde ligero */
-    border-radius: 5px; /* Bordes redondeados */
-    resize: none; /* Evita que se pueda redimensionar el textarea */
+input, textarea {  /* define las caracteristicas de los elementos de texto */
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+    resize: none; /* evita que se pueda redimensionar el textarea */
 }
 
-label {
-    color: green; /* Color del texto */
-    font-size: 1.2em; /* Tamaño de fuente más grande */
-    font-family: 'Roboto', sans-serif; /* Cambia la fuente a Roboto */
-    font-weight: bold; /* Hace que el texto sea negrita */
+label { /* define las caracteristicas de las etiquetas de los elementos */
+    color: green; 
+    font-size: 1.2em; 
+    font-family: 'Roboto', sans-serif; 
+    font-weight: bold;
 }
 
 
 
-
-
-
-/* Sección de los juegos */
-#juega {
-    text-align: center; /* Centra el contenido */
+.juegos { /* define las caracteristicas de la seccion juega */
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
 }
 
-.juegos {
-    display: flex; /* Usamos flex para alinear las columnas */
-    flex-direction: row; /* Cambiar a columna para que los botones estén debajo de las imágenes */
-    align-items: center; /* Centra horizontalmente los elementos */
+.bloque-juegos { /* ajusta el ancho de las imagenes */
+    width: 100%;
 }
 
-.bloque-juegos {
-    width: 100%; /* Ajusta al ancho completo */
+.game-selection { /* define las caracteristicas del espacio para los botones de selccion de juegos */
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    gap: 2vw; 
 }
 
-.game-selection {
-    display: flex; /* Alinear botones en fila */
-    justify-content: center; /* Centrar botones horizontalmente */
-    flex-direction: column; /* Alinear botones en columna */
-    gap: 2vw; /* Espacio entre los botones */
+.game-button { /* define las caracteristicas de los botones de juegos */
+    background-color: red; 
+    color: white;
+    padding: 0.75vw 2vw; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; /* permite que los botones se alineen */
+    font-size: 1.2vw;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    font-family: 'Arial', sans-serif; 
+    white-space: nowrap; /* evita que el texto se divida en lineas */
 }
 
-.game-button {
-    background-color: red; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    padding: 0.75vw 2vw; /* Espaciado interno */
-    text-align: center; /* Centrar texto */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Permitir que los botones se alineen */
-    font-size: 1.2vw; /* Tamaño de fuente */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    transition: background-color 0.3s; /* Efecto de transición */
-    font-family: 'Arial', sans-serif; /* Cambia la fuente */
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+.game-button:hover { /* aplica la transicion al pasar el raton */
+    background-color: darkred;
 }
 
-.game-button:hover {
-    background-color: darkred; /* Color al pasar el mouse */
+.bloque-juegos { /* define las caracteristicas del espacio para las imagenes de los juegos */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
 }
 
-.bloque-juegos {
-    display: flex; /* Flex para colocar imágenes en fila si es necesario */
-    justify-content: center; /* Centrar imágenes */
-    align-items: center; /* Alinear imágenes verticalmente */
+.game-image { /* oculta las imagenes por defecto */
+    display: none;
 }
 
-.game-image {
-    display: none; /* Oculta todas las imágenes por defecto */
+.game-image img { /* ajusta las dimensiones de la imagen */
+    width: 50vw; 
+    height: auto; 
 }
 
-.game-image img {
-    width: 50vw; /* Ajusta el tamaño máximo de la imagen */
-    height: auto; /* Mantiene la proporción */
-}
-
-/* Mostrar solo la imagen activa */
+/* muestra solo la imagen activa */
 #game1:target,
 #game2:target,
 #game3:target {
-    display: block; /* Muestra la imagen seleccionada */
+    display: block; /* muestra la imagen seleccionada */
 }
 
 
@@ -480,212 +454,204 @@ label {
 
 
 
-/* Estilos para el pie de página */
-footer {
+
+footer { /* define las caracteristicas del pie de pagina */
     background-color: #333;
     color: white;
     padding: 1% 5%;
     justify-content: space-between;
-    display: flex; /* Usamos flex para alinear las secciones */
-    align-items: center; /* Alinea los elementos verticalmente */
+    display: flex; 
+    align-items: center; 
 }
 
-/* Sección de contacto */
-.contact-info {
+
+.contact-info { /* define las caracteristicas de la seccion de contacto */
     display: flex;
-    flex-direction: column; /* Alinea los elementos en columna */
-    align-items: center; /* Centra horizontalmente */
-    gap: 0.7vw; /* Espacio entre los elementos */
+    flex-direction: column; 
+    align-items: center; 
+    gap: 0.7vw; 
 }
 
-/* Estilo para el texto de contacto */
-.contact-info p {
+
+.contact-info p { /*caracteristicas del texto de contacto */
     color: white;
     text-decoration: none;
-    margin: 0; /* Elimina el margen superior e inferior */
+    margin: 0; 
     font-size: 1vw;
 }
 
-/* Sección de redes sociales */
-.social-media {
+
+.social-media { /* define las caracteristicas de la seccion de redes sociales */
     display: flex;
-    gap: 1.5vw; /* Espacio entre las imágenes */
-    flex-direction: row; /* Alinea las imágenes en fila */
+    gap: 1.5vw; 
+    flex-direction: row; 
 }
 
-/* Estilo para las imágenes de redes sociales */
-.social-media img {
-    width: 2.75vw; /* Ajusta el tamaño de las imágenes */
-    height: 2.75vw; /* Mantén la proporción de las imágenes */
-    transition: transform 0.3s ease; /* Transición suave */
+
+.social-media img { /* dimensiones y transicion de la imagen de las redes sociales */
+    width: 2.75vw; 
+    height: 2.75vw; 
+    transition: transform 0.3s ease; 
 }
 
-/* Efecto hover para imágenes de redes sociales */
-.social-media img:hover {
-    transform: scale(1.1); /* Aumenta el tamaño al pasar el ratón */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+.social-media img:hover { /* transicion al pasar el raton */
+    transform: scale(1.1);
+    cursor: pointer; 
 }
 
-/* Sección de enlaces legales */
-.legal-links {
+
+.legal-links { /* apartado de enlaces legales */
     display: flex;
-    flex-direction: column; /* Alinea los enlaces en columna */
-    align-items: center; /* Centra horizontalmente los elementos */
-    gap: 0.7vw; /* Espacio entre los elementos reducido */
+    flex-direction: column; 
+    align-items: center; 
+    gap: 0.7vw;
 }
 
-/* Estilo para los enlaces legales */
-.legal-links a {
+
+.legal-links a { /* define las caracteristicas de los enlaces legales */
     color: white;
     text-decoration: none;    
 }
 
-/* Estilo para el texto de enlaces legales */
-.legal-links p {
-    margin: 0; /* Elimina el margen superior e inferior */
-    padding: 0; /* Eliminar padding */
-    font-size: 1vw; /* Tamaño de fuente más pequeño */
+
+.legal-links p { /* define las caracteristicas del texto de los enlaces legales */
+    margin: 0; 
+    padding: 0; 
+    font-size: 1vw; 
 }
 
-/* Efecto hover para enlaces legales */
-.legal-links a:hover {
-    text-decoration: underline; /* Subraya el enlace al pasar el ratón */
+.legal-links a:hover { /* efecto al pasar el raton */
+    text-decoration: underline; /* subraya el enlace al pasar el ratón */
 }
 
 
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { 
 
   
-    .head {
+    .head { /* ajustes para el titulo de la pagina */
         font-size: 2vw;    
     }
     
-    header img {
+    header img { /* ajustes para la imagen del logo */
         width: 8vw;
         height: 8vw;
     }
     
-    /* Estilos de los botones de autenticación (login y registro) */
-    .auth-buttons {
-        display: flex; /* Asegura que los botones estén en fila */
-        gap: 1vw; /* Espacio entre los botones de autenticación */
-        flex-direction: column; /* Asegura que los botones estén alineados a la derecha */
+    
+    .auth-buttons { /* ajustes para el espacio de los botones de inicio de sesion y registro */
+        display: flex; 
+        gap: 1vw; 
+        flex-direction: column; 
     }
     
-    .auth-buttons button {
+    .auth-buttons button { /* cambio de tamaño de letra de los botones de inicio de sesion y registro */
         font-size: 2vw;
     }
 
-    body {
+    body { /* ajustes generales para el cuerpo de la página */
         background-image: url('../images/fondogirado.jpg');
         background-position: center;
-        background-repeat: repeat-y; /* Repetir la imagen solo verticalmente */
-        background-size: 100% auto; /* Ajusta el ancho al 100% de la pantalla, el alto se ajusta proporcionalmente */
+        background-repeat: repeat-y; /* repite la imagen solo verticalmente */
+        background-size: 100% auto; /* ajusta el ancho al 100% de la pantalla, el alto se ajusta proporcionalmente */
     }
     
 
 
-    section {
-        padding: 0 5%; /* Menos padding lateral */
-        height: auto; /* Altura automática */
+    section { /* ajustes para las secciones */
+        padding: 0 5%; 
+        height: auto;
         background-image: none;
     }
 
-    section h2 {
+    section h2 { /* ajustes para los titulos de las secciones */
         margin-bottom: 5%;
-
-    }
-
-    .form-container {
-        padding: 5%; /* Menos padding en el formulario */
-    }
-
-
-
-    section h2 {
-        font-size: 4vw; /* Ajusta el tamaño de la fuente del título */
+        font-size: 4vw;
         margin-top: 10vh;
+
     }
 
+    .form-container { /* ajustes para el contenedor del formulario */
+        padding: 5%;
+    }
 
-    #home h1 {
-        font-size: 8vw; /* Ajusta el tamaño del encabezado */
+    #home h1 { /* ajustes para el titulo de la primera sección */
+        font-size: 8vw; 
         margin-top: 30vh;
         margin-right: 6.5vh;
         margin-left: 6.5vh;
     }
 
 
-    /* Ajustes para la sección de Papá Noel */
-    #papa-noel .content {
+    
+    #papa-noel .content { /* ajustes para el contenido de la segunda página */
         display: flex;
-        flex-direction: column; /* Cambiar a columna */
-        align-items: center; /* Centrar contenido */
-        gap: 10vw; /* Espacio entre elementos */
+        flex-direction: column;
+        align-items: center; 
+        gap: 10vw; 
     }
 
-    #papa-noel .left-column {
-        width: 75vw; /* Hace que ambas columnas tengan el mismo ancho */
-        height: 150vw; /* Establece un alto fijo para las columnas */
-        display: flex; /* Flexbox para centrar contenido */
+    #papa-noel .left-column { /* ajustes para la columna izquierda de la segunda seccion */
+        width: 75vw; /* hace que ambas columnas tengan el mismo ancho */
+        height: 150vw; 
+        display: flex; 
 
     }
-    #papa-noel .right-column {
-        width: 75vw; /* Hace que ambas columnas tengan el mismo ancho */
-        height: 150vw; /* Establece un alto fijo para las columnas */
-        display: flex; /* Flexbox para centrar contenido */
+    #papa-noel .right-column { /* ajustes para la columna derecha de la segunda seccion */
+        width: 75vw; /* hace que ambas columnas tengan el mismo ancho */
+        height: 150vw; 
+        display: flex; 
 
-    }
-
-
-    .right-column h3 {
-        font-size: 4vw; /* Ajustar el tamaño del texto */
-    }
-
-    .right-column p {
-        font-size: 2.5vw; /* Ajustar el tamaño del texto */
-    }
-
-    /* Ajustes para la sección de cartas */
-    .letters {
-        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas */
-    }
-    .letters .letter-content {
-        font-size: 2vw; /* Ajustar el tamaño del texto en las cartas */
-    }
-    .letter-content img {
-        width: 8vw; /* Ajustar el tamaño de la imagen */
-        height: 8vw; /* Mantener la proporción */
     }
 
 
-    #envia-carta {
-        padding: 0 15%; /* Padding interno */
+    .right-column h3 { /* cambio de letra para el titulo de la columna derecha */
+        font-size: 4vw; 
     }
-    .form-container {
-        background-image: url('../images/fondoformulariogirado.png'); /* Imagen de fondo */
-        padding: 13% 17%; /* Padding interno */
+
+    .right-column p { /* cambio de letra para el texto de la columna derecha */
+        font-size: 2.5vw; 
+    }
+
+  
+    .letters { /* cambia a 2 columnas las cartas */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .letters .letter-content { /* ajusta el tamaño del texto en las cartas */
+        font-size: 2vw; 
+    }
+    .letter-content img { /* ajusta el tamaño de la imagen de la carta y mantiene la proporcion */
+        width: 8vw; 
+        height: 8vw; 
+    }
+
+
+    #envia-carta { /* espacio interno de la seccion de envio de cartas */ 
+        padding: 0 15%; 
+    }
+    .form-container { /* ajustes para el contenedor del formulario */
+        background-image: url('../images/fondoformulariogirado.png');
+        padding: 13% 17%; 
     }
     
     
-    /* Estilos para el formulario en formato de grid */
-    .grid-form {
-        display: flex;
-        flex-direction: column; /* Alinea los elementos en columna */
-        font-size: 2vw; /* Tamaño de fuente más grande */
-        gap: 2vw; /* Espacio entre los elementos */
+    
+    .grid-form { /* ajustes para los elementos del formulario */
+        display: flex; 
+        flex-direction: column; 
+        font-size: 2vw; 
+        gap: 2vw; 
     }
     
     
-    .grid-form textarea {
-        height: 15vw; /* Ajusta la altura según sea necesario */
+    .grid-form textarea { /* ajusta la altura del espacio de texto del formulario */
+        height: 15vw;
     }
 
     
-    .form-full-width button {
+    .form-full-width button { /* ajustes para el boton de envio de cartas */
         width: 20vw;
         padding: 1%;
         font-size: 2vw;
@@ -693,24 +659,22 @@ footer {
 
 
 
-    .juegos {
-        flex-direction: column; /* Cambiar a columna para que los botones estén debajo de las imágenes */
+    .juegos { /* ajustes para la seccion de juegos */
         margin-bottom: 10vw;
-        gap: 2vw; /* Espacio entre los elementos */
+        gap: 2vw; 
     }
 
-    /* Estilos para el menú de juegos */
-    .game-selection {
-        flex-direction: row; /* Alinear botones en columna */
-        gap: 1.5vw; /* Espacio entre los botones */
+    
+    .game-selection { /* ajustes para el espacio de los botones de juegos */
+        gap: 1.5vw; 
     }
 
-    .game-button {
-        font-size: 2vw; /* Cambia el tamaño del texto */
+    .game-button {  /* cambio de tamaño la letra de los botones de juegos  */
+        font-size: 2vw;
     }
 
-    .game-image img {
-        width: 80vw; /* Ajusta el tamaño máximo de la imagen */
+    .game-image img { /* ajusta el tamaño de la imagen de los juegos */
+        width: 70vw; 
     }
 
 
@@ -761,31 +725,31 @@ footer {
 
 
 
-    section {
+    section { /* ajustes para las secciones */
         padding: 0 10%; /* Menos padding lateral */
     }
 
 
-    .content {
-        flex-direction: column; /* Cambia la dirección del flex a columna */
-        align-items: center; /* Alinea al centro */
+    .content { /* ajustes para el contenido de la segunda pagina */
+        flex-direction: column; /* cambia la dirección del flex a columna */
+        align-items: center; 
     }
 
-    #cartas {
+    #cartas { /* ajustes para la seccion de cartas */
         align-items: center;
     }
 
-    .letters {
+    .letters { /* ajustes para las cartas */
         width: 80%;
-        grid-template-columns: 1fr; /* Cambia a una sola columna */
-        gap: 5vw; /* Espacio entre las cartas */
+        grid-template-columns: 1fr; /* cambia a una sola columna */
+        gap: 5vw; 
     }
 
-    .letters .letter-content {
+    .letters .letter-content { /* ajustes para el contenido de las cartas */
         font-size: 2.5vw;
     }
 
-    .letter-content img {
+    .letter-content img { /* ajustes para las imagenes de las cartas */
         width: 10vw;
         height: 10vw;
     }

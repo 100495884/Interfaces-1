@@ -9,17 +9,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Merienda&family=Patrick+Hand&family=Rock+Salt&family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header> 
+        <!-- cabecera de la página -->
         <div class="head">
+            <!-- logo de la página -->
             <a href="#home"><img src="images/logo.png" alt="Logo"></a>
             <div class="menu">
                 <nav>
+                    <!-- botones de navegación -->
                     <div class="active"><a href="#home">Inicio</a></div>
                     <div><a href="#papa-noel">Papá Noel</a></div>
                     <div><a href="#cartas">Las cartas</a></div>
                     <div><a href="#envia-carta">Envía tu carta</a></div>
                     <div><a href="#game1">¡Juega!</a></a></div>
                 </nav>
+                <!-- botones de registro e inicio de sesión -->
                 <div class="auth-buttons">
                     <button class="login-btn">Iniciar sesión</button> 
                     <button class="register-btn">Registrarse</button>
@@ -30,12 +34,14 @@
 
     <main>
         <section id="home">
+            <!-- seccion de bienvenida -->
             <h1>Bienvenido al Viaje de Papá Noel</h1>
             <p>148 días 04 h 09 min 58 s</p>
             <button disabled>Empezar</button>
         </section>
 
         <section id="papa-noel">
+            <!-- sección de la segunda página -->
             <h2>Papá Noel</h2>
             <div class="content">
                 <div class="left-column">
@@ -53,10 +59,12 @@
         </section>
 
         <section id="cartas">
+            <!-- sección de las cartas -->
             <h2>Las cartas</h2>
             <div class="letters">
                 <div class="letter">
                     <div class="letter-content">
+                        <!-- contenido de las cartas, todas las cartas tienen las mismas clases para que actuen de la misma forma -->
                         <img src="images/nino1.jpg" alt="Remitente 1">
                         <div>
                             <p><strong>Juan, Madrid, España</strong></p>
@@ -113,10 +121,13 @@
         </section>
 
         <section id="envia-carta">
+            <!-- seccion para enviar cartas -->
             <h2>Envía tu carta</h2>
             <div class="form-container">
                 <form class="grid-form">
+                    <!-- clase para agrupar los elementos de la sección envia-carta -->
                     <div class="form-group">
+                        <!-- clase para definir cada elemento del formulario, excepto las dos ultimas -->
                         <label for="nombre">Nombre:</label>
                         <input type="text" id="nombre" name="nombre">
                     </div>
@@ -133,6 +144,7 @@
                         <input type="text" id="pais" name="pais">
                     </div>
                     <div class="form-full-width">
+                        <!-- clase para representar el cuadro de texto y el boton, que son mas grandes que los demas elementos -->
                         <label for="carta">Carta para Papá Noel:</label>
                         <textarea id="carta" name="carta"></textarea>
                     </div>
@@ -145,14 +157,17 @@
         
 
         <section id="juega">
+            <!-- seccion de juegos -->
             <h2>¡Juega!</h2>
             <div class="juegos">
                 <div class="game-selection">
+                    <!-- clase para definir los tres botones -->
                     <a href="#game1" class="game-button">Juego 1</a>
                     <a href="#game2" class="game-button">Juego 2</a>
                     <a href="#game3" class="game-button">Juego 3</a>
                 </div>
                 <div class="bloque-juegos">
+                    <!-- clase para las imagenes de los juegos -->
                     <div class="game-image" id="game1">
                         <img src="images/juego1.jpg" alt="Juego 1">
                     </div>
@@ -171,6 +186,7 @@
     </main>
 
     <footer>
+        <!-- apartado para el pie de página -->
         <div class="contact-info">
             <p>+34 600 123 456</p>
             <p>correo@ejemplo.com</p>
