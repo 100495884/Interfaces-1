@@ -1,0 +1,1 @@
+En la practica si que hemos usado IA generativa, para preguntar por dudas y para revisar y corregir ciertos apartados del codigo.
