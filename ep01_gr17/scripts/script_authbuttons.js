@@ -17,21 +17,7 @@ function closeLoginPopup() {
     document.getElementById('login-popup').style.display = 'none';
 }
 
-function openProfilePopup() {
-    document.getElementById('profile-popup').style.display = 'block';
-}
 
-function closeProfilePopup() {
-    document.getElementById('profile-popup').style.display = 'none';
-}
-
-function openLettersPopup() {
-    document.getElementById('letters-popup').style.display = 'block';
-}
-
-function closeLettersPopup() {
-    document.getElementById('letters-popup').style.display = 'none';
-}
 
 // Función para alternar el menú de perfil
 function toggleProfileMenu() {
@@ -136,13 +122,13 @@ function validateLoginForm() {
     const userData = JSON.parse(localStorage.getItem('userData'));
 
     if (userData && userData.username === username && userData.password === password) {
-        alert('Inicio de sesión exitoso.');
         closeLoginPopup();
+        alert('Inicio de sesión exitoso.');
         // Cambiar botones de inicio de sesión y registro por el icono de perfil
         document.querySelector('.auth-buttons').style.display = 'none';
-        document.querySelector('.profile-icon').style.display = 'inline-block';
-        // Opcional: Si estás usando una imagen de perfil específica:
-        document.querySelector('.profile-icon').style.backgroundImage = url('imgs/profile-icon.png');
+        document.querySelector('.profile-icon').style.display = 'block';
+        
+        
 
     } else {
         alert('Nombre de usuario o contraseña incorrectos.');
