@@ -7,6 +7,8 @@
     <title>Viaje de Papá Noel</title>
     <link rel="stylesheet" href="style/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Merienda&family=Patrick+Hand&family=Rock+Salt&family=Quicksand&display=swap" rel="stylesheet">
+    <script src="scripts/script_countdown.js" async></script>
+    <script src="scripts/script_authbuttons.js" async></script>
 </head>
 <body>
     <header> 
@@ -25,9 +27,92 @@
                 </nav>
                 <!-- botones de registro e inicio de sesión -->
                 <div class="auth-buttons">
-                    <button class="login-btn">Iniciar sesión</button> 
-                    <button class="register-btn">Registrarse</button>
-                </div>
+                    <button class="login-btn" onclick="openLoginPopup()">Iniciar sesión</button> 
+                    <button class="register-btn" onclick="openRegisterPopup()">Registrarse</button>
+                    <div class="profile-icon" style="display: none;"></div>
+                    <!-- Ventana emergente de registro -->
+                    <div id="register-popup" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeRegisterPopup()">&times;</span>
+                            <h2>Registro</h2>
+                            <form id="register-form">
+                                <label for="username">Nombre de usuario*</label>
+                                <input type="text" id="username" name="username" required minlength="3">
+                                
+                                <label for="password">Contraseña*</label>
+                                <input type="password" id="password" name="password" required minlength="5">
+                                
+                                <label for="confirm-password">Repetir contraseña*</label>
+                                <input type="password" id="confirm-password" name="confirm-password" required>
+                                
+                                <label for="email">Correo electrónico*</label>
+                                <input type="email" id="email" name="email" required>
+                                
+                                <label for="city">Ciudad*</label>
+                                <input type="text" id="city" name="city" required minlength="3">
+                                
+                                <label for="country">País*</label>
+                                <input type="text" id="country" name="country" required minlength="3">
+                                
+                                <label for="gender">Género</label>
+                                <select id="gender" name="gender">
+                                    <option value="male">Masculino</option>
+                                    <option value="female">Femenino</option>
+                                    <option value="other">Otro</option>
+                                    <option value="prefer-not-to-say">Prefiero no decirlo</option>
+                                </select>
+                                
+                                <label for="children">¿Cuántos hijos / hijas tienes?</label>
+                                <input type="number" id="children" name="children" min="0">
+                                
+                                <div id="children-details"></div>
+                                
+                                <button type="button" onclick="validateRegisterForm()">Aceptar</button>
+                                <button type="button" onclick="clearRegisterForm()">Limpiar campos</button>
+                                <button type="button" onclick="closeRegisterPopup()">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Ventana emergente de inicio de sesión -->
+                    <div id="login-popup" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeLoginPopup()">&times;</span>
+                            <h2>Iniciar sesión</h2>
+                            <form id="login-form">
+                                <label for="login-username">Nombre de usuario*</label>
+                                <input type="text" id="login-username" name="login-username" required>
+                                
+                                <label for="login-password">Contraseña*</label>
+                                <input type="password" id="login-password" name="login-password" required>
+                                
+                                <button type="button" onclick="validateLoginForm()">Entrar</button>
+                                <button type="button" onclick="closeLoginPopup()">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Ventana emergente de perfil -->
+                    <div id="profile-popup" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeProfilePopup()">&times;</span>
+                            <h2>Mi perfil</h2>
+                            <form id="profile-form">
+                                <!-- Aquí puedes añadir los campos del perfil del usuario -->
+                                <button type="button" onclick="saveProfile()">Guardar</button>
+                                <button type="button" onclick="closeProfilePopup()">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="letters-popup" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeLettersPopup()">&times;</span>
+                            <h2>Mis cartas</h2>
+                            <div id="letters-content">
+                                <!-- Aquí puedes añadir el contenido de las cartas del usuario -->
+                            </div>
+                        </div>
+                    </div>
+                </div>  
             </div>
         </div>
     </header>
@@ -36,9 +121,15 @@
         <section id="home">
             <!-- seccion de bienvenida -->
             <h1>Bienvenido al Viaje de Papá Noel</h1>
-            <p>148 días 04 h 09 min 58 s</p>
+            <div id="countdown">
+                <span id="days"></span> días 
+                <span id="hours"></span> horas 
+                <span id="minutes"></span> minutos 
+                <span id="seconds"></span> segundos
+            </div>
             <button disabled>Empezar</button>
         </section>
+        
 
         <section id="papa-noel">
             <!-- sección de la segunda página -->
