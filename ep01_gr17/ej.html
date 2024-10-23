@@ -10,6 +10,7 @@
     <script src="scripts/script_countdown.js" async></script>
     <script src="scripts/script_authbuttons.js" async></script>
     <script src="scripts/script-profile.js" async></script>
+    <script src="scripts/script_sendletter.js" async></script>
 </head>
 <body>
     <header> 
@@ -31,38 +32,56 @@
                     <img src="images/profile-icon.png" onclick="toggleProfileMenu()" alt="profile-icon">
                     
                     <!-- Menú desplegable con opciones -->
-                    <div class="profile-menu">
+                    <div id="profile-menu" class="profile-menu">
                         <button onclick="openProfilePopup()">Mi perfil</button>
                         <button onclick="openLettersPopup()">Mis cartas</button>
                         <button onclick="logout()">Cerrar sesión</button>
                     </div>
                 
                     <!-- Ventana emergente de perfil -->
-                    <div class="profile-popup">
-                        <div class="popup-content">
+                    <div id="profile-popup" class="profile-popup">
+                        <div class="popup-profile-content">
                             <span class="close" onclick="closeProfilePopup()">&times;</span>
                             <h2>Mi perfil</h2>
                             <form id="profile-form">
-                                <!-- Aquí puedes añadir los campos del perfil del usuario -->
                                 <label for="name">Nombre:</label>
                                 <input type="text" id="name" name="name" value="Usuario">
-                                <label for="email">Correo:</label>
-                                <input type="email" id="email" name="email" value="usuario@email.com">
+                    
+                                <label for="correo">Correo:</label>
+                                <input type="email" id="correo" name="email" value="usuario@email.com">
+                    
+                                <label for="ciudad">Ciudad:</label>
+                                <input type="text" id="ciudad" name="city">
+                    
+                                <label for="pais">País:</label>
+                                <input type="text" id="pais" name="country">
+                    
+                                <label for="genero">Género:</label>
+                                <select id="genero" name="gender">
+                                    <option value="male">Masculino</option>
+                                    <option value="female">Femenino</option>
+                                    <option value="other">Otro</option>
+                                    <option value="prefer-not-to-say">Prefiero no decirlo</option>
+                                </select>
+                    
+                                <!-- Aquí se agregarán los hijos dinámicamente -->
+                                <div id="children-details"></div>
+                    
                                 <button type="button" onclick="saveProfile()">Guardar</button>
-                                <button type="button" onclick="closeProfilePopup()">Cancelar</button>
+                                <button type="button" onclick="closeProfilePopup()">Cerrar</button>
                             </form>
                         </div>
-                    </div>
+                    </div>                    
+                    
                 
                     <!-- Ventana emergente de cartas -->
-                    <div class="popup-letters">
-                        <div class="popup-content">
+                    <!-- Ventana emergente de cartas -->
+                    <div id="popup-letters" class="popup-letters">
+                        <div class="letters-popup-content">
                             <span class="close" onclick="closeLettersPopup()">&times;</span>
                             <h2>Mis cartas</h2>
-                            <div id="letters-content">
-                                <!-- Aquí puedes añadir el contenido de las cartas del usuario -->
-                                <p>No has enviado ninguna carta.</p>
-                            </div>
+                            <div id="profile-letters-content"></div>
+                            <div id="no-letters-message" style="display: none;">No tienes cartas.</div>
                         </div>
                     </div>
                 
@@ -246,30 +265,30 @@
             <div class="form-container">
                 <form class="grid-form">
                     <!-- clase para agrupar los elementos de la sección envia-carta -->
-                    <div class="form-group">
+                    <div id="form-group" class="form-group">
                         <!-- clase para definir cada elemento del formulario, excepto las dos ultimas -->
                         <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre">
+                        <input type="text" id="form-nombre" name="nombre">
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="form-email" name="email">
                     </div>
                     <div class="form-group">
                         <label for="ciudad">Ciudad:</label>
-                        <input type="text" id="ciudad" name="ciudad">
+                        <input type="text" id="form-ciudad" name="ciudad">
                     </div>
                     <div class="form-group">
                         <label for="pais">País:</label>
-                        <input type="text" id="pais" name="pais">
+                        <input type="text" id="form-pais" name="pais">
                     </div>
                     <div class="form-full-width">
                         <!-- clase para representar el cuadro de texto y el boton, que son mas grandes que los demas elementos -->
                         <label for="carta">Carta para Papá Noel:</label>
-                        <textarea id="carta" name="carta"></textarea>
+                        <textarea id="form-carta" name="carta"></textarea>
                     </div>
                     <div class="form-full-width">
-                        <button type="submit" disabled><strong>Envía</strong></button>
+                        <button type="submit" onclick="sendLetter()"><strong>Envía</strong></button>
                     </div>
                 </form>
             </div>

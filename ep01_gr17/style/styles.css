@@ -90,6 +90,7 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
 
 
 .profile-menu {
+    display: none;
     position: absolute;
     background-color: white;
     border: 1px solid #ccc;
@@ -112,9 +113,77 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
     background-color: #f0f0f0;
 }
 
+.profile-popup {
+    display: none;
+    position: fixed;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    right: 0;
+    top: 50px;
+}
 
-.popup-content {
+.popup-profile-content {
     text-align: center;
+}
+
+.popup-letters {
+    display: none;
+    position: fixed;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    right: 0;
+    top: 50px;
+    overflow-y: auto;   /* Habilita el scroll vertical si hay demasiadas cartas */
+}
+
+.profile_letter {
+    border: 1px solid #ccc;  /* Añadir borde alrededor de cada carta */
+    padding: 10px;           /* Espacio interno en cada carta */
+    margin-bottom: 10px;     /* Espacio entre cada carta */
+    background-color: #f9f9f9;  /* Color de fondo */
+}
+
+.profile_letter {
+    border: 1px solid #ddd;    /* Borde sutil */
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 15px;             /* Espacio interno */
+    margin-bottom: 10px;       /* Espacio entre cartas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra para darle efecto de elevación */
+    border-radius: 8px;        /* Esquinas redondeadas */
+    transition: box-shadow 0.3s ease;  /* Transición suave en hover */
+}
+
+.profile_letter:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);  /* Aumentar sombra al hacer hover */
+}
+
+.profile-letter-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-letter-content p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.profile-letter-content button {
+    background-color: #f44336; /* Color de fondo del botón eliminar */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-letter-content button:hover {
+    background-color: #d32f2f; /* Cambiar color del botón en hover */
 }
 
 

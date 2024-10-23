@@ -91,7 +91,8 @@ function validateRegisterForm() {
         city,
         country,
         gender: document.getElementById('gender').value,
-        children: []
+        children: [],
+        cartas: []
     };
 
     for (let i = 0; i < children; i++) {
@@ -120,6 +121,7 @@ function validateLoginForm() {
     const password = document.getElementById('login-password').value;
 
     const userData = JSON.parse(localStorage.getItem('userData'));
+    const email = userData.email;
 
     if (userData && userData.username === username && userData.password === password) {
         closeLoginPopup();
@@ -127,8 +129,13 @@ function validateLoginForm() {
         // Cambiar botones de inicio de sesión y registro por el icono de perfil
         document.querySelector('.auth-buttons').style.display = 'none';
         document.querySelector('.profile-icon').style.display = 'block';
-        
-        
+
+        const userLogged = {
+            username,
+            email
+        };
+        // Guardar el objeto userLogged en el local storage
+        localStorage.setItem('userLogged', JSON.stringify(userLogged));
 
     } else {
         alert('Nombre de usuario o contraseña incorrectos.');
@@ -161,7 +168,7 @@ document.getElementById('children').addEventListener('input', function() {
 function logout() {
     if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
         // Eliminar datos de sesión
-        localStorage.removeItem('userData');
+        localStorage.removeItem('userLogged');
         // Cambiar icono de perfil por botones de inicio de sesión y registro
         document.querySelector('.auth-buttons').style.display = 'flex';
         document.querySelector('.profile-icon').style.display = 'none';
