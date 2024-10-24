@@ -114,7 +114,13 @@ function saveProfile() {
 
 
 function openLettersPopup() {
-    const profile_letters = JSON.parse(localStorage.getItem('cartas')) || [];
+    const userLogged = JSON.parse(localStorage.getItem('userLogged')); // Obtener el usuario logueado
+    const users = JSON.parse(localStorage.getItem('userData')) || {}; // Obtener todos los usuarios
+    const currentUser = users[userLogged.username]; // Obtener los datos del usuario actual
+
+    // Verificar si el usuario actual tiene cartas
+    const profile_letters = currentUser ? currentUser.cartas : [];
+
     const lettersContent = document.getElementById('profile-letters-content');
     const noLettersMessage = document.getElementById('no-letters-message');
     const popupLetters = document.getElementById('popup-letters');
@@ -126,7 +132,7 @@ function openLettersPopup() {
     }
 
     // Limpiar contenido existente
-    lettersContent.innerHTML = ''; 
+    lettersContent.innerHTML = '';
 
     if (profile_letters.length > 0) {
         // Si hay cartas, ocultar el mensaje de "No tienes cartas"
@@ -135,12 +141,19 @@ function openLettersPopup() {
         profile_letters.forEach((profile_letter, index) => {
             const letterDiv = document.createElement('div');
             letterDiv.classList.add('profile_letter');
+            letterDiv.setAttribute('draggable', 'true');
+            letterDiv.setAttribute('data-index', index); // Agregar atributo con el índice para identificarla
+
+            // Agregar los eventos de drag and drop
+            letterDiv.addEventListener('dragstart', handleDragStart);
+            letterDiv.addEventListener('dragover', handleDragOver);
+            letterDiv.addEventListener('drop', handleDrop);
 
             letterDiv.innerHTML = `
                 <div class="profile-letter-content">
                     <div>
-                        <p><strong>${profile_letter.formnombre}, ${profile_letter.formciudad}, ${profile_letter.formpais}</strong></p>
-                        <p>${profile_letter.formcarta}</p>
+                        <p><strong>${profile_letter.nombre}, ${profile_letter.ciudad}, ${profile_letter.pais}</strong></p>
+                        <p>${profile_letter.carta}</p>
                     </div>
                     <button onclick="deleteLetter(${index})">Eliminar</button>
                 </div>`;
@@ -155,16 +168,66 @@ function openLettersPopup() {
     popupLetters.style.display = 'block';
 }
 
+// Variables para mantener el estado del drag and drop
+let draggedElementIndex = null;
+
+function handleDragStart(event) {
+    draggedElementIndex = event.target.getAttribute('data-index'); // Guardar el índice del elemento arrastrado
+    event.dataTransfer.effectAllowed = 'move'; // Efecto de mover
+}
+
+function handleDragOver(event) {
+    event.preventDefault(); // Necesario para permitir el drop
+    event.dataTransfer.dropEffect = 'move'; // Mostrar efecto de mover
+}
+
+function handleDrop(event) {
+    event.preventDefault();
+    const targetIndex = event.target.closest('.profile_letter').getAttribute('data-index'); // Obtener el índice del elemento donde se suelta
+
+    if (draggedElementIndex !== null && targetIndex !== null) {
+        // Intercambiar las posiciones de las cartas en el array
+        const userLogged = JSON.parse(localStorage.getItem('userLogged')); // Obtener el usuario logueado
+        const users = JSON.parse(localStorage.getItem('userData')) || {}; // Obtener todos los usuarios
+        const currentUser = users[userLogged.username]; // Obtener los datos del usuario actual
+
+        const cartas = currentUser.cartas;
+        const draggedLetter = cartas[draggedElementIndex];
+
+        // Intercambiar las posiciones de las cartas
+        cartas.splice(draggedElementIndex, 1); // Eliminar la carta arrastrada
+        cartas.splice(targetIndex, 0, draggedLetter); // Insertar en la nueva posición
+
+        // Actualizar los datos del usuario en localStorage
+        users[userLogged.username] = currentUser;
+        localStorage.setItem('userData', JSON.stringify(users));
+
+        // Volver a cargar las cartas con el nuevo orden
+        openLettersPopup();
+    }
+}
+
+
 
 function deleteLetter(index) {
     const confirmation = confirm('¿Estás seguro de que deseas eliminar esta carta?');
     if (confirmation) {
-        let letters = JSON.parse(localStorage.getItem('cartas')) || [];
-        letters.splice(index, 1);  // Eliminar carta del array
-        localStorage.setItem('cartas', JSON.stringify(letters));  // Actualizar en localStorage
-        openLettersPopup();  // Recargar el contenido de las cartas
+        const userLogged = JSON.parse(localStorage.getItem('userLogged')); // Obtener el usuario logueado
+        const users = JSON.parse(localStorage.getItem('userData')) || {}; // Obtener todos los usuarios
+        const currentUser = users[userLogged.username]; // Obtener los datos del usuario actual
+
+        if (currentUser && currentUser.cartas) {
+            // Eliminar la carta del array
+            currentUser.cartas.splice(index, 1);
+            // Actualizar los datos del usuario en localStorage
+            users[userLogged.username] = currentUser;
+            localStorage.setItem('userData', JSON.stringify(users));
+            // Recargar el contenido de las cartas
+            openLettersPopup();
+        }
     }
 }
+
 
 
 

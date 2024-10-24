@@ -263,7 +263,7 @@
             <!-- seccion para enviar cartas -->
             <h2>Envía tu carta</h2>
             <div class="form-container">
-                <form class="grid-form">
+                <form class="grid-form" id="letter-form" onsubmit="sendLetter(event)">
                     <!-- clase para agrupar los elementos de la sección envia-carta -->
                     <div id="form-group" class="form-group">
                         <!-- clase para definir cada elemento del formulario, excepto las dos ultimas -->
@@ -288,7 +288,7 @@
                         <textarea id="form-carta" name="carta"></textarea>
                     </div>
                     <div class="form-full-width">
-                        <button type="submit" onclick="sendLetter()"><strong>Envía</strong></button>
+                        <button type="submit"><strong>Envía</strong></button>
                     </div>
                 </form>
             </div>

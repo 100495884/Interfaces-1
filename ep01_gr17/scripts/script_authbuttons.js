@@ -92,7 +92,6 @@ function validateRegisterForm() {
         country,
         gender: document.getElementById('gender').value,
         children: [],
-        cartas: []
     };
 
     for (let i = 0; i < children; i++) {
