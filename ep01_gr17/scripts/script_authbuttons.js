@@ -25,6 +25,36 @@ function toggleProfileMenu() {
     profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
 }
 
+// Añadir campos para hijos
+document.getElementById('children').addEventListener('input', function() {
+    const childrenCount = parseInt(this.value) || 0;  // Asegura que sea un número
+    const childrenDetails = document.getElementById('children-details');
+    childrenDetails.innerHTML = ''; // Limpia el contenido previo
+
+    let childrenHTML = ''; // Acumula el HTML de todos los hijos
+
+    for (let i = 0; i < childrenCount; i++) {
+        console.log(`Generando campos para hijo ${i + 1}`);
+        
+        childrenHTML += `
+            <div>
+                <label for="child-name-${i}">Nombre del hijo/hija ${i + 1}*</label>
+                <input type="text" id="child-name-${i}" name="child-name-${i}" required minlength="3">
+                
+                <label for="child-age-${i}">Edad del hijo/hija ${i + 1}*</label>
+                <input type="number" id="child-age-${i}" name="child-age-${i}" required min="0">
+                
+                <label for="child-toys-${i}">Juguetes favoritos del hijo/hija ${i + 1}</label>
+                <input type="text" id="child-toys-${i}" name="child-toys-${i}">
+            </div>
+        `
+    }
+
+    // Añade el HTML acumulado al div una vez
+    childrenDetails.innerHTML = childrenHTML;
+});
+
+
 // Validación del formulario de registro
 function validateRegisterForm() {
     const username = document.getElementById('username').value;
@@ -107,6 +137,8 @@ function validateRegisterForm() {
     closeRegisterPopup();
 }
 
+
+
 // Limpiar formulario de registro
 function clearRegisterForm() {
     if (confirm('¿Estás seguro de que deseas limpiar todos los campos?')) {
@@ -141,34 +173,14 @@ function validateLoginForm() {
     }
 }
 
-// Añadir campos para hijos
-document.getElementById('children').addEventListener('input', function() {
-    const childrenCount = this.value;
-    const childrenDetails = document.getElementById('children-details');
-    childrenDetails.innerHTML = '';
-
-    for (let i = 0; i < childrenCount; i++) {
-        childrenDetails.innerHTML += `
-            <div>
-                <label for="child-name-${i}">Nombre del hijo/hija ${i + 1}*</label>
-                <input type="text" id="child-name-${i}" name="child-name-${i}" required minlength="3">
-                
-                <label for="child-age-${i}">Edad del hijo/hija ${i + 1}*</label>
-                <input type="number" id="child-age-${i}" name="child-age-${i}" required min="0">
-                
-                <label for="child-toys-${i}">Juguetes favoritos del hijo/hija ${i + 1}</label>
-                <input type="text" id="child-toys-${i}" name="child-toys-${i}">
-            </div>
-        `;
-    }
-});
 
 // Función para cerrar sesión
 function logout() {
     if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-        // Eliminar datos de sesión
+        // Eliminar el objeto userLogged del local storage
         localStorage.removeItem('userLogged');
-        // Cambiar icono de perfil por botones de inicio de sesión y registro
+
+        // Actualizar iconos y notificar al usuario
         document.querySelector('.auth-buttons').style.display = 'flex';
         document.querySelector('.profile-icon').style.display = 'none';
         alert('Sesión cerrada.');

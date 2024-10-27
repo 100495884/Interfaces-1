@@ -137,7 +137,7 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
     padding: 10px;
     right: 0;
     top: 50px;
-    overflow-y: auto;   /* Habilita el scroll vertical si hay demasiadas cartas */
+    overflow: auto;   /* Habilita el scroll vertical si hay demasiadas cartas */
 }
 
 .profile_letter {
@@ -236,29 +236,7 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
     color: white;
 }
 
-/* Estilos para las ventanas emergentes */
-.popup {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
-}
 
-.popup-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
 
 .close {
     color: #aaa;
@@ -607,30 +585,37 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     display: block; /* muestra la imagen seleccionada */
 }
 
-/* Estilos para la ventana emergente de perfil */
-.profile-popup {
-    display: none; /* Oculta la ventana emergente por defecto */
-    position: fixed; /* Posiciona la ventana emergente de manera fija */
-    z-index: 1000; /* Asegura que la ventana emergente esté por encima de otros elementos */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Centra la ventana emergente */
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%; /* Ajusta el ancho de la ventana emergente */
-    max-width: 500px; /* Ancho máximo de la ventana emergente */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+
+
+
+
+
+/* Estilos para las ventanas emergentes */
+.popup {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
 }
 
-/* Estilos para el contenido de la ventana emergente */
-.popup-profile-content {
-    display: grid;
-    grid-template-columns: 1fr; /* Una columna para dispositivos móviles */
-    gap: 10px; /* Espacio entre los elementos */
+.popup-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
+
+
+
 
 /* Estilos para el formulario de perfil */
 #profile-form {
@@ -653,14 +638,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
 }
 
-/* Estilos para el botón de cerrar */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-}
+
 
 /* Estilos para la ventana emergente de inicio de sesión */
 .popup-login {
@@ -756,6 +734,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     border-radius: 5px;
     box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
 }
+
 
 
 

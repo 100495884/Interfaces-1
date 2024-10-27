@@ -39,8 +39,8 @@
                     </div>
                 
                     <!-- Ventana emergente de perfil -->
-                    <div id="profile-popup" class="profile-popup">
-                        <div class="popup-profile-content">
+                    <div id="profile-popup" class="popup">
+                        <div class="popup-content">
                             <span class="close" onclick="closeProfilePopup()">&times;</span>
                             <h2>Mi perfil</h2>
                             <form id="profile-form">
@@ -65,7 +65,7 @@
                                 </select>
                     
                                 <!-- Aquí se agregarán los hijos dinámicamente -->
-                                <div id="children-details"></div>
+                                <div id="children-details-profile"></div>
                     
                                 <button type="button" onclick="saveProfile()">Guardar</button>
                                 <button type="button" onclick="closeProfilePopup()">Cerrar</button>
@@ -75,22 +75,12 @@
                     
                 
                     <!-- Ventana emergente de cartas -->
-                    <!-- Ventana emergente de cartas -->
-                    <div id="popup-letters" class="popup-letters">
-                        <div class="letters-popup-content">
+                    <div id="popup-letters" class="popup">
+                        <div class="popup-content">
                             <span class="close" onclick="closeLettersPopup()">&times;</span>
                             <h2>Mis cartas</h2>
                             <div id="profile-letters-content"></div>
                             <div id="no-letters-message" style="display: none;">No tienes cartas.</div>
-                        </div>
-                    </div>
-                
-                    <!-- Confirmación de cierre de sesión -->
-                    <div id="logout-confirmation" class="popup">
-                        <div class="popup-content">
-                            <h2>¿Estás seguro de que deseas cerrar sesión?</h2>
-                            <button onclick="confirmLogout()">Sí</button>
-                            <button onclick="closeLogoutConfirmation()">No</button>
                         </div>
                     </div>
                 </div>
@@ -133,9 +123,8 @@
                                 
                                 <label for="children">¿Cuántos hijos / hijas tienes?</label>
                                 <input type="number" id="children" name="children" min="0">
-                                
                                 <div id="children-details"></div>
-                                
+                 
                                 <button type="button" onclick="validateRegisterForm()">Aceptar</button>
                                 <button type="button" onclick="clearRegisterForm()">Limpiar campos</button>
                                 <button type="button" onclick="closeRegisterPopup()">Cancelar</button>

@@ -18,8 +18,8 @@ function openProfilePopup() {
         document.getElementById('pais').value = userData.country || '';
         document.getElementById('genero').value = userData.gender || '';
         
-        // Mostrar los detalles de los hijos
-        const childrenDetailsDiv = document.getElementById('children-details');
+        // Mostrar los detalles de los hijos en el popup del perfil
+        const childrenDetailsDiv = document.getElementById('children-details-profile'); // Corregido para usar el ID correcto
         childrenDetailsDiv.innerHTML = '';  // Limpiar contenido previo
 
         userData.children.forEach((child, index) => {
@@ -42,6 +42,7 @@ function openProfilePopup() {
     document.getElementById('profile-popup').style.display = 'block';
 }
 
+
 function saveProfile() {
     // Obtener los valores del formulario
     const username = document.getElementById('name').value;
@@ -50,7 +51,7 @@ function saveProfile() {
     const country = document.getElementById('pais').value;
     const gender = document.getElementById('genero').value;
 
-    // Validar los datos
+    // Validar los datos del perfil
     if (username.length < 3) {
         alert('El nombre de usuario debe tener al menos 3 caracteres.');
         return;
@@ -67,15 +68,27 @@ function saveProfile() {
         return;
     }
 
-    // Obtener los detalles de los hijos
+    // Obtener los detalles de los hijos desde el perfil
     const children = [];
-    const childrenDetailsDiv = document.getElementById('children-details');
+    const childrenDetailsDiv = document.getElementById('children-details-profile'); // Asegúrate de que sea el ID correcto
     const childInfoDivs = childrenDetailsDiv.getElementsByClassName('child-info');
 
     for (let i = 0; i < childInfoDivs.length; i++) {
         const name = document.getElementById(`child-name-${i}`).value;
         const age = document.getElementById(`child-age-${i}`).value;
         const toys = document.getElementById(`child-toys-${i}`).value;
+
+        // Validación de cada hijo
+        if (name.length < 3) {
+            alert(`El nombre del hijo/hija ${i + 1} debe tener al menos 3 caracteres.`);
+            return;
+        }
+        if (age <= 0) {
+            alert(`La edad del hijo/hija ${i + 1} debe ser un número positivo.`);
+            return;
+        }
+
+        // Añadir al array de hijos
         children.push({ name, age, toys });
     }
 
@@ -94,22 +107,23 @@ function saveProfile() {
         city,
         country,
         gender,
-        children
+        children  // Añadir el array de hijos actualizado
     };
 
-    const updateduserLogged = {
+    // Crear objeto actualizado para mostrar usuario logueado
+    const updatedUserLogged = {
         username,
         email
     };
 
     // Guardar los datos actualizados en localStorage
     localStorage.setItem('userData', JSON.stringify(updatedUserData));
-
-    localStorage.setItem('userLogged', JSON.stringify(updateduserLogged));
+    localStorage.setItem('userLogged', JSON.stringify(updatedUserLogged));
 
     alert('Perfil actualizado con éxito');
     closeProfilePopup();  // Cerrar el popup después de guardar
 }
+
 
 
 
@@ -234,42 +248,4 @@ function deleteLetter(index) {
 function closeLettersPopup() {
     // Ocultar el popup
     document.getElementById('popup-letters').style.display = 'none';
-}
-
-
-
-
-
-
-// Añadir campos para hijos
-document.getElementById('children').addEventListener('input', function() {
-    const childrenCount = this.value;
-    const childrenDetails = document.getElementById('children-details');
-    childrenDetails.innerHTML = '';
-
-    for (let i = 0; i < childrenCount; i++) {
-        childrenDetails.innerHTML += `
-            <div>
-                <label for="child-name-${i}">Nombre del hijo/hija ${i + 1}*</label>
-                <input type="text" id="child-name-${i}" name="child-name-${i}" required minlength="3">
-                
-                <label for="child-age-${i}">Edad del hijo/hija ${i + 1}*</label>
-                <input type="number" id="child-age-${i}" name="child-age-${i}" required min="0">
-                
-                <label for="child-toys-${i}">Juguetes favoritos del hijo/hija ${i + 1}</label>
-                <input type="text" id="child-toys-${i}" name="child-toys-${i}">
-            </div>
-        `;
-    }
-});
-
-// Función para cerrar sesión
-function logout() {
-    if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-        // Eliminar datos de sesión
-        // Cambiar icono de perfil por botones de inicio de sesión y registro
-        document.querySelector('.auth-buttons').style.display = 'flex';
-        document.querySelector('.profile-icon').style.display = 'none';
-        alert('Sesión cerrada.');
-    }
 }
