@@ -11,6 +11,10 @@
     <script src="scripts/script_authbuttons.js" async></script>
     <script src="scripts/script-profile.js" async></script>
     <script src="scripts/script_sendletter.js" async></script>
+    <script src="scripts/script_game1.js" async></script>
+    <script src="scripts/script_game2.js" async></script>
+    <script src="scripts/script_game3.js" async></script>
+
 </head>
 <body>
     <header> 
@@ -25,7 +29,7 @@
                     <div><a href="#papa-noel">Papá Noel</a></div>
                     <div><a href="#cartas">Las cartas</a></div>
                     <div><a href="#envia-carta">Envía tu carta</a></div>
-                    <div><a href="#game1">¡Juega!</a></a></div>
+                    <div><a href="#juega">¡Juega!</a></a></div>
                 </nav>
 
                 <div class="profile-icon">
@@ -79,10 +83,11 @@
                         <div class="popup-content">
                             <span class="close" onclick="closeLettersPopup()">&times;</span>
                             <h2>Mis cartas</h2>
-                            <div id="profile-letters-content"></div>
                             <div id="no-letters-message" style="display: none;">No tienes cartas.</div>
+                            <div class="profile-letters" id="profile-letters-content"></div>
                         </div>
                     </div>
+                    
                 </div>
                 
                 <!-- botones de registro e inicio de sesión -->
@@ -285,32 +290,41 @@
         
 
         <section id="juega">
-            <!-- seccion de juegos -->
             <h2>¡Juega!</h2>
             <div class="juegos">
                 <div class="game-selection">
-                    <!-- clase para definir los tres botones -->
-                    <a href="#game1" class="game-button">Juego 1</a>
-                    <a href="#game2" class="game-button">Juego 2</a>
-                    <a href="#game3" class="game-button">Juego 3</a>
+                    <button class="game-button" onclick="showGame(1)">Juego 1: Click The Circle</button>
+                    <button class="game-button" onclick="showGame(2)">Juego 2: Find The Pairs</button>
+                    <button class="game-button" onclick="showGame(3)">Juego 3: Santa's Sleigh</button>
                 </div>
-                <div class="bloque-juegos">
-                    <!-- clase para las imagenes de los juegos -->
-                    <div class="game-image" id="game1">
-                        <img src="images/juego1.jpg" alt="Juego 1">
+                <div class="game-container">
+                    <div id="game1" class="game" style="display: none;">
+                        <div class="scoreboard">
+                            <p>Puntos: <span id="score">0</span></p>
+                            <p>Tiempo restante: <span id="time">90</span> segundos</p>
+                        </div>
+                        <div id="circle"></div>
                     </div>
-                    <div class="game-image" id="game2">
-                        <img src="images/juego2.jpg" alt="Juego 2">
+                    <div id="game2" class="game" style="display: none;">
+                        <div class="scoreboard">
+                            <p>Pares encontrados: <span id="pairsFound">0</span></p>
+                            <p>Tiempo restante: <span id="timePairs">60</span> segundos</p>
+                        </div>
+                        <div class="memory-game">
+                            <!-- Aquí se colocarán las cartas del juego de parejas -->
+                        </div>
                     </div>
-                    <div class="game-image" id="game3">
-                        <img src="images/juego3.jpg" alt="Juego 3">
+                    <div id="game3" class="game" style="display: none;">
+                        <div class="scoreboard">
+                            <p>Puntaje: <span id="scoreSnake">0</span></p>
+                        </div>
+                        <canvas id="snakeCanvas" width="400" height="400"></canvas>
                     </div>
+                                                                                
                 </div>
             </div>
-        </section>
-        
-        
-        
+        </section>    
+
     </main>
 
     <footer>

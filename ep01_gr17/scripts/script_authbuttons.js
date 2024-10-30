@@ -1,5 +1,3 @@
-// script.js
-
 // Funciones para abrir y cerrar las ventanas emergentes
 function openRegisterPopup() {
     document.getElementById('register-popup').style.display = 'block';
@@ -17,8 +15,6 @@ function closeLoginPopup() {
     document.getElementById('login-popup').style.display = 'none';
 }
 
-
-
 // Función para alternar el menú de perfil
 function toggleProfileMenu() {
     const profileMenu = document.querySelector('.profile-menu');
@@ -27,15 +23,13 @@ function toggleProfileMenu() {
 
 // Añadir campos para hijos
 document.getElementById('children').addEventListener('input', function() {
-    const childrenCount = parseInt(this.value) || 0;  // Asegura que sea un número
+    const childrenCount = parseInt(this.value) || 0;
     const childrenDetails = document.getElementById('children-details');
     childrenDetails.innerHTML = ''; // Limpia el contenido previo
 
     let childrenHTML = ''; // Acumula el HTML de todos los hijos
 
     for (let i = 0; i < childrenCount; i++) {
-        console.log(`Generando campos para hijo ${i + 1}`);
-        
         childrenHTML += `
             <div>
                 <label for="child-name-${i}">Nombre del hijo/hija ${i + 1}*</label>
@@ -47,13 +41,12 @@ document.getElementById('children').addEventListener('input', function() {
                 <label for="child-toys-${i}">Juguetes favoritos del hijo/hija ${i + 1}</label>
                 <input type="text" id="child-toys-${i}" name="child-toys-${i}">
             </div>
-        `
+        `;
     }
 
     // Añade el HTML acumulado al div una vez
     childrenDetails.innerHTML = childrenHTML;
 });
-
 
 // Validación del formulario de registro
 function validateRegisterForm() {
@@ -63,7 +56,7 @@ function validateRegisterForm() {
     const email = document.getElementById('email').value;
     const city = document.getElementById('city').value;
     const country = document.getElementById('country').value;
-    const children = document.getElementById('children').value;
+    const children = parseInt(document.getElementById('children').value) || 0;
 
     // Validar nombre de usuario
     if (username.length < 3) {
@@ -98,10 +91,13 @@ function validateRegisterForm() {
     }
 
     // Validar hijos
+    const childrenData = [];
     if (children > 0) {
         for (let i = 0; i < children; i++) {
             const childName = document.getElementById(`child-name-${i}`).value;
-            const childAge = document.getElementById(`child-age-${i}`).value;
+            const childAge = parseInt(document.getElementById(`child-age-${i}`).value);
+            const childToys = document.getElementById(`child-toys-${i}`).value;
+
             if (childName.length < 3) {
                 alert(`El nombre del hijo/hija ${i + 1} debe tener al menos 3 caracteres.`);
                 return;
@@ -110,10 +106,12 @@ function validateRegisterForm() {
                 alert(`La edad del hijo/hija ${i + 1} debe ser un número positivo.`);
                 return;
             }
+
+            childrenData.push({ name: childName, age: childAge, toys: childToys });
         }
     }
 
-    // Guardar datos en local storage
+    // Crear el objeto del usuario actual
     const userData = {
         username,
         password,
@@ -121,23 +119,23 @@ function validateRegisterForm() {
         city,
         country,
         gender: document.getElementById('gender').value,
-        children: [],
+        children: childrenData,
     };
 
-    for (let i = 0; i < children; i++) {
-        userData.children.push({
-            name: document.getElementById(`child-name-${i}`).value,
-            age: document.getElementById(`child-age-${i}`).value,
-            toys: document.getElementById(`child-toys-${i}`).value
-        });
-    }
+    // Obtener usuarios existentes en localStorage o inicializar un array vacío si no existen
+    let users = JSON.parse(localStorage.getItem('userData')) || [];
+    console.log("Usuarios antes de añadir:", users); // Comprobación en consola
 
-    localStorage.setItem('userData', JSON.stringify(userData));
+    // Añadir el nuevo usuario al array
+    users.push(userData);
+
+    // Guardar el array actualizado en localStorage
+    localStorage.setItem('userData', JSON.stringify(users));
+    console.log("Usuarios después de añadir:", users); // Comprobación en consola
+
     alert('Registro exitoso.');
     closeRegisterPopup();
 }
-
-
 
 // Limpiar formulario de registro
 function clearRegisterForm() {
@@ -151,21 +149,22 @@ function validateLoginForm() {
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
 
-    const userData = JSON.parse(localStorage.getItem('userData'));
-    const email = userData.email;
+    const usersData = JSON.parse(localStorage.getItem('userData')) || [];
 
-    if (userData && userData.username === username && userData.password === password) {
+    const user = usersData.find(user => user.username === username && user.password === password);
+
+    if (user) {
         closeLoginPopup();
         alert('Inicio de sesión exitoso.');
-        // Cambiar botones de inicio de sesión y registro por el icono de perfil
+        
         document.querySelector('.auth-buttons').style.display = 'none';
         document.querySelector('.profile-icon').style.display = 'block';
 
         const userLogged = {
-            username,
-            email
+            username: user.username,
+            email: user.email
         };
-        // Guardar el objeto userLogged en el local storage
+        
         localStorage.setItem('userLogged', JSON.stringify(userLogged));
 
     } else {
@@ -173,14 +172,11 @@ function validateLoginForm() {
     }
 }
 
-
 // Función para cerrar sesión
 function logout() {
     if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-        // Eliminar el objeto userLogged del local storage
         localStorage.removeItem('userLogged');
 
-        // Actualizar iconos y notificar al usuario
         document.querySelector('.auth-buttons').style.display = 'flex';
         document.querySelector('.profile-icon').style.display = 'none';
         alert('Sesión cerrada.');

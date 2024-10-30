@@ -79,8 +79,8 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
 }
 
 .profile-icon img {
-    width: 40px;
-    height: 40px;
+    width: 5vw;
+    height: 3vw;
     cursor: pointer;
 }
 
@@ -128,63 +128,91 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
     text-align: center;
 }
 
-.popup-letters {
-    display: none;
-    position: fixed;
-    background-color: white;
+
+
+
+/* Contenedor de la cuadrícula de cartas */
+.profile-letters {
+    width: 100%;
+    display: grid; /* organiza las cartas en columnas */
+    grid-template-columns: repeat(1, 1fr); /* 3 columnas */
+    grid-template-rows: auto auto; /* 2 filas automáticas */
+    gap: 3vw;
+    justify-items: center; /* centra las cartas dentro del grid */
+}
+
+/* Carta individual */
+.profile_letter {
+    background-image: url('../images/carta.jpg');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; /* evita que la imagen se repita */
     border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    right: 0;
-    top: 50px;
-    overflow: auto;   /* Habilita el scroll vertical si hay demasiadas cartas */
-}
-
-.profile_letter {
-    border: 1px solid #ccc;  /* Añadir borde alrededor de cada carta */
-    padding: 10px;           /* Espacio interno en cada carta */
-    margin-bottom: 10px;     /* Espacio entre cada carta */
-    background-color: #f9f9f9;  /* Color de fondo */
-}
-
-.profile_letter {
-    border: 1px solid #ddd;    /* Borde sutil */
-    background-color: #ffffff; /* Fondo blanco */
-    padding: 15px;             /* Espacio interno */
-    margin-bottom: 10px;       /* Espacio entre cartas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra para darle efecto de elevación */
-    border-radius: 8px;        /* Esquinas redondeadas */
-    transition: box-shadow 0.3s ease;  /* Transición suave en hover */
+    cursor: pointer;
+    width: 100%;
+    height: 0;
+    padding-top: 56.03%; /* mantiene la relación de aspecto de la imagen (343/612) */
+    position: relative;
+    box-sizing: border-box; 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .profile_letter:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);  /* Aumentar sombra al hacer hover */
+    box-shadow: 0 0 20px rgba(5, 141, 0, 0.698);
+    transform: scale(1.05);
 }
 
-.profile-letter-content {
+.profile_letter-content {
+    position: absolute;
+    top: 0; /* alinea el contenido en la parte superior */
+    bottom: 0; /* alinea el contenido en la parte inferior */
+    left: 0; /* alinea el contenido al borde izquierdo */
+    right: 0; /* alinea el contenido al borde derecho */
+    padding: 5%; 
+    padding-right: 8%;
     display: flex;
+    flex-direction: column;  /* organiza los contenidos dentro de cada carta en filas  */
     align-items: center;
-    justify-content: space-between;
+    gap: 7%; 
+    box-sizing: border-box;
+    color: black; 
+    font-size: 1.5vw;
+    justify-content: center;
+}
+/* Contenido de cada carta */
+.profile_letter-content p {
+    margin: 5px 0;
 }
 
-.profile-letter-content p {
-    margin: 0;
-    padding: 5px 0;
+.expanded .profile_letter-content p:last-child {
+    display: block; /* Muestra el texto completo al hacer clic */
 }
 
-.profile-letter-content button {
-    background-color: #f44336; /* Color de fondo del botón eliminar */
+/* Botón de eliminar en la esquina superior derecha, dentro de la carta */
+.delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #ff4c4c;
     color: white;
     border: none;
-    padding: 8px 12px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    z-index: 10;
+
 }
 
-.profile-letter-content button:hover {
-    background-color: #d32f2f; /* Cambiar color del botón en hover */
-}
+
+
+
+
+
+
 
 
 
@@ -532,15 +560,12 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     align-items: center; 
 }
 
-.bloque-juegos { /* ajusta el ancho de las imagenes */
-    width: 100%;
-}
-
 .game-selection { /* define las caracteristicas del espacio para los botones de selccion de juegos */
     display: flex;
     justify-content: center;
     flex-direction: column; 
     gap: 2vw; 
+    margin-right: 3vw;
 }
 
 .game-button { /* define las caracteristicas de los botones de juegos */
@@ -563,27 +588,123 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     background-color: darkred;
 }
 
-.bloque-juegos { /* define las caracteristicas del espacio para las imagenes de los juegos */
-    display: flex; 
-    justify-content: center; 
+.game-container {
+    position: relative;
+    width: 80%;
+    height: 70vh;
+    border: 2px solid #333;
+    background-image: url('../images/fondo_bola_navidad.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+#circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/bola_navidad.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1; /* Mantiene el círculo debajo del marcador */
+}
+
+#circle:hover {
+    cursor: pointer;
+}
+    
+
+
+.scoreboard {
+    display: flex; /* Flexbox para organizar los elementos en fila */
+    justify-content: space-between; /* Alinea los elementos con espacio entre ellos */
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    align-items: center; /* Centra los elementos verticalmente */
+    z-index: 10; /* Asegura que esté encima de otros elementos */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+
+.scoreboard p {
+    font-size: 1em;
+    margin: 1vw;
+}
+
+
+/* Contenedor del juego de memoria */
+.memory-game {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3%;
+    row-gap: 10%; /* Espacio entre las columnas */
+}
+
+/* Estilos de las cartas */
+.card {
+    justify-self: center;
+    width: 7vw;
+    height: 12vw;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+    transform: rotateY(0deg); /* Valor inicial */
+    border: 2px solid darkred; /* Añade un reborde rojo oscuro de 2 px */
+    border-radius: 12px;
+}
+
+.card.flipped {
+    transform: rotateY(180deg); /* Rotación para mostrar el lado frontal */
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.game-image { /* oculta las imagenes por defecto */
-    display: none;
+/* Lado frontal (cara de la imagen) */
+.card-front {
+    transform: rotateY(180deg); /* Oculta la imagen inicialmente */
 }
 
-.game-image img { /* ajusta las dimensiones de la imagen */
-    width: 50vw; 
-    height: auto; 
+/* Lado trasero (inicialmente visible) */
+.card-back {
+    background-color: #ff6347;
+    font-size: 2em;
+    transform: rotateY(0deg); /* Inicialmente visible */
 }
 
-/* muestra solo la imagen activa */
-#game1:target,
-#game2:target,
-#game3:target {
-    display: block; /* muestra la imagen seleccionada */
+/* Imagen dentro de la carta */
+.card-image {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
 }
+
+/* Juego 3 */
+/* Personalización de las imágenes antes de ser cargadas en el canvas */
+/* Personalización de las imágenes antes de ser cargadas en el canvas */
+#snakeCanvas {
+    border: 4px solid #333;
+    background-color: #f5f5f575;
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+}
+
 
 
 
@@ -606,12 +727,12 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 .popup-content {
     background-color: white;
     margin: 15% auto;
-    padding: 20px;
+    padding: 2% 5%;
+    padding-bottom: 5%;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+    width: 60%;
 }
 
 
@@ -688,10 +809,10 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 /* Estilos para el botón de cerrar */
 .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
     font-size: 24px;
     cursor: pointer;
+    right: 16%;
+    top: 15vw;
 }
 
 .popup-register {

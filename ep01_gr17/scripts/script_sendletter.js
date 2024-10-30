@@ -16,22 +16,30 @@ function sendLetter(event) {
         return;
     }
 
-    // Obtener los datos del usuario desde localStorage
-    const users = JSON.parse(localStorage.getItem('userData')) || {};
+    // Obtener los datos de todos los usuarios desde localStorage
+    const users = JSON.parse(localStorage.getItem('userData')) || [];
 
-    // Verificar si el usuario actual existe en los datos guardados
-    const currentUser = users[userLogged.username] || { cartas: [] };
+    // Encontrar el índice del usuario logueado
+    const currentUserIndex = users.findIndex(user => user.username === userLogged.username);
 
-    // Agregar la nueva carta a la lista de cartas del usuario
-    currentUser.cartas.push({
+    // Si no se encuentra el usuario, no se puede enviar la carta
+    if (currentUserIndex === -1) {
+        alert('El usuario actual no se encuentra registrado.');
+        return;
+    }
+
+    // Agregar la nueva carta a la lista de cartas del usuario actual
+    if (!users[currentUserIndex].cartas) {
+        users[currentUserIndex].cartas = [];
+    }
+    users[currentUserIndex].cartas.push({
         nombre: formnombre,
         ciudad: formciudad,
         pais: formpais,
         carta: formcarta
     });
 
-    // Actualizar los datos del usuario en localStorage
-    users[userLogged.username] = currentUser;
+    // Actualizar los datos en localStorage
     localStorage.setItem('userData', JSON.stringify(users));
 
     // Vaciar los campos del formulario
