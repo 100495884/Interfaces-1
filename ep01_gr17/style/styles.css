@@ -135,10 +135,11 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
 .profile-letters {
     width: 100%;
     display: grid; /* organiza las cartas en columnas */
-    grid-template-columns: repeat(1, 1fr); /* 3 columnas */
-    grid-template-rows: auto auto; /* 2 filas automáticas */
-    gap: 3vw;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: auto auto; 
+    gap: 2vw;
     justify-items: center; /* centra las cartas dentro del grid */
+    margin: 0 auto;
 }
 
 /* Carta individual */
@@ -176,7 +177,7 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
     gap: 7%; 
     box-sizing: border-box;
     color: black; 
-    font-size: 1.5vw;
+    font-size: 1vw;
     justify-content: center;
 }
 /* Contenido de cada carta */
@@ -732,7 +733,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     border: 1px solid #888;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 60%;
+    width: 50%;
 }
 
 
@@ -811,7 +812,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     position: absolute;
     font-size: 24px;
     cursor: pointer;
-    right: 16%;
+    right: 21%;
     top: 15vw;
 }
 
@@ -944,19 +945,32 @@ footer { /* define las caracteristicas del pie de pagina */
     }
     
     header img { /* ajustes para la imagen del logo */
-        width: 8vw;
-        height: 8vw;
+        width: 6vw;
+        height: 6vw;
     }
     
     
     .auth-buttons { /* ajustes para el espacio de los botones de inicio de sesion y registro */
         display: flex; 
-        gap: 1vw; 
+        gap: 0.6vw; 
         flex-direction: column; 
     }
     
     .auth-buttons button { /* cambio de tamaño de letra de los botones de inicio de sesion y registro */
-        font-size: 2vw;
+        font-size: 1.3vw;
+    }
+
+    .profile-icon img { /* ajustes para la imagen de perfil */
+        width: 7vw;
+        height: 5vw;
+    }
+
+    .profile-letters { /* ajustes para el contenedor de las cartas */
+        grid-template-columns: repeat(1, 1fr); /* 2 columnas */
+    }
+
+    .profile_letter-content { /* ajustes para las cartas */
+        font-size: 1.6vw;
     }
 
     body { /* ajustes generales para el cuerpo de la página */
@@ -1069,21 +1083,27 @@ footer { /* define las caracteristicas del pie de pagina */
 
     .juegos { /* ajustes para la seccion de juegos */
         margin-bottom: 10vw;
-        gap: 2vw; 
+        gap: 1vw; 
+        flex-direction: column;
     }
 
     
     .game-selection { /* ajustes para el espacio de los botones de juegos */
         gap: 1.5vw; 
+        flex-direction: row;
+        margin-right: 0%;
     }
 
     .game-button {  /* cambio de tamaño la letra de los botones de juegos  */
-        font-size: 2vw;
+        font-size: 1.7vw;
     }
 
-    .game-image img { /* ajusta el tamaño de la imagen de los juegos */
-        width: 70vw; 
+    .memory-game { /* ajustes para el juego de memoria */
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+        gap: 2vw; 
     }
+
+    
 
 
 
@@ -1161,8 +1181,6 @@ footer { /* define las caracteristicas del pie de pagina */
         width: 10vw;
         height: 10vw;
     }
-    .memory-game {
-        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); /* Ajusta el número de columnas automáticamente */
-    }
+
 
 }

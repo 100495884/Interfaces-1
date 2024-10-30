@@ -65,11 +65,32 @@ function validateRegisterForm() {
     }
 
     // Validar contraseña
-    const passwordRegex = /^[A-Za-z]{12,}$/;
-    if (!passwordRegex.test(password)) {
-        alert('La contraseña debe tener al menos 12 caracteres y contener solo letras.');
+    if (password.length < 12) {
+        alert('La contraseña debe tener al menos 12 caracteres.');
         return;
     }
+    
+    if (!/[a-z]/.test(password)) {
+        alert('La contraseña debe tener al menos una letra minúscula.');
+        return;
+    }
+    
+    if (!/[A-Z]/.test(password)) {
+        alert('La contraseña debe tener al menos una letra mayúscula.');
+        return;
+    }
+    
+    if (!/\d.*\d/.test(password)) {
+        alert('La contraseña debe tener al menos dos números.');
+        return;
+    }
+    
+    if (!/[@$!%*?&._,-]/.test(password)) {
+        alert('La contraseña debe tener al menos un carácter especial (@, $, !, %, *, ?, &, ., _, -, ,).');
+        return;
+    }
+
+
 
     // Validar confirmación de contraseña
     if (password !== confirmPassword) {

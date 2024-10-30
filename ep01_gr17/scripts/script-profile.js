@@ -118,10 +118,7 @@ function openLettersPopup() {
     const userLogged = JSON.parse(localStorage.getItem('userLogged'));
     const users = JSON.parse(localStorage.getItem('userData')) || [];
     
-    // Buscar el usuario actual en el array de usuarios
     const currentUser = users.find(user => user.username === userLogged.username);
-
-    // Si el usuario actual existe, obtener sus cartas; si no, definir un array vacío
     const profile_letters = currentUser ? currentUser.cartas || [] : [];
     
     const lettersContent = document.getElementById('profile-letters-content');
@@ -141,6 +138,8 @@ function openLettersPopup() {
         profile_letters.forEach((profile_letter_content, index) => {
             const letterDiv = document.createElement('div');
             letterDiv.classList.add('profile_letter');
+            letterDiv.setAttribute('draggable', true);
+            letterDiv.setAttribute('data-index', index); // Store index for reordering
 
             letterDiv.innerHTML = `
                 <button class="delete-button" onclick="deleteLetter(${index})">&times;</button>
@@ -150,9 +149,11 @@ function openLettersPopup() {
                 </div>
             `;
 
-            letterDiv.addEventListener('click', () => {
-                letterDiv.classList.toggle('expanded');
-            });
+            // Drag events
+            letterDiv.addEventListener('dragstart', handleDragStart);
+            letterDiv.addEventListener('dragover', handleDragOver);
+            letterDiv.addEventListener('drop', handleDrop);
+            letterDiv.addEventListener('dragend', handleDragEnd);
 
             lettersContent.appendChild(letterDiv);
         });
@@ -162,6 +163,7 @@ function openLettersPopup() {
 
     popupLetters.style.display = 'block';
 }
+
 
 
 // Función para eliminar una carta
@@ -183,4 +185,66 @@ function deleteLetter(index) {
 
 function closeLettersPopup() {
     document.getElementById('popup-letters').style.display = 'none';
+}
+
+let draggedElementIndex = null;
+
+function handleDragStart(event) {
+    draggedElementIndex = Array.from(event.target.parentNode.children).indexOf(event.target);
+    event.dataTransfer.effectAllowed = 'move';
+    event.target.classList.add('dragging');
+}
+
+function handleDragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+}
+
+function handleDrop(event) {
+    event.preventDefault();
+    const targetElement = event.target.closest('.profile_letter');
+    if (!targetElement || targetElement.classList.contains('dragging')) return;
+
+    const container = document.getElementById('profile-letters-content');
+    const targetIndex = Array.from(container.children).indexOf(targetElement);
+
+    // Intercambiar las posiciones en el DOM
+    if (draggedElementIndex < targetIndex) {
+        container.insertBefore(container.children[draggedElementIndex], container.children[targetIndex].nextSibling);
+    } else {
+        container.insertBefore(container.children[draggedElementIndex], container.children[targetIndex]);
+    }
+
+    saveNewOrder(); // Guardar el nuevo orden en el localStorage
+}
+
+function handleDragEnd(event) {
+    event.target.classList.remove('dragging');
+    draggedElementIndex = null;
+}
+
+// Reaplica los eventos Drag and Drop a los elementos
+function addDragAndDropEvents(element) {
+    element.addEventListener('dragstart', handleDragStart);
+    element.addEventListener('dragover', handleDragOver);
+    element.addEventListener('drop', handleDrop);
+    element.addEventListener('dragend', handleDragEnd);
+}
+
+// Guardar el nuevo orden en el localStorage
+function saveNewOrder() {
+    const container = document.getElementById('profile-letters-content');
+    const newOrder = Array.from(container.children).map(child => {
+        const index = child.getAttribute('data-index');
+        return JSON.parse(localStorage.getItem('userData'))[index];
+    });
+
+    const userLogged = JSON.parse(localStorage.getItem('userLogged'));
+    const users = JSON.parse(localStorage.getItem('userData')) || [];
+    const currentUser = users.find(user => user.username === userLogged.username);
+
+    if (currentUser) {
+        currentUser.cartas = newOrder;
+        localStorage.setItem('userData', JSON.stringify(users));
+    }
 }
