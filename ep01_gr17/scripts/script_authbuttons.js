@@ -21,13 +21,13 @@ function toggleProfileMenu() {
     profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
 }
 
-// Añadir campos para hijos
+// Añade campos para los hijos
 document.getElementById('children').addEventListener('input', function() {
     const childrenCount = parseInt(this.value) || 0;
     const childrenDetails = document.getElementById('children-details');
-    childrenDetails.innerHTML = ''; // Limpia el contenido previo
+    childrenDetails.innerHTML = ''; 
 
-    let childrenHTML = ''; // Acumula el HTML de todos los hijos
+    let childrenHTML = ''; 
 
     for (let i = 0; i < childrenCount; i++) {
         childrenHTML += `
@@ -58,13 +58,13 @@ function validateRegisterForm() {
     const country = document.getElementById('country').value;
     const children = parseInt(document.getElementById('children').value) || 0;
 
-    // Validar nombre de usuario
+    // Valida el nombre de usuario
     if (username.length < 3) {
         alert('El nombre de usuario debe tener al menos 3 caracteres.');
         return;
     }
 
-    // Validar contraseña
+    // Valida la contraseña
     if (password.length < 12) {
         alert('La contraseña debe tener al menos 12 caracteres.');
         return;
@@ -92,26 +92,26 @@ function validateRegisterForm() {
 
 
 
-    // Validar confirmación de contraseña
+    // Valida la confirmación de contraseña
     if (password !== confirmPassword) {
         alert('Las contraseñas no coinciden.');
         return;
     }
 
-    // Validar correo electrónico
+    // Valida el correo electrónico
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert('El correo electrónico no es válido.');
         return;
     }
 
-    // Validar ciudad y país
+    // Valida la ciudad y el país
     if (city.length < 3 || country.length < 3) {
         alert('La ciudad y el país deben tener al menos 3 caracteres.');
         return;
     }
 
-    // Validar hijos
+    // Valida los hijos
     const childrenData = [];
     if (children > 0) {
         for (let i = 0; i < children; i++) {
@@ -132,7 +132,7 @@ function validateRegisterForm() {
         }
     }
 
-    // Crear el objeto del usuario actual
+    // Crea el objeto del usuario actual
     const userData = {
         username,
         password,
@@ -143,22 +143,22 @@ function validateRegisterForm() {
         children: childrenData,
     };
 
-    // Obtener usuarios existentes en localStorage o inicializar un array vacío si no existen
+    // Obtiene usuarios existentes en localStorage o inicializa un array vacío si no existen
     let users = JSON.parse(localStorage.getItem('userData')) || [];
-    console.log("Usuarios antes de añadir:", users); // Comprobación en consola
+    console.log("Usuarios antes de añadir:", users); 
 
     // Añadir el nuevo usuario al array
     users.push(userData);
 
-    // Guardar el array actualizado en localStorage
+    // Guarda el array actualizado en localStorage
     localStorage.setItem('userData', JSON.stringify(users));
-    console.log("Usuarios después de añadir:", users); // Comprobación en consola
+    console.log("Usuarios después de añadir:", users);
 
     alert('Registro exitoso.');
     closeRegisterPopup();
 }
 
-// Limpiar formulario de registro
+// Limpia el formulario de registro
 function clearRegisterForm() {
     if (confirm('¿Estás seguro de que deseas limpiar todos los campos?')) {
         document.getElementById('register-form').reset();

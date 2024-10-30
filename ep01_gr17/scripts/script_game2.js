@@ -1,17 +1,17 @@
 
 // Función para inicializar el juego de parejas
 function startGame2() {
-    // Limpiar intervalos y contenido previo
+    // Limpia intervalos y contenido previo
     clearInterval(pairsIntervalId);
     document.querySelector('.memory-game').innerHTML = '';
 
-    // Reiniciar variables de estado
+    // Reinicia variables de estado
     pairsFound = 0;
     timeRemainingPairs = 60;
     document.getElementById('pairsFound').innerText = pairsFound;
     document.getElementById('timePairs').innerText = timeRemainingPairs;
 
-    // Generar y barajar cartas
+    // Genera y baraja las cartas
     const memoryGame = document.querySelector('.memory-game');
     const shuffledImages = images.sort(() => 0.5 - Math.random());
 
@@ -28,7 +28,7 @@ function startGame2() {
         card.addEventListener('click', flipCard);
     });
 
-    // Iniciar temporizador
+    // Inicia temporizador
     pairsIntervalId = setInterval(updatePairsTimer, 1000);
 }
 
@@ -36,18 +36,18 @@ function startGame2() {
 // Función para voltear una carta
 function flipCard() {
     if (lockBoard) return; // Evitar interacción mientras se comparan cartas
-    if (this === firstCard) return; // No permitir hacer clic en la misma carta
+    if (this === firstCard) return; // No permite hacer clic en la misma carta
 
     this.classList.add('flipped');
 
     if (!hasFlippedCard) {
-        // Primer clic
+        
         hasFlippedCard = true;
         firstCard = this;
         return;
     }
 
-    // Segundo clic
+    
     secondCard = this;
     lockBoard = true;
     checkForMatch();
@@ -55,7 +55,7 @@ function flipCard() {
 
 // Función para verificar si hay coincidencia
 function checkForMatch() {
-    // Comparar el src de las imágenes en lugar de backgroundImage
+    // Compara el src de las imágenes en lugar de backgroundImage
     const firstImage = firstCard.querySelector('.card-front img').src;
     const secondImage = secondCard.querySelector('.card-front img').src;
 

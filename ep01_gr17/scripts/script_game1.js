@@ -40,7 +40,7 @@ function startGame1() {
     intervalId = setInterval(updateTimer, 1000);
 }
 
-
+    // Mover el circulo en el juego 1
 function moveCircle() {
     const circle = document.getElementById('circle');
     const gameContainer = document.querySelector('.game-container');
@@ -62,7 +62,7 @@ document.getElementById('circle').addEventListener('click', () => {
     document.getElementById('score').innerText = score;
     playClickSound();
 });
-
+    // Actualizar el temporizador del juego 1
 function updateTimer() {
     timeRemaining--;
     document.getElementById('time').innerText = timeRemaining;
@@ -73,9 +73,9 @@ function updateTimer() {
         alert('¡Tiempo terminado! Puntaje final: ' + score);
     }
 }
-
+    // Sonido en el click juego 1
 function playClickSound() {
-    const clickSound = new Audio('sounds/click.mp3'); // Asegúrate de tener un archivo de sonido en la carpeta 'sounds'
+    const clickSound = new Audio('sounds/click.mp3'); 
     clickSound.play();
 }
 
@@ -85,7 +85,7 @@ function playClickSound() {
 
 // Variables para el Juego 2
 let pairsFound = 0;
-let timeRemainingPairs = 60; // 60 segundos para el juego de parejas
+let timeRemainingPairs = 60;
 let pairsIntervalId;
 let hasFlippedCard = false;
 let firstCard, secondCard;

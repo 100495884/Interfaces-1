@@ -7,20 +7,20 @@ function closeLettersPopup() {
 }
 
 function openProfilePopup() {
-    // Obtener el usuario logueado
+    // Obtiene el usuario logueado
     const userLogged = JSON.parse(localStorage.getItem('userLogged'));
     const users = JSON.parse(localStorage.getItem('userData')) || [];
     const currentUser = users.find(user => user.username === userLogged.username);
 
     if (currentUser) {
-        // Rellenar los campos con los datos del usuario logueado
+        // Rellena los campos con los datos del usuario logueado
         document.getElementById('name').value = currentUser.username || 'Usuario';
         document.getElementById('correo').value = currentUser.email || '';
         document.getElementById('ciudad').value = currentUser.city || '';
         document.getElementById('pais').value = currentUser.country || '';
         document.getElementById('genero').value = currentUser.gender || '';
         
-        // Mostrar los detalles de los hijos en el popup del perfil
+        // Muestra los detalles de los hijos en el popup del perfil
         const childrenDetailsDiv = document.getElementById('children-details-profile');
         childrenDetailsDiv.innerHTML = '';
 
@@ -42,7 +42,7 @@ function openProfilePopup() {
 
     document.getElementById('profile-popup').style.display = 'block';
 }
-
+    
 function saveProfile() {
     const username = document.getElementById('name').value;
     const email = document.getElementById('correo').value;
@@ -66,7 +66,7 @@ function saveProfile() {
         return;
     }
 
-    // Obtener los detalles de los hijos
+    // Obtiene los detalles de los hijos
     const children = [];
     const childrenDetailsDiv = document.getElementById('children-details-profile');
     const childInfoDivs = childrenDetailsDiv.getElementsByClassName('child-info');
@@ -98,7 +98,7 @@ function saveProfile() {
         return;
     }
 
-    // Actualizar datos del usuario logueado
+    // Actualiza los datos del usuario logueado
     users[currentUserIndex] = {
         ...users[currentUserIndex],
         username,
@@ -113,7 +113,7 @@ function saveProfile() {
     alert('Perfil actualizado con éxito');
     closeProfilePopup();
 }
-
+    // Obtiene los cartas del usuario logueado
 function openLettersPopup() {
     const userLogged = JSON.parse(localStorage.getItem('userLogged'));
     const users = JSON.parse(localStorage.getItem('userData')) || [];
@@ -139,7 +139,7 @@ function openLettersPopup() {
             const letterDiv = document.createElement('div');
             letterDiv.classList.add('profile_letter');
             letterDiv.setAttribute('draggable', true);
-            letterDiv.setAttribute('data-index', index); // Store index for reordering
+            letterDiv.setAttribute('data-index', index); 
 
             letterDiv.innerHTML = `
                 <button class="delete-button" onclick="deleteLetter(${index})">&times;</button>
@@ -177,7 +177,7 @@ function deleteLetter(index) {
         if (currentUser && currentUser.cartas) {
             currentUser.cartas.splice(index, 1);
             localStorage.setItem('userData', JSON.stringify(users));
-            openLettersPopup(); // Recargar el popup después de eliminar la carta
+            openLettersPopup(); 
         }
     }
 }
@@ -188,7 +188,7 @@ function closeLettersPopup() {
 }
 
 let draggedElementIndex = null;
-
+// Funciones del drag and drop
 function handleDragStart(event) {
     draggedElementIndex = Array.from(event.target.parentNode.children).indexOf(event.target);
     event.dataTransfer.effectAllowed = 'move';
@@ -208,14 +208,14 @@ function handleDrop(event) {
     const container = document.getElementById('profile-letters-content');
     const targetIndex = Array.from(container.children).indexOf(targetElement);
 
-    // Intercambiar las posiciones en el DOM
+    // Intercambia las posiciones en el DOM
     if (draggedElementIndex < targetIndex) {
         container.insertBefore(container.children[draggedElementIndex], container.children[targetIndex].nextSibling);
     } else {
         container.insertBefore(container.children[draggedElementIndex], container.children[targetIndex]);
     }
 
-    saveNewOrder(); // Guardar el nuevo orden en el localStorage
+    saveNewOrder(); // Guarda el nuevo orden en el localStorage
 }
 
 function handleDragEnd(event) {
@@ -231,7 +231,7 @@ function addDragAndDropEvents(element) {
     element.addEventListener('dragend', handleDragEnd);
 }
 
-// Guardar el nuevo orden en el localStorage
+// Guarda el nuevo orden en el localStorage
 function saveNewOrder() {
     const container = document.getElementById('profile-letters-content');
     const newOrder = Array.from(container.children).map(child => {

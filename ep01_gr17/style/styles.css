@@ -742,31 +742,31 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 /* Estilos para el formulario de perfil */
 #profile-form {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna para los campos del formulario */
-    gap: 10px; /* Espacio entre los elementos */
+    grid-template-columns: 1fr; 
+    gap: 10px;
 }
 
 /* Estilos para los elementos del formulario */
 #profile-form label {
-    grid-column: span 1; /* Los labels ocupan una columna */
+    grid-column: span 1; 
 }
 
 #profile-form input,
 #profile-form select {
-    width: 100%; /* Los inputs y selects ocupan el 100% del ancho disponible */
+    width: 100%; 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    box-sizing: border-box;
 }
 
 
 
 /* Estilos para la ventana emergente de inicio de sesión */
 .popup-login {
-    display: none; /* Oculta la ventana emergente por defecto */
-    position: fixed; /* Posiciona la ventana emergente de manera fija */
-    z-index: 1000; /* Asegura que la ventana emergente esté por encima de otros elementos */
+    display: none; 
+    position: fixed; 
+    z-index: 1000;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%); /* Centra la ventana emergente */
@@ -775,36 +775,36 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%; /* Ajusta el ancho de la ventana emergente */
-    max-width: 500px; /* Ancho máximo de la ventana emergente */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    width: 80%; 
+    max-width: 500px; 
+    box-sizing: border-box; 
 }
 
 /* Estilos para el contenido de la ventana emergente */
 .popup-login-content {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna para dispositivos móviles */
-    gap: 10px; /* Espacio entre los elementos */
+    grid-template-columns: 1fr; 
+    gap: 10px
 }
 
 /* Estilos para el formulario de inicio de sesión */
 #login-form {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna para los campos del formulario */
-    gap: 10px; /* Espacio entre los elementos */
+    grid-template-columns: 1fr; 
+    gap: 10px; 
 }
 
 /* Estilos para los elementos del formulario */
 #login-form label {
-    grid-column: span 1; /* Los labels ocupan una columna */
+    grid-column: span 1; 
 }
 
 #login-form input {
-    width: 100%; /* Los inputs ocupan el 100% del ancho disponible */
+    width: 100%; 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    box-sizing: border-box; 
 }
 
 /* Estilos para el botón de cerrar */
@@ -815,46 +815,46 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     right: 21%;
     top: 15vw;
 }
-
+/* Estilos para la ventana emergente de registro */
 .popup-register {
-    display: none; /* Oculta la ventana emergente por defecto */
-    position: fixed; /* Posiciona la ventana emergente de manera fija */
-    z-index: 1000; /* Asegura que la ventana emergente esté por encima de otros elementos */
+    display: none;
+    position: fixed; 
+    z-index: 1000;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%); /* Centra la ventana emergente */
+    transform: translate(-50%, -50%); 
     background-color: white;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%; /* Ajusta el ancho de la ventana emergente */
-    max-width: 500px; /* Ancho máximo de la ventana emergente */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    width: 80%; 
+    max-width: 500px; 
+    box-sizing: border-box; 
 }
-
+/* Estilos para el contenido de la ventana emergente */
 .popup-register-content {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna para dispositivos móviles */
-    gap: 10px; /* Espacio entre los elementos */
+    grid-template-columns: 1fr; 
+    gap: 10px; 
 }
-
+/* Estilos para el formulario de registro */
 #register-form {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna para los campos del formulario */
-    gap: 10px; /* Espacio entre los elementos */
+    grid-template-columns: 1fr; 
+    gap: 10px; 
 }
 
 #register-form label {
-    grid-column: span 1; /* Los labels ocupan una columna */
+    grid-column: span 1; 
 }
 
 #register-form input {
-    width: 100%; /* Los inputs ocupan el 100% del ancho disponible */
+    width: 100%; 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    box-sizing: border-box; 
 }
 
 
