@@ -1037,6 +1037,7 @@ footer { /* define las caracteristicas del pie de pagina */
         font-size: 2.5vw; 
     }
 
+    
   
     .letters { /* cambia a 2 columnas las cartas */
         grid-template-columns: repeat(2, 1fr);

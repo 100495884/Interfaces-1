@@ -14,6 +14,10 @@
     <script src="scripts/script_game1.js" async></script>
     <script src="scripts/script_game2.js" async></script>
     <script src="scripts/script_game3.js" async></script>
+    <script src="scripts/script_mapa.js" async></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin="">
+    </script>
 
 </head>
 <body>
@@ -39,6 +43,7 @@
                     <div id="profile-menu" class="profile-menu">
                         <button onclick="openProfilePopup()">Mi perfil</button>
                         <button onclick="openLettersPopup()">Mis cartas</button>
+                        <button onclick="">Contenido exclusivo </button>
                         <button onclick="logout()">Cerrar sesión</button>
                     </div>
                 
@@ -87,7 +92,22 @@
                             <div class="profile-letters" id="profile-letters-content"></div>
                         </div>
                     </div>
-                    
+
+                    <!-- Ventana emergente de contenido exclusivo 
+                    <div id="popup-exclusive" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="">&times;</span>
+                            <h2>Mi contenido exclusivo</h2>
+                            <div >
+                                <h3>Mis recetas navideñas</h3>
+                            </div>
+                            <div>
+                                <h3>Recetas navideñas</h3>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
                 </div>
                 
                 <!-- botones de registro e inicio de sesión -->
@@ -190,7 +210,12 @@
                 </div>
             </div>
         </section>
-
+        <!--
+        <section id="mapa">
+            <h2>¿Dónde está Papá Noel?</h2>
+            div id="mapa"></div>
+        </section>
+        -->
         <section id="cartas">
             <!-- sección de las cartas -->
             <h2>Las cartas</h2>
