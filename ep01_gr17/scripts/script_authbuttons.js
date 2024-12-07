@@ -64,31 +64,31 @@ function validateRegisterForm() {
         return;
     }
 
-    // Valida la contraseña
+    /*// Valida la contraseña
     if (password.length < 12) {
         alert('La contraseña debe tener al menos 12 caracteres.');
         return;
     }
-    
+
     if (!/[a-z]/.test(password)) {
         alert('La contraseña debe tener al menos una letra minúscula.');
         return;
     }
-    
+
     if (!/[A-Z]/.test(password)) {
         alert('La contraseña debe tener al menos una letra mayúscula.');
         return;
     }
-    
+
     if (!/\d.*\d/.test(password)) {
         alert('La contraseña debe tener al menos dos números.');
         return;
     }
-    
+
     if (!/[@$!%*?&._,-]/.test(password)) {
         alert('La contraseña debe tener al menos un carácter especial (@, $, !, %, *, ?, &, ., _, -, ,).');
         return;
-    }
+    }*/
 
 
 

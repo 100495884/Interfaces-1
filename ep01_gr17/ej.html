@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Merienda&family=Patrick+Hand&family=Rock+Salt&family=Quicksand&display=swap" rel="stylesheet">
     <script src="scripts/script_countdown.js" async></script>
     <script src="scripts/script_authbuttons.js" async></script>
+    <script src="scripts/script_exclusive.js" async></script>
     <script src="scripts/script-profile.js" async></script>
     <script src="scripts/script_sendletter.js" async></script>
     <script src="scripts/script_game1.js" async></script>
@@ -43,7 +44,7 @@
                     <div id="profile-menu" class="profile-menu">
                         <button onclick="openProfilePopup()">Mi perfil</button>
                         <button onclick="openLettersPopup()">Mis cartas</button>
-                        <button onclick="">Contenido exclusivo </button>
+                        <button onclick="openExclusivePopup()">Contenido exclusivo</button>
                         <button onclick="logout()">Cerrar sesión</button>
                     </div>
                 
@@ -93,21 +94,52 @@
                         </div>
                     </div>
 
-                    <!-- Ventana emergente de contenido exclusivo 
+                    <!-- Ventana emergente de contenido exclusivo -->
                     <div id="popup-exclusive" class="popup">
                         <div class="popup-content">
-                            <span class="close" onclick="">&times;</span>
-                            <h2>Mi contenido exclusivo</h2>
-                            <div >
-                                <h3>Mis recetas navideñas</h3>
-                            </div>
-                            <div>
-                                <h3>Recetas navideñas</h3>
+                            <span class="close" onclick="closeExclusivePopup()">&times;</span>
+                            <h2>Contenido Exclusivo</h2>
+                            <div class="exclusive-content">
+                                <h3>Recetas Navideñas</h3>
+                                <div class="recipe-gallery">
+                                    <img src="images/receta1.jpeg" alt="Receta 1">
+                                    <img src="images/receta2.jpeg" alt="Receta 2">
+                                    <img src="images/receta3.jpeg" alt="Receta 3">
+                                    <img src="images/receta4.jpeg" alt="Receta 4">
+                                    <img src="images/receta5.jpeg" alt="Receta 5">
+                                    <img src="images/receta6.jpeg" alt="Receta 6">
+                                </div>
+                                <h3>Sube tu Receta</h3>
+                                <form id="upload-recipe-form" enctype="multipart/form-data">
+                                    <label for="user-recipe-image">Imagen de la receta:</label>
+                                    <input type="file" id="user-recipe-image" name="recipe-image" accept="image/*" required>
+
+                                    <label for="user-recipe-title">Título de la receta:</label>
+                                    <input type="text" id="user-recipe-title" name="recipe-title" required>
+
+                                    <label for="user-recipe-ingredients">Ingredientes:</label>
+                                    <textarea id="user-recipe-ingredients" name="recipe-ingredients" required></textarea>
+
+                                    <label for="user-recipe-instructions">Elaboración:</label>
+                                    <textarea id="user-recipe-instructions" name="recipe-instructions" required></textarea>
+
+                                    <button type="submit">Subir Receta</button>
+                                </form>
+                                <div id="user-recipes"></div>
                             </div>
                         </div>
                     </div>
-                    -->
-
+                    <!-- Ventana emergente de detalles de la receta -->
+                    <div id="popup-recipe-details" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeRecipeDetailsPopup()">&times;</span>
+                            <h2 id="recipe-details-title">Título de la Receta</h2>
+                            <h3>Ingredientes</h3>
+                            <ul id="recipe-details-ingredients"></ul>
+                            <h3>Elaboración</h3>
+                            <p id="recipe-details-instructions"></p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- botones de registro e inicio de sesión -->

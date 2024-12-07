@@ -128,7 +128,70 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
     text-align: center;
 }
 
+.recipe-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
+.recipe-gallery img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+#upload-recipe-form {
+    margin-top: 20px;
+}
+
+#upload-recipe-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+#upload-recipe-form input,
+#upload-recipe-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+#upload-recipe-form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#upload-recipe-form button:hover {
+    background-color: #45a049;
+}
+
+#user-recipes {
+    margin-top: 20px;
+}
+
+.user-recipe {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.user-recipe img {
+    max-width: 100%;
+    height: auto;
+}
+
+.user-recipe h4 {
+    margin-top: 10px;
+}
+
+.user-recipe ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
 
 
 /* Contenedor de la cuadrícula de cartas */
