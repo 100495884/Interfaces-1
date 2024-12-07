@@ -272,7 +272,10 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
 }
 
 
-
+/*Mapa interactivo*/
+#interactive_map {
+    height: 75%;
+}
 
 
 
