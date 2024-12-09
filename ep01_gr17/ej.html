@@ -114,23 +114,13 @@
                                     <img src="images/receta5.jpeg" alt="Receta 5">
                                     <img src="images/receta6.jpeg" alt="Receta 6">
                                 </div>
-                                <h3>Sube tu Receta</h3>
-                                <form id="upload-recipe-form" enctype="multipart/form-data">
-                                    <label for="user-recipe-image">Imagen de la receta:</label>
-                                    <input type="file" id="user-recipe-image" name="recipe-image" accept="image/*" required>
-
-                                    <label for="user-recipe-title">Título de la receta:</label>
-                                    <input type="text" id="user-recipe-title" name="recipe-title" required>
-
-                                    <label for="user-recipe-ingredients">Ingredientes:</label>
-                                    <textarea id="user-recipe-ingredients" name="recipe-ingredients" required></textarea>
-
-                                    <label for="user-recipe-instructions">Elaboración:</label>
-                                    <textarea id="user-recipe-instructions" name="recipe-instructions" required></textarea>
-
-                                    <button type="submit">Subir Receta</button>
-                                </form>
+                                <h3>Recetas de Usuarios</h3>
                                 <div id="user-recipes"></div>
+                                <!-- Botón para abrir el popup de añadir receta -->
+                                <!-- Botón para abrir el popup de añadir receta -->
+                                <div class="button-container">
+                                    <button class="add-recipe-btn" onclick="openAddRecipePopup()">Sube tu receta</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -143,6 +133,28 @@
                             <ul id="recipe-details-ingredients"></ul>
                             <h3>Elaboración</h3>
                             <p id="recipe-details-instructions"></p>
+                        </div>
+                    </div>
+                    <!-- Ventana emergente de añadir receta -->
+                    <div id="popup-add-recipe" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeAddRecipePopup()">&times;</span>
+                            <h2>Sube tu Receta</h2>
+                            <form id="upload-recipe-form" enctype="multipart/form-data">
+                                <label for="user-recipe-image">Imagen de la receta:</label>
+                                <input type="file" id="user-recipe-image" name="recipe-image" accept="image/*" required>
+
+                                <label for="user-recipe-title">Título de la receta:</label>
+                                <input type="text" id="user-recipe-title" name="recipe-title" required>
+
+                                <label for="user-recipe-ingredients">Ingredientes:</label>
+                                <textarea id="user-recipe-ingredients" name="recipe-ingredients" required></textarea>
+
+                                <label for="user-recipe-instructions">Elaboración:</label>
+                                <textarea id="user-recipe-instructions" name="recipe-instructions" required></textarea>
+
+                                <button type="submit">Subir Receta</button>
+                            </form>
                         </div>
                     </div>
                 </div>
