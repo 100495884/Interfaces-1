@@ -65,9 +65,18 @@ document.querySelectorAll('.recipe-gallery img').forEach(img => {
     });
 });
 
+
+// Función para obtener el nombre del usuario actual desde el localStorage
+function getCurrentUserName() {
+    const userLogged = JSON.parse(localStorage.getItem('userLogged'));
+    console.log("Usuario actual:", userLogged);
+    return userLogged.username;
+}
+
 document.getElementById('upload-recipe-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
+    const userName = getCurrentUserName();
     const imageInput = document.getElementById('user-recipe-image');
     const titleInput = document.getElementById('user-recipe-title');
     const ingredientsInput = document.getElementById('user-recipe-ingredients');
@@ -76,17 +85,30 @@ document.getElementById('upload-recipe-form').addEventListener('submit', functio
     const reader = new FileReader();
     reader.onload = function(e) {
         const newRecipe = {
+            username: userName,
             title: titleInput.value,
             ingredients: ingredientsInput.value.split('\n'),
             instructions: instructionsInput.value,
             image: e.target.result
         };
 
+        saveUserRecipe(newRecipe);
         addUserRecipe(newRecipe);
         clearForm();
     };
     reader.readAsDataURL(imageInput.files[0]);
 });
+
+function saveUserRecipe(recipe) {
+    let allRecipes = JSON.parse(localStorage.getItem('allRecipes')) || [];
+    allRecipes.push(recipe);
+    localStorage.setItem('allRecipes', JSON.stringify(allRecipes));
+}
+
+function loadUserRecipes() {
+    let allRecipes = JSON.parse(localStorage.getItem('allRecipes')) || [];
+    allRecipes.forEach(recipe => addUserRecipe(recipe));
+}
 
 function addUserRecipe(recipe) {
     const userRecipesDiv = document.getElementById('user-recipes');
@@ -95,12 +117,12 @@ function addUserRecipe(recipe) {
 
     recipeDiv.innerHTML = `
         <img src="${recipe.image}" alt="${recipe.title}">
-        <h4>${recipe.title}</h4>
-        <p><strong>Ingredientes:</strong></p>
-        <ul>${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
-        <p><strong>Elaboración:</strong></p>
-        <p>${recipe.instructions}</p>
+        <p><strong>Receta de:</strong> ${recipe.username}</p>
     `;
+
+    recipeDiv.querySelector('img').addEventListener('click', () => {
+        openRecipeDetailsPopup(recipe.title, recipe.ingredients, recipe.instructions);
+    });
 
     userRecipesDiv.appendChild(recipeDiv);
 }
@@ -108,3 +130,6 @@ function addUserRecipe(recipe) {
 function clearForm() {
     document.getElementById('upload-recipe-form').reset();
 }
+
+// Cargar las recetas del usuario al cargar la página
+window.onload = loadUserRecipes;
