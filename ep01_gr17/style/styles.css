@@ -925,6 +925,277 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 
 
 
+.experiences {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Asegura que los elementos hijos se estiren para ocupar toda la altura */
+    gap: 2vw; /* Reduce el espacio entre las columnas */
+    flex: 1; /* Permite que la sección ocupe el espacio disponible */
+}
+
+.reserva-hotel, .reserva-videollamada {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+    max-width: 45%; /* Reduce el ancho máximo de las columnas */
+    height: auto;
+}
+
+.reserva-hotel button, .reserva-videollamada button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+.reserva-hotel img, .reserva-videollamada img {
+    width: 100%;
+    max-width: 30vw; /* Aumenta el ancho máximo relativo al viewport */
+    height: auto;
+    aspect-ratio: 4/3; /* Mantiene la proporción de las imágenes */
+    border-radius: 1vw;
+}
+
+.reserva-hotel h3, .reserva-videollamada h3 {
+    font-size: 2vw; /* Usa vw para el tamaño de la fuente */
+    text-align: center;
+    margin-bottom: 1vw; /* Añade un margen inferior para separar el texto de la imagen */
+}
+.fabrica-juguetes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Asegura que la sección ocupe toda la altura del contenedor */
+}
+#fabrica-juguetes h2 {
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 2vw;
+}
+
+.close-btn {
+    display: block;
+    float: right;
+    margin: auto auto;
+    background: none;
+    border: none;
+    font-size: 2vw;
+    cursor: pointer;
+}
+
+.fabrica-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.left-column-fabrica, .right-column-fabrica {
+    width: 48%; /* Asegura que ambas columnas sean del mismo tamaño */
+}
+
+.carousel {
+    position: relative;
+    text-align: center;
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+    border-radius: 1vw;
+}
+
+.carousel .prev, .carousel .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2vw;
+    cursor: pointer;
+    padding: 1vw;
+    border-radius: 50%;
+}
+
+.carousel .prev {
+    left:  1vw;
+}
+
+.carousel .next {
+    right: 1vw;
+}
+
+.right-column-fabrica {
+    font-family: 'Merienda', cursive;
+    text-align: center; /* Centra el texto horizontalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    height: 100%;
+    padding: 2vw; /* Añade un poco de padding para el contenido */
+}
+
+.right-column-fabrica p {
+    font-size: 1.2vw;
+    line-height: 1.5;
+    margin-bottom: 2vw;
+    flex: 1; /* Permite que el párrafo crezca para ocupar el espacio disponible */
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+}
+
+.right-column-fabrica button {
+    display: block;
+    width: 100%;
+    padding: 1vw;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1.5vw;
+    cursor: pointer;
+    border-radius: 1.5vw;
+    margin: auto;
+}
+
+.right-column-fabrica button:hover {
+    background-color: #0056b3;
+}
+.popup-reserve, .popup-pagar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content-reserva, .popup-content-pagar {
+    background-color: white;
+    padding: 2vw;
+    border-radius: 10px;
+    width: 80%;
+    max-height: 75%;
+    max-width: 25vw;
+    text-align: center;
+    position: fixed;
+    overflow-y: auto;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2vw;
+    cursor: pointer;
+}
+
+.popup-content-reserva form, .popup-content-pagar form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.popup-content-reserva form label, .popup-content-pagar form label {
+    text-align: left;
+}
+
+.popup-content-reserva form input, .popup-content-pagar form input {
+    padding: 0.5vw;
+    font-size: 1vw;
+}
+
+.popup-content-reserva form button, .popup-content-pagar form button {
+    padding: 1vw;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1.5vw;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1vw;
+}
+
+.popup-content-reserva form button:hover, .popup-content-pagar form button:hover {
+    background-color: #0056b3;
+}
+
+#error-message {
+    color: red;
+    display: none;
+    margin-top: 1vw;
+}
+
+.popup-videollamada {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content-videollamada {
+    background-color: white;
+    padding: 2vw;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2vw;
+    cursor: pointer;
+}
+
+.popup-content-videollamada form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.popup-content-videollamada form label {
+    text-align: left;
+}
+
+.popup-content-videollamada form input {
+    padding: 0.5vw;
+    font-size: 1vw;
+}
+
+.popup-content-videollamada form button {
+    padding: 1vw;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1.5vw;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1vw;
+}
+
+.popup-content-videollamada form button:hover {
+    background-color: #0056b3;
+}
+
+
+
 
 
 

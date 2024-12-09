@@ -18,6 +18,8 @@
     <script src="scripts/script_game2.js" async></script>
     <script src="scripts/script_game3.js" async></script>
     <script src="scripts/script_mapa.js" async></script>
+    <script src="scripts/script_reserva.js" async></script>
+    <script src="scripts/script_carrusel.js" async></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin="">
     </script>
@@ -37,6 +39,7 @@
                     <div><a href="#cartas">Las cartas</a></div>
                     <div><a href="#envia-carta">Envía tu carta</a></div>
                     <div><a href="#juega">¡Juega!</a></a></div>
+                    <div><a href="#reserva-experiencias" onclick="volverReserva()">Reserva experiencias</a></div>
                 </nav>
 
                 <div class="profile-icon">
@@ -382,7 +385,145 @@
                                                                                 
                 </div>
             </div>
-        </section>    
+        </section>   
+        <section id="reserva-experiencias">
+            <h2>Reserva tu experiencia</h2>
+            <div class="experiences">
+                <div class="reserva-hotel">
+                    <div>
+                        <h3>Visita la fábrica de juguetes</h3>
+                    </div>
+                    <button onclick="mostrarFabrica()">
+                        <img src="images/casa papa noel.jpg" alt="reserva-fabrica">
+                    </button>
+                </div>
+                <div class="reserva-videollamada">
+                    <div>
+                        <h3>Habla con Papa Noel</h3>
+                    </div>
+                    <button onclick="abrirPopupVideollamada()">
+                        <img src="images/papa noel videollamada.jpg" alt="reserva-videollamada">
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section id="fabrica-juguetes" style="display: none;">
+            <h2>Fábrica de juguetes</h2>
+            <button class="close-btn" onclick="volverReserva()">&#10006;</button>
+            <div class="fabrica-content">
+                <div class="left-column-fabrica">
+                    <div class="carousel">
+                        <button class="prev" onclick="prevImage()">&#10094;</button>
+                        <img id="carousel-image" src="images/nino1.jpg" alt="Fábrica de juguetes">
+                        <button class="next" onclick="nextImage()">&#10095;</button>
+                    </div>
+                </div>
+                <div class="right-column-fabrica">
+                    <p>-Recorrido por la fábrica de juguetes</p>
+                    <p>-Visita guiada de 1 hora</p>
+                    <p>-15€ por persona</p>
+                    <button onclick="abrirPopupReserva()">Reserva</button>
+                </div>
+            </div>
+        </section>
+        <div id="popup-reserva" class="popup-reserve" style="display: none;">
+            <div class="popup-content-reserva">
+                <span class="close-popup" onclick="cerrarPopupReserva()">&times;</span>
+                <h2>Reserva tu visita</h2>
+                <form>
+                    <label for="num-personas">Número de personas:</label>
+                    <input type="number" id="num-personas" name="num-personas" required oninput="calcularPrecio()">
+                    
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                    
+                    <label for="nombre-comprador">Nombre del comprador:</label>
+                    <input type="text" id="nombre-comprador" name="nombre-comprador" required>
+
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                    
+                    <label for="precio">Precio:</label>
+                    <input type="text" id="precio" name="precio" readonly>
+
+                    <button type="button" onclick="pagarReserva()">Pagar</button>
+                    
+                </form>
+            </div>
+        </div>
+        <!-- Popup de pago -->
+        <div id="popup-pago" class="popup-pagar" style="display: none;">
+            <div class="popup-content-pagar">
+                <span class="close-popup" onclick="cerrarPopupPago()">&times;</span>
+                <h2>Información de Pago</h2>
+                <form id="pago-form">
+                    <label for="num-tarjeta">Número de tarjeta:</label>
+                    <input type="text" id="num-tarjeta" name="num-tarjeta" required>
+                    
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                    
+                    <label for="fecha-expiracion">Fecha de expiración:</label>
+                    <input type="month" id="fecha-expiracion" name="fecha-expiracion" required>
+                    
+                    <button type="button" onclick="confirmarPago()">Confirmar Pago</button>
+                </form>
+            </div>
+        </div>
+        <!-- Popup de videollamada - Texto -->
+        <div id="popup-videollamada-texto" class="popup-videollamada" style="display: none;">
+            <div class="popup-content-videollamada">
+                <span class="close-popup" onclick="cerrarPopupVideollamada()">&times;</span>
+                <h2>Información de la Videollamada</h2>
+                <p>Disfruta de una videollamada mágica con Papá Noel. Asegúrate de tener una buena conexión a internet y una cámara funcionando.</p>
+                <p>La videollamada tiene una duracion de 10 minutos y el precio es de 10€.</p>
+                <button type="button" onclick="entendidoVideollamada()">Entendido</button>
+            </div>
+        </div>
+        <!-- Popup de videollamada - Formulario -->
+        <div id="popup-videollamada-formulario" class="popup-videollamada" style="display: none;">
+            <div class="popup-content-videollamada">
+                <span class="close-popup" onclick="cerrarPopupVideollamada()">&times;</span>
+                <h2>Reserva tu Videollamada</h2>
+                <form>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                    
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                    
+                    <label for="hora">Hora:</label>
+                    <input type="time" id="hora" name="hora" required>
+                    
+                    <button type="button" onclick="confirmarVideollamada()">Confirmar Videollamada</button>
+                </form>
+            </div>
+        </div>
+        <!-- Popup de pago -->
+        <div id="popup-pago2" class="popup-pagar" style="display: none;">
+            <div class="popup-content-pagar">
+                <span class="close-popup" onclick="cerrarPopupPago2()">&times;</span>
+                <h2>Información de Pago</h2>
+                <form id="pago-form">
+                    <label for="num-tarjeta">Número de tarjeta:</label>
+                    <input type="text" id="num-tarjeta" name="num-tarjeta" required>
+                    
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                    
+                    <label for="fecha-expiracion">Fecha de expiración:</label>
+                    <input type="month" id="fecha-expiracion" name="fecha-expiracion" required>
+                    
+                    <button type="button" onclick="confirmarPago()">Confirmar Pago</button>
+                </form>
+            </div>
+        </div>
+
+
+         
 
     </main>
 
