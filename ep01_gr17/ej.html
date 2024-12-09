@@ -34,11 +34,12 @@
             <div class="menu">
                 <nav>
                     <!-- botones de navegación -->
-                    <div class="active"><a href="#home">Inicio</a></div>
+                    <div><a href="#home">Inicio</a></div>
                     <div><a href="#papa-noel">Papá Noel</a></div>
+                    <div><a href="#mapa">¿Dónde está Papá Noel?</a></div>
                     <div><a href="#cartas">Las cartas</a></div>
                     <div><a href="#envia-carta">Envía tu carta</a></div>
-                    <div><a href="#juega">¡Juega!</a></a></div>
+                    <div><a href="#juega">¡Juega!</a></div>
                     <div><a href="#reserva-experiencias" onclick="volverReserva()">Reserva experiencias</a></div>
                 </nav>
 
@@ -50,6 +51,7 @@
                         <button onclick="openProfilePopup()">Mi perfil</button>
                         <button onclick="openLettersPopup()">Mis cartas</button>
                         <button onclick="openExclusivePopup()">Contenido exclusivo</button>
+                        <button onclick="openDownloadsPopup()">Descargas</button>
                         <button onclick="logout()">Cerrar sesión</button>
                     </div>
                 
@@ -157,6 +159,19 @@
                             </form>
                         </div>
                     </div>
+                    <div id="popup-downloads" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeDownloadsPopup()">&times;</span>
+                            <h2>Recursos Descargables</h2>
+                            <ul id="downloads-list">
+                                <li><a href="sources/bingo_navidad.pdf" target="_blank">Bingo de Navidad</a></li>
+                                <li><a href="sources/colorear_navidad.pdf" target="_blank">Dibujos Para Colorear</a></li>
+                                <li><a href="sources/cruzigrama_navidad.pdf" target="_blank">Cruzigramas</a></li>
+                                <li><a href="sources/juego_cartas_navidad.pdf" target="_blank">Juego de Cartas</a></li>
+                                <li><a href="sources/laberintos_navidad.pdf" target="_blank">Laberitnos Papa Noel</a></li>
+                                <li><a href="sources/recortables_navidad.pdf" target="_blank">Recortables navideños</a></li>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- botones de registro e inicio de sesión -->
@@ -238,7 +253,7 @@
                 <span id="minutes"></span> minutos 
                 <span id="seconds"></span> segundos
             </div>
-            <button disabled>Empezar</button>
+            <button type="button" onclick="getStarted()">Empezar</button>
         </section>
         
 

@@ -27,3 +27,9 @@ setInterval(updateCountdown, 1000);
 
 // Inicializa el contador
 updateCountdown();
+
+function getStarted() {
+    alert("Aquí empieza tu aventura navideña. Inicia sesión para disfrutar de contenido exclusivo.");
+    window.location.href = "#papa-noel";
+    
+}
