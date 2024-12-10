@@ -1786,9 +1786,16 @@ footer { /* define las caracteristicas del pie de pagina */
     .fabrica-content button {
         font-size: 1.2em; /* Aumenta el tamaño de las letras del botón */
     }
-
-    
-
+    .popup-content-reserva, .popup-content-pagar, .popup-content-videollamada {
+        max-width: 100%;
+    }
+    .popup-content-reserva form input , .popup-content-pagar form input, .popup-content-videollamada form input {
+        width: 100%;
+       font-size: 2.5vw; ;
+    }
+    .popup-content-videollamada p {
+        font-size: 2.5vw;
+    }
 
 
 

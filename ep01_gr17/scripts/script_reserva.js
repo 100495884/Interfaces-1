@@ -3,9 +3,6 @@ function mostrarFabrica() {
     document.getElementById('fabrica-juguetes').style.display = 'block';
 }
 
-function mostrarVideollamadas() {
-    // Implementa la lógica para mostrar la sección de videollamadas si existe
-}
 
 function volverReserva() {
     document.getElementById('fabrica-juguetes').style.display = 'none';
@@ -213,11 +210,9 @@ function confirmarVideollamada() {
     if (nombre.trim() === '') {
         errorMessage += 'El nombre no puede estar vacío.\n';
     }
-    if (correo.trim() === '') {
-        errorMessage += 'El correo no puede estar vacío.\n';
-    } else {
-        (!validarCorreo(correo)) 
-        errorMessage += 'Tiene que ser un correo válido.\n';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(correo)) {
+        errorMessage += 'Tiene que ser un correo valido.\n';
     }
 
     if (!fechaInput) {
