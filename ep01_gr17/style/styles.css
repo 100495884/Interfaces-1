@@ -1094,7 +1094,6 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 .fabrica-juguetes {
     flex: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%; /* Asegura que la sección ocupe toda la altura del contenedor */
@@ -1121,18 +1120,19 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     align-items: flex-start;
 }
 
-.left-column-fabrica, .right-column-fabrica {
+.fabrica-izquierda, .fabrica-derecha {
     width: 48%; /* Asegura que ambas columnas sean del mismo tamaño */
 }
 
 .carousel {
     position: relative;
     text-align: center;
+    height: min-content;
 }
 
 .carousel img {
     width: 100%;
-    height: auto;
+    height: min-content;
     border-radius: 1vw;
 }
 
@@ -1157,7 +1157,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     right: 1vw;
 }
 
-.right-column-fabrica {
+.fabrica-derecha {
     font-family: 'Merienda', cursive;
     text-align: center; /* Centra el texto horizontalmente */
     display: flex;
@@ -1167,7 +1167,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     padding: 2vw; /* Añade un poco de padding para el contenido */
 }
 
-.right-column-fabrica p {
+.fabrica-derecha p {
     font-size: 1.2vw;
     line-height: 1.5;
     margin-bottom: 2vw;
@@ -1177,7 +1177,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     justify-content: center; /* Centra el texto horizontalmente */
 }
 
-.right-column-fabrica button {
+.fabrica-derecha button {
     display: block;
     width: 100%;
     padding: 1vw;
@@ -1190,7 +1190,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     margin: auto;
 }
 
-.right-column-fabrica button:hover {
+.fabrica-derecha button:hover {
     background-color: #0056b3;
 }
 .popup-reserve, .popup-pagar {
@@ -1255,11 +1255,6 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     background-color: #0056b3;
 }
 
-#error-message {
-    color: red;
-    display: none;
-    margin-top: 1vw;
-}
 
 .popup-videollamada {
     position: fixed;
@@ -1764,6 +1759,32 @@ footer { /* define las caracteristicas del pie de pagina */
     .memory-game { /* ajustes para el juego de memoria */
         grid-template-columns: repeat(4, 1fr); /* 4 columnas */
         gap: 2vw; 
+    }
+
+    .experiences { /* ajustes para la seccion de experiencias */
+        flex-direction: column; 
+        gap: 5vw; 
+    }
+    .reserva-hotel, .reserva-videollamada { 
+        max-width: 100%; 
+    }
+    .fabrica-content {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .fabrica-izquierda, .fabrica-derecha {
+        max-width: 100%;
+    }
+
+
+    .fabrica-derecha p {
+        font-size: 0.8em; /* Aumenta el tamaño de las letras del texto */
+    }
+
+    .fabrica-content button {
+        font-size: 1.2em; /* Aumenta el tamaño de las letras del botón */
     }
 
     

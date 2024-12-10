@@ -1,8 +1,8 @@
 let currentImageIndex = 0;
 const images = [
-    'images/nino1.jpg',
-    'images/nino2.jpg',
-    'images/nino3.jpg'
+    'images/fabrica-juguetes1.jpg',
+    'images/fabrica-juguetes2.jpg',
+    'images/fabrica-juguetes3.jpg'
 ];
 
 function showImage(index) {
