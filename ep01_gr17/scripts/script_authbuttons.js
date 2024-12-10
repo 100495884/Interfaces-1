@@ -203,3 +203,37 @@ function logout() {
         alert('Sesión cerrada.');
     }
 }
+
+
+
+// Selecciona los enlaces del menú y las secciones correspondientes
+const navLinks = document.querySelectorAll("nav div a");
+const sections = document.querySelectorAll("main > section");
+
+// Configura el IntersectionObserver
+const observerOptions = {
+    root: null, // Usa el viewport completo como área de observación
+    rootMargin: "0px",
+    threshold: 0.6, // Observa cuando el 60% de la sección está visible
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        const sectionId = entry.target.getAttribute("id");
+
+        // Si la sección está intersectando (visible)
+        if (entry.isIntersecting) {
+            // Elimina la clase 'active' de todos los enlaces
+            navLinks.forEach((link) => link.parentElement.classList.remove("active"));
+
+            // Añade la clase 'active' al enlace correspondiente
+            const activeLink = document.querySelector(`nav div a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.parentElement.classList.add("active");
+            }
+        }
+    });
+}, observerOptions);
+
+// Observa cada sección
+sections.forEach((section) => observer.observe(section));

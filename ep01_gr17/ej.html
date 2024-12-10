@@ -7,8 +7,7 @@
     <title>Viaje de Papá Noel</title>
     <link rel="stylesheet" href="style/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Merienda&family=Patrick+Hand&family=Rock+Salt&family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="scripts/script_countdown.js" async></script>
     <script src="scripts/script_authbuttons.js" async></script>
     <script src="scripts/script_exclusive.js" async></script>
@@ -20,8 +19,7 @@
     <script src="scripts/script_mapa.js" async></script>
     <script src="scripts/script_reserva.js" async></script>
     <script src="scripts/script_carrusel.js" async></script>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     </script>
 
 </head>
@@ -34,11 +32,12 @@
             <div class="menu">
                 <nav>
                     <!-- botones de navegación -->
-                    <div class="active"><a href="#home">Inicio</a></div>
+                    <div><a href="#home">Inicio</a></div>
                     <div><a href="#papa-noel">Papá Noel</a></div>
+                    <div><a href="#mapa">¿Dónde está Papá Noel?</a></div>
                     <div><a href="#cartas">Las cartas</a></div>
                     <div><a href="#envia-carta">Envía tu carta</a></div>
-                    <div><a href="#juega">¡Juega!</a></a></div>
+                    <div><a href="#juega">¡Juega!</a></div>
                     <div><a href="#reserva-experiencias" onclick="volverReserva()">Reserva experiencias</a></div>
                 </nav>
 
@@ -50,6 +49,7 @@
                         <button onclick="openProfilePopup()">Mi perfil</button>
                         <button onclick="openLettersPopup()">Mis cartas</button>
                         <button onclick="openExclusivePopup()">Contenido exclusivo</button>
+                        <button onclick="openDownloadsPopup()">Descargas</button>
                         <button onclick="logout()">Cerrar sesión</button>
                     </div>
                 
@@ -114,23 +114,13 @@
                                     <img src="images/receta5.jpeg" alt="Receta 5">
                                     <img src="images/receta6.jpeg" alt="Receta 6">
                                 </div>
-                                <h3>Sube tu Receta</h3>
-                                <form id="upload-recipe-form" enctype="multipart/form-data">
-                                    <label for="user-recipe-image">Imagen de la receta:</label>
-                                    <input type="file" id="user-recipe-image" name="recipe-image" accept="image/*" required>
-
-                                    <label for="user-recipe-title">Título de la receta:</label>
-                                    <input type="text" id="user-recipe-title" name="recipe-title" required>
-
-                                    <label for="user-recipe-ingredients">Ingredientes:</label>
-                                    <textarea id="user-recipe-ingredients" name="recipe-ingredients" required></textarea>
-
-                                    <label for="user-recipe-instructions">Elaboración:</label>
-                                    <textarea id="user-recipe-instructions" name="recipe-instructions" required></textarea>
-
-                                    <button type="submit">Subir Receta</button>
-                                </form>
+                                <h3>Recetas de Usuarios</h3>
                                 <div id="user-recipes"></div>
+                                <!-- Botón para abrir el popup de añadir receta -->
+                                <!-- Botón para abrir el popup de añadir receta -->
+                                <div class="button-container">
+                                    <button class="add-recipe-btn" onclick="openAddRecipePopup()">Sube tu receta</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -143,6 +133,41 @@
                             <ul id="recipe-details-ingredients"></ul>
                             <h3>Elaboración</h3>
                             <p id="recipe-details-instructions"></p>
+                        </div>
+                    </div>
+                    <!-- Ventana emergente de añadir receta -->
+                    <div id="popup-add-recipe" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeAddRecipePopup()">&times;</span>
+                            <h2>Sube tu Receta</h2>
+                            <form id="upload-recipe-form" enctype="multipart/form-data">
+                                <label for="user-recipe-image">Imagen de la receta:</label>
+                                <input type="file" id="user-recipe-image" name="recipe-image" accept="image/*" required>
+
+                                <label for="user-recipe-title">Título de la receta:</label>
+                                <input type="text" id="user-recipe-title" name="recipe-title" required>
+
+                                <label for="user-recipe-ingredients">Ingredientes:</label>
+                                <textarea id="user-recipe-ingredients" name="recipe-ingredients" required></textarea>
+
+                                <label for="user-recipe-instructions">Elaboración:</label>
+                                <textarea id="user-recipe-instructions" name="recipe-instructions" required></textarea>
+
+                                <button type="submit">Subir Receta</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="popup-downloads" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeDownloadsPopup()">&times;</span>
+                            <h2>Recursos Descargables</h2>
+                            <ul id="downloads-list">
+                                <li><a href="sources/bingo_navidad.pdf" target="_blank">Bingo de Navidad</a></li>
+                                <li><a href="sources/colorear_navidad.pdf" target="_blank">Dibujos Para Colorear</a></li>
+                                <li><a href="sources/cruzigrama_navidad.pdf" target="_blank">Cruzigramas</a></li>
+                                <li><a href="sources/juego_cartas_navidad.pdf" target="_blank">Juego de Cartas</a></li>
+                                <li><a href="sources/laberintos_navidad.pdf" target="_blank">Laberitnos Papa Noel</a></li>
+                                <li><a href="sources/recortables_navidad.pdf" target="_blank">Recortables navideños</a></li>
                         </div>
                     </div>
                 </div>
@@ -226,7 +251,7 @@
                 <span id="minutes"></span> minutos 
                 <span id="seconds"></span> segundos
             </div>
-            <button disabled>Empezar</button>
+            <button type="button" onclick="getStarted()">Empezar</button>
         </section>
         
 

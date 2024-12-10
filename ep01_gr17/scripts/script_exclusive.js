@@ -17,6 +17,14 @@ function closeRecipeDetailsPopup() {
     document.getElementById('popup-recipe-details').style.display = 'none';
 }
 
+function openAddRecipePopup() {
+    document.getElementById('popup-add-recipe').style.display = 'block';
+}
+
+function closeAddRecipePopup() {
+    document.getElementById('popup-add-recipe').style.display = 'none';
+}
+
 document.querySelectorAll('.recipe-gallery img').forEach(img => {
     img.addEventListener('click', () => {
         const recipeDetails = {
@@ -95,6 +103,7 @@ document.getElementById('upload-recipe-form').addEventListener('submit', functio
         saveUserRecipe(newRecipe);
         addUserRecipe(newRecipe);
         clearForm();
+        closeAddRecipePopup();
     };
     reader.readAsDataURL(imageInput.files[0]);
 });

@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b2aec499-ffdb-4aa1-8210-ef95755df45b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ep01_gr17/ej.html" beforeDir="false" afterPath="$PROJECT_DIR$/ep01_gr17/ej.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ep01_gr17/scripts/script_exclusive.js" beforeDir="false" afterPath="$PROJECT_DIR$/ep01_gr17/scripts/script_exclusive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ep01_gr17/style/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/ep01_gr17/style/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +33,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ml.llm.AIAssistantPromptsLibrary",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -62,6 +64,8 @@
       <workItem from="1733598742913" duration="3393000" />
       <workItem from="1733741301348" duration="211000" />
       <workItem from="1733741591094" duration="2064000" />
+      <workItem from="1733761809695" duration="1736000" />
+      <workItem from="1733764234057" duration="2732000" />
     </task>
     <servers />
   </component>

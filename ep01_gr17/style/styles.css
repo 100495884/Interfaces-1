@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body { /*definiciones generales para el cuerpo de la pagina */
     font-family: Arial, sans-serif; /* tipo de letra */
     margin: 0; 
@@ -47,14 +51,14 @@ header img:hover { /* efecto al pasar el ratón */
 nav { /* define las caracteristicas del menu de navegación */
     display: flex; 
     align-items: center; 
-    gap: 1vw;
+    gap: 0.7vw;
 }
 nav .active { /* pone el boton de inicio verde */
     background-color: green;
 }
 
 nav div { /* define las caracteristicas de los botones del menu de navegación */
-    padding: 0.5vw 1vw; 
+    padding: 0.5vw 0.7vw; 
     border-radius: 5px; /* redondea los bordes de los botones */
     transition: background-color 0.5s ease;
     white-space: nowrap; /* Previene que el texto se divida en varias líneas */
@@ -70,6 +74,13 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
 }
 
 
+nav div.active a {
+    color: white; /* Color del texto */
+    background-color: green; /* Fondo verde para el enlace activo */
+    font-weight: bold; /* Resalta el texto */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+}
 
 /* Estilos para el icono de perfil y el menú */
 /* Ocultar menús y ventanas emergentes por defecto */
@@ -170,28 +181,144 @@ nav div:hover {  /* pone los botones verdes al pasar el ratón */
 }
 
 #user-recipes {
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .user-recipe {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 10px;
+    flex: 1 1 100px; /* Ajusta el tamaño mínimo de cada receta */
+    max-width: 200px; /* Ajusta el tamaño máximo de cada receta */
+    box-sizing: border-box;
 }
 
 .user-recipe img {
-    max-width: 100%;
-    height: auto;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 25px;
 }
 
 .user-recipe h4 {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .user-recipe ul {
     list-style-type: disc;
     padding-left: 20px;
 }
+
+
+#popup-add-recipe .popup-content {
+    position: relative;
+}
+
+#popup-add-recipe .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+/* Estilos para el botón de añadir receta */
+button.add-recipe-btn {
+    background-color: green;
+    color: white;
+    padding: 0.5vw 1vw;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1vw;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid white;
+}
+
+button.add-recipe-btn:hover {
+    background-color: rgb(0, 111, 0);
+    color: white;
+}
+
+button.add-recipe-btn:active {
+    background-color: rgb(0, 98, 0);
+    color: white;
+}
+
+
+/* Estilo para la sección de descargables */
+#popup-downloads h2 {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#downloads-list {
+    list-style: none; /* Sin viñetas */
+    padding: 0;
+    margin: 0;
+}
+
+#downloads-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9; /* Fondo suave */
+    border: 1px solid #ddd; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#downloads-list li:hover {
+    background-color: #f1f1f1; /* Cambio de fondo al pasar el ratón */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra al pasar el ratón */
+}
+
+#downloads-list li a {
+    text-decoration: none; /* Sin subrayado */
+    color: #007bff; /* Azul */
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Alineación vertical */
+    gap: 10px; /* Espacio entre texto e icono */
+    transition: color 0.3s ease;
+}
+
+#downloads-list li a:hover {
+    color: #0056b3; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Agregar un icono de descarga (opcional) */
+#downloads-list li a::before {
+    content: "⬇"; /* Icono de flecha */
+    font-size: 1.2rem;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+#downloads-list li a:hover::before {
+    color: #0056b3;
+}
+
+/* Botón de cerrar */
+#popup-downloads .close {
+    color: #aaa;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#popup-downloads .close:hover {
+    color: #000;
+}
+
 
 
 /* Contenedor de la cuadrícula de cartas */

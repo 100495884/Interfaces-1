@@ -248,3 +248,14 @@ function saveNewOrder() {
         localStorage.setItem('userData', JSON.stringify(users));
     }
 }
+
+
+// Abre el popup de descargables
+function openDownloadsPopup() {
+    document.getElementById('popup-downloads').style.display = 'block';
+}
+
+// Cierra el popup de descargables
+function closeDownloadsPopup() {
+    document.getElementById('popup-downloads').style.display = 'none';
+}
