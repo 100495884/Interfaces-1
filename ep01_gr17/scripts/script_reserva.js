@@ -24,19 +24,26 @@ function abrirPopupPago() {
     document.getElementById('popup-pago').style.display = 'flex';
 }
 
-function cerrarPopupPago() {
+function cancelarPopupPago() {
     document.getElementById('popup-pago').style.display = 'none';
     // Elimina la información de la reserva del localStorage
     localStorage.removeItem('reserva');
+}
+function cerrarPopupPago() {
+    document.getElementById('popup-pago').style.display = 'none';
 }
 //Funcion para pago de videollamadas
 function abrirPopupPago2() {
     document.getElementById('popup-pago2').style.display = 'flex';
 }
-function cerrarPopupPago2() {
+function cancelarPopupPago2() {
     document.getElementById('popup-pago2').style.display = 'none';
     // Elimina la información de la reserva del localStorage
     localStorage.removeItem('videollamada');
+}
+function cerrarPopupPago2() {
+    document.getElementById('popup-pago2').style.display = 'none';
+    // Elimina la información de la reserva del localStorage
 }
 
 
@@ -47,14 +54,14 @@ function calcularPrecio() {
 }
 
 function pagarReserva() {
-    const fechaInput = document.getElementById('fecha').value;
+    const fechaInput = document.getElementById('fecha-visita').value;
     const fechaSeleccionada = new Date(fechaInput);
     const fechaActual = new Date();
     fechaActual.setHours(0, 0, 0, 0); // Establece la hora a 00:00:00 para comparar solo la fecha
 
     const numPersonas = document.getElementById('num-personas').value;
     const nombreComprador = document.getElementById('nombre-comprador').value;
-    const correo = document.getElementById('correo').value;
+    const correo = document.getElementById('correo-visita').value;
     const precio = document.getElementById('precio').value;
 
     let errorMessage = '';
@@ -67,7 +74,7 @@ function pagarReserva() {
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(correo)) {
         errorMessage += 'Tiene que ser un correo valido.\n';
     }
     if (!fechaInput) {
@@ -136,6 +143,40 @@ function confirmarPago() {
     }
 }
 
+function confirmarPago2() {
+    const numTarjeta = document.getElementById('num-tarjeta2').value;
+    const cvv = document.getElementById('cvv2').value;
+    const fechaExpiracion = document.getElementById('fecha-expiracion2').value;
+
+    const fechaExpiracionDate = new Date(fechaExpiracion + '-01'); // Convertir a fecha
+    const fechaActual = new Date();
+    fechaActual.setHours(0, 0, 0, 0); // Establece la hora a 00:00:00 para comparar solo la fecha
+
+    let errorMessage = '';
+
+    if (numTarjeta.length !== 16 || isNaN(numTarjeta)) {
+        errorMessage += 'El número de tarjeta debe tener 16 dígitos.\n';
+    }
+
+    if (cvv.length !== 3 || isNaN(cvv)) {
+        errorMessage += 'El CVV debe tener 3 dígitos.\n';
+    }
+    if (!fechaExpiracion) {
+        errorMessage += 'La fecha de expiración es obligatoria.\n';
+    
+    } else if (fechaExpiracionDate < fechaActual) {
+        errorMessage += 'La fecha de expiración no puede ser anterior a la fecha actual.\n';
+    }
+
+    if (errorMessage) {
+        alert(errorMessage);
+    } else {
+        // Implementa la lógica para manejar la confirmación del pago
+        alert('Pago confirmado con éxito');
+        cerrarPopupPago2();
+    }
+}
+
 function abrirPopupVideollamada() {
     document.getElementById('popup-videollamada-texto').style.display = 'flex';
 }
@@ -156,33 +197,45 @@ function validarCorreo(correo) {
 }
 
 function confirmarVideollamada() {
-    const nombre = document.getElementById('nombre').value;
-    const correo = document.getElementById('correo').value;
-    const fechaInput = document.getElementById('fecha').value;
-    const horaInput = document.getElementById('hora').value;
+    const nombre = document.getElementById('nombre-videollamada').value;
+    const correo = document.getElementById('correo-videollamada').value;
+    const fechaInput = document.getElementById('fecha-videollamada').value;
+    const horaInput = document.getElementById('hora-videollamada').value;
+
+
+    const fechaSeleccionada = new Date(fechaInput);
+    const fechaActual = new Date();
+    fechaActual.setHours(0, 0, 0, 0); // Establece la hora a 00:00:00 para comparar solo la fecha
+
 
     let errorMessage = '';
 
     if (nombre.trim() === '') {
         errorMessage += 'El nombre no puede estar vacío.\n';
     }
-
-    if (!validarCorreo(correo)) {
+    if (correo.trim() === '') {
+        errorMessage += 'El correo no puede estar vacío.\n';
+    } else {
+        (!validarCorreo(correo)) 
         errorMessage += 'Tiene que ser un correo válido.\n';
     }
 
-
     if (!fechaInput) {
         errorMessage += 'La fecha es obligatoria.\n';
-    } else {
-        const fechaSeleccionada = new Date(fechaInput);
-        const fechaActual = new Date();
-        fechaActual.setHours(0, 0, 0, 0); // Establece la hora a 00:00:00 para comparar solo la fecha
+    } else if (fechaSeleccionada.getTime() === fechaActual.getTime()) {
+        // Si la fecha seleccionada es la misma que la actual, validar la hora
+        const horaActual = new Date();
+        const [horaSeleccionada, minutosSeleccionados] = horaInput.split(':').map(Number);
 
-        if (fechaSeleccionada < fechaActual) {
-            errorMessage += 'La fecha no puede ser menor a la fecha actual.\n';
+        if (horaSeleccionada < horaActual.getHours() || 
+            (horaSeleccionada === horaActual.getHours() && minutosSeleccionados < horaActual.getMinutes())) {
+            errorMessage += 'La hora no puede ser menor a la hora actual.\n';
         }
     }
+     else if (fechaSeleccionada < fechaActual) {
+        errorMessage += 'La fecha no puede ser menor a la fecha actual.\n';
+    }  
+    
     if (!horaInput) {
         errorMessage += 'La hora es obligatoria.\n';
     }
