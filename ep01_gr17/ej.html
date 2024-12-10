@@ -39,6 +39,7 @@
                     <div><a href="#envia-carta">Envía tu carta</a></div>
                     <div><a href="#juega">¡Juega!</a></div>
                     <div><a href="#reserva-experiencias" onclick="volverReserva()">Reserva experiencias</a></div>
+                    <div><a href="#reseñas">Reseñas</a></div>
                 </nav>
 
                 <div class="profile-icon">
@@ -547,9 +548,49 @@
             </div>
         </div>
 
-
-         
-
+        <section id="reseñas">
+            <h2>Reseñas</h2>
+            <div class="reseña-form">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="anonimo" name="anonimo">
+                    <label for="anonimo">Publicar como anónimo</label>
+                </div>
+                <div class="titulo-reseña">
+                    <label for="titulo">Título de la reseña:</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Título">
+                </div>
+                
+            
+                <div class="rating-container">
+                    <label>Puntuación:</label>
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                
+                <div class="reseña-texto">
+                    <label for="texto">Texto de la reseña:</label>
+                    <textarea id="texto" name="texto" rows="4" placeholder="Escribe tu reseña aquí..."></textarea>
+                </div>
+                <div class="reseña-botones">
+                    <button type="submit" id="reseña-enviar">Enviar</button>
+                </div>
+            </div>
+            <p class="ver-reseñas" onclick="openReseñasPopup()">Ver reseñas de otros clientes</p>
+            
+        </section>
+        
+        
+        <!-- Popup Reseñas Clientes -->
+        <div id="popup-reseñas" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closeReseñasPopup()">&times;</span>
+                <h2>Reseñas de Clientes</h2>
+                <div id="reseñas-list"></div>
+            </div>
+        </div>        
     </main>
 
     <footer>

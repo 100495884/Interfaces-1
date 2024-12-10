@@ -45,7 +45,7 @@ header img:hover { /* efecto al pasar el ratón */
 .menu { /* define las caracteristicas del menu de la pagina */
     display: flex; 
     align-items: center;
-    gap: 4vw; 
+    gap: 2vw; 
 }
 
 nav { /* define las caracteristicas del menu de navegación */
@@ -1322,6 +1322,198 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 }
 
 
+/* Sección de reseñas */
+/* Contenedor principal de la sección de reseñas */
+
+
+/* Estilo para las etiquetas */
+.reseña-form {
+    background-color: #f9f9f9;
+    border: #000 solid 0.2vw;
+    border-radius: 3vw;
+    padding: 0.5vw 2vw;
+}
+#reseñas label {
+    font-weight: bold;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+    margin-top: 1.7vw;
+    display: block;
+    color: black;
+    white-space: nowrap;
+}
+
+/* Input del título */
+.titulo-reseña input[type="text"],
+.titulo-reseña textarea {
+    width: 40%;
+    padding: 1vw;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1.5vw;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+.titulo-reseña {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+/* Checkbox de anónimo */
+#reseñas .checkbox-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+
+#reseñas .checkbox-container input[type="checkbox"] {
+    margin-right: 0.5rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+
+}
+
+/* Contenedor de estrellas */
+.rating-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.rating-container .star {
+    font-size: 3vw;
+    color: gray; /* Color para estrellas no seleccionadas */
+    cursor: pointer;
+    transition: color 0.5s ease, text-shadow 0.5s ease; /* Suaviza el cambio de color y sombra */
+}
+
+.rating-container .star.active {
+    color: gold; /* Color para estrellas seleccionadas */
+}
+
+.rating-container .star.hover {
+    color: rgb(255, 183, 0); /* Color para estrellas en hover */
+    text-shadow: 0 0 5px rgba(255, 183, 0, 0.8), 0 0 25px rgba(255, 183, 0, 0.6); /* Halo más brillante para hover */
+}
+
+
+
+
+.reseña-texto input[type="text"],
+.reseña-texto textarea {
+    width: 100%;
+    padding: 1vw;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1.5vw;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+/* Botón de enviar */
+.reseña-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    margin-top: 1vw;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+}
+
+.reseña-botones #reseña-enviar {
+    padding: 0.5vw;
+    background-color: #000000;
+    color: white;
+    border: none;
+    font-size: 1.5vw;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 20%;
+    margin-bottom: 1vw;
+    transition: background-color 0.5s;
+    border: 3px solid black;
+}
+
+.reseña-botones #reseña-enviar:hover{
+    background-color: gold;
+}
+
+.ver-reseñas {
+    font-size: 1.5vw;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block; /* Restringe el hover al tamaño del texto */
+    transition: all 0.3s ease;
+
+}
+
+.ver-reseñas:hover {
+    font-size: 1.6vw;
+    color: #000; /* Más negro en hover */
+    text-decoration: underline; /* Subraya el texto */
+    transform: scale(1.01); /* Efecto de agrandamiento */
+}
+
+
+
+/* Popup de reseñas */
+#popup-reseñas {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+#reseñas-list {
+    margin-top: 1rem;
+    max-height: 30vw;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.reseña-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 2vw;
+}
+
+.reseña-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.reseña-item p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.reseña-item small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #777;
+}
+
+/* Estrellas dentro de las reseñas */
+.reseña-stars {
+    color: gold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
 
 
 
@@ -1405,12 +1597,18 @@ footer { /* define las caracteristicas del pie de pagina */
 
   
     .head { /* ajustes para el titulo de la pagina */
-        font-size: 2vw;    
+        font-size: 1.8vw;  
+        gap: 3vw;  
     }
     
     header img { /* ajustes para la imagen del logo */
         width: 6vw;
         height: 6vw;
+    }
+    
+    nav { /* ajustes para la barra de navegacion */
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     
@@ -1421,7 +1619,7 @@ footer { /* define las caracteristicas del pie de pagina */
     }
     
     .auth-buttons button { /* cambio de tamaño de letra de los botones de inicio de sesion y registro */
-        font-size: 1.3vw;
+        font-size: 1.6vw;
     }
 
     .profile-icon img { /* ajustes para la imagen de perfil */

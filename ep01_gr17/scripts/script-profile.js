@@ -259,3 +259,124 @@ function openDownloadsPopup() {
 function closeDownloadsPopup() {
     document.getElementById('popup-downloads').style.display = 'none';
 }
+
+let selectedRating = 1; // Calificación inicial predeterminada en 1 estrella
+
+// Función para manejar la selección de estrellas
+document.querySelectorAll('.rating-container .star').forEach((star) => {
+    const stars = document.querySelectorAll('.rating-container .star');
+
+    // Maneja el evento de clic
+    star.addEventListener('click', function () {
+        selectedRating = parseInt(this.dataset.value); // Actualiza la calificación seleccionada
+        stars.forEach((s) => s.classList.remove('active'));
+        for (let i = 0; i < this.dataset.value; i++) {
+            stars[i].classList.add('active');
+        }
+    });
+
+    // Maneja el evento de hover
+    star.addEventListener('mouseover', function () {
+        stars.forEach((s) => s.classList.remove('hover'));
+        for (let i = 0; i < this.dataset.value; i++) {
+            stars[i].classList.add('hover');
+        }
+    });
+
+    // Limpia el hover al salir
+    star.addEventListener('mouseout', function () {
+        stars.forEach((s) => s.classList.remove('hover'));
+    });
+});
+
+// Función para enviar una reseña
+function sendReseña(event) {
+    event.preventDefault();
+
+    const userLogged = JSON.parse(localStorage.getItem("userLogged"));
+    if (!userLogged) {
+        alert("Debes estar registrado e iniciar sesión para enviar una reseña.");
+        return;
+    }
+
+    const anonimo = document.getElementById("anonimo").checked;
+    const titulo = document.getElementById("titulo").value.trim();
+    const textoReseña = document.getElementById("texto").value.trim();
+
+    // Validación de campos
+    if (!titulo) {
+        alert("Por favor ingresa un título para tu reseña.");
+        return;
+    }
+    if (!textoReseña) {
+        alert("Por favor escribe el texto de tu reseña.");
+        return;
+    }
+
+    const nuevaReseña = {
+        anonimo,
+        titulo,
+        calificacion: selectedRating,
+        texto: textoReseña,
+        usuario: anonimo ? "Anónimo" : userLogged.username,
+    };
+
+    let usersData = JSON.parse(localStorage.getItem("userData")) || [];
+    const userIndex = usersData.findIndex(user => user.username === userLogged.username);
+
+    if (userIndex !== -1) {
+        if (!usersData[userIndex].reseñas) {
+            usersData[userIndex].reseñas = [];
+        }
+        usersData[userIndex].reseñas.push(nuevaReseña);
+
+        localStorage.setItem("userData", JSON.stringify(usersData));
+        alert("Reseña enviada con éxito.");
+        document.getElementById("reseña-form").reset();
+        selectedRating = 1; // Restablece la calificación a 1 estrella
+        stars.forEach((s) => s.classList.remove('active'));
+        stars[0].classList.add('active'); // Selecciona la primera estrella por defecto
+    } else {
+        alert("Hubo un problema al enviar tu reseña. Por favor, intenta nuevamente.");
+    }
+}
+
+// Vincula el evento al botón de enviar
+document.getElementById("reseña-enviar").addEventListener("click", sendReseña);
+
+
+
+// Función para abrir el popup de reseñas
+function openReseñasPopup() {
+    const usersData = JSON.parse(localStorage.getItem("userData")) || [];
+    const reseñasList = document.getElementById("reseñas-list");
+    reseñasList.innerHTML = "";
+
+    usersData.forEach(user => {
+        if (user.reseñas && user.reseñas.length > 0) {
+            user.reseñas.forEach(reseña => {
+                const reseñaElement = document.createElement("div");
+                reseñaElement.classList.add("reseña-item");
+
+                // Generar las estrellas
+                const estrellas = "★".repeat(reseña.calificacion);
+
+                reseñaElement.innerHTML = `
+                    <h4>${reseña.titulo}</h4>
+                    <div class="reseña-stars">${estrellas}</div>
+                    <p>${reseña.texto}</p>
+                    <small>- ${reseña.usuario}</small>
+                `;
+                reseñasList.appendChild(reseñaElement);
+            });
+        }
+    });
+
+    document.getElementById("popup-reseñas").style.display = "block";
+}
+
+
+// Función para cerrar el popup de reseñas
+function closeReseñasPopup() {
+    document.getElementById("popup-reseñas").style.display = "none";
+}
