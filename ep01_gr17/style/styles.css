@@ -1510,11 +1510,6 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 }
 
 
-
-
-
-
-
 footer { /* define las caracteristicas del pie de pagina */
     background-color: #333;
     color: white;
@@ -1664,7 +1659,7 @@ footer { /* define las caracteristicas del pie de pagina */
     }
 
 
-    
+
     #papa-noel .content { /* ajustes para el contenido de la segunda página */
         display: flex;
         flex-direction: column;
@@ -1694,7 +1689,7 @@ footer { /* define las caracteristicas del pie de pagina */
         font-size: 2.5vw; 
     }
 
-    
+
   
     .letters { /* cambia a 2 columnas las cartas */
         grid-template-columns: repeat(2, 1fr);
@@ -1836,6 +1831,28 @@ footer { /* define las caracteristicas del pie de pagina */
         font-size: 2vw; /* Tamaño de fuente más pequeño */
     }
 
+    .recipe-gallery img {
+        width: 25%; /* Ajusta el ancho de la imagen */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
+
+    .user-recipe {
+        flex: 1 1 45%; /* Ajusta el tamaño mínimo de cada receta */
+        max-width: 45%; /* Ajusta el tamaño máximo de cada receta */
+    }
+
+    .user-recipe img {
+        width: 50%; /* Ajusta el ancho de la imagen */
+        height: auto; /* Mantiene la proporción de la imagen */
+        object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin recortarse */
+    }
+
+
+
+    button.add-recipe-btn {
+        font-size: 120%; /* Aumenta el tamaño de la fuente */
+        padding: 1rem 2rem; /* Aumenta el relleno para hacerlo más grande */
+    }
     
 }
 
@@ -1873,5 +1890,25 @@ footer { /* define las caracteristicas del pie de pagina */
         height: 10vw;
     }
 
+    .recipe-gallery img {
+        width: 30%; /* Ajusta el ancho de la imagen */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
+
+    .user-recipe {
+        flex: 1 1 45%; /* Ajusta el tamaño mínimo de cada receta */
+        max-width: 45%; /* Ajusta el tamaño máximo de cada receta */
+    }
+
+    .user-recipe img {
+        width: 50%; /* Ajusta el ancho de la imagen */
+        height: auto; /* Mantiene la proporción de la imagen */
+        object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin recortarse */
+    }
+
+    button.add-recipe-btn {
+        font-size: 150%; /* Aumenta aún más el tamaño de la fuente */
+        padding: 1rem 2rem; /* Aumenta el relleno para hacerlo más grande */
+    }
 
 }

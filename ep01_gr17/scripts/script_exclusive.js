@@ -7,6 +7,7 @@ function closeExclusivePopup() {
 }
 
 function openRecipeDetailsPopup(title, ingredients, instructions) {
+    closeExclusivePopup();
     document.getElementById('recipe-details-title').innerText = title;
     document.getElementById('recipe-details-ingredients').innerHTML = ingredients.map(ingredient => `<li>${ingredient}</li>`).join('');
     document.getElementById('recipe-details-instructions').innerText = instructions;
@@ -15,14 +16,17 @@ function openRecipeDetailsPopup(title, ingredients, instructions) {
 
 function closeRecipeDetailsPopup() {
     document.getElementById('popup-recipe-details').style.display = 'none';
+    openExclusivePopup();
 }
 
 function openAddRecipePopup() {
+    closeExclusivePopup();
     document.getElementById('popup-add-recipe').style.display = 'block';
 }
 
 function closeAddRecipePopup() {
     document.getElementById('popup-add-recipe').style.display = 'none';
+    openExclusivePopup();
 }
 
 document.querySelectorAll('.recipe-gallery img').forEach(img => {
@@ -124,9 +128,8 @@ function addUserRecipe(recipe) {
     const recipeDiv = document.createElement('div');
     recipeDiv.classList.add('user-recipe');
 
-    recipeDiv.innerHTML = `
+    recipeDiv.innerHTML = `<p><strong>Receta de:</strong>  ${recipe.username}</p>
         <img src="${recipe.image}" alt="${recipe.title}">
-        <p><strong>Receta de:</strong> ${recipe.username}</p>
     `;
 
     recipeDiv.querySelector('img').addEventListener('click', () => {
