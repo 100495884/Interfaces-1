@@ -332,14 +332,27 @@ function sendReseña(event) {
 
         localStorage.setItem("userData", JSON.stringify(usersData));
         alert("Reseña enviada con éxito.");
-        document.getElementById("reseña-form").reset();
-        selectedRating = 1; // Restablece la calificación a 1 estrella
-        stars.forEach((s) => s.classList.remove('active'));
-        stars[0].classList.add('active'); // Selecciona la primera estrella por defecto
+
+        // Restablecer los valores del formulario
+        resetReseñaForm();
     } else {
         alert("Hubo un problema al enviar tu reseña. Por favor, intenta nuevamente.");
     }
 }
+
+function resetReseñaForm() {
+    // Reiniciar el estado de los campos del formulario
+    document.getElementById("anonimo").checked = false; // Desmarcar el checkbox
+    document.getElementById("titulo").value = ""; // Vaciar el campo del título
+    document.getElementById("texto").value = ""; // Vaciar el campo del texto de la reseña
+    selectedRating = 1; // Restablece la calificación a 1 estrella
+
+    // Restablecer visualmente las estrellas
+    const stars = document.querySelectorAll('.rating-container .star');
+    stars.forEach((s) => s.classList.remove('active')); // Eliminar todas las clases activas
+    stars[0].classList.add('active'); // Seleccionar la primera estrella
+}
+
 
 // Vincula el evento al botón de enviar
 document.getElementById("reseña-enviar").addEventListener("click", sendReseña);

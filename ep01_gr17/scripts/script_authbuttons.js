@@ -4,16 +4,35 @@ function openRegisterPopup() {
 }
 
 function closeRegisterPopup() {
+    // Inicializa manualmente los campos del formulario de registro
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('confirm-password').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('city').value = '';
+    document.getElementById('country').value = '';
+    document.getElementById('gender').value = '';
+    document.getElementById('children').value = '';
+    document.getElementById('children-details').innerHTML = ''; // Limpia los campos dinámicos
+
+    // Oculta el popup
     document.getElementById('register-popup').style.display = 'none';
 }
+
 
 function openLoginPopup() {
     document.getElementById('login-popup').style.display = 'block';
 }
 
 function closeLoginPopup() {
+    // Inicializa manualmente los campos del formulario de inicio de sesión
+    document.getElementById('login-username').value = '';
+    document.getElementById('login-password').value = '';
+
+    // Oculta el popup
     document.getElementById('login-popup').style.display = 'none';
 }
+
 
 // Función para alternar el menú de perfil
 function toggleProfileMenu() {
