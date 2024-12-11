@@ -217,14 +217,14 @@ function confirmarVideollamada() {
 
     if (!fechaInput) {
         errorMessage += 'La fecha es obligatoria.\n';
-    } else if (fechaSeleccionada.getTime() === fechaActual.getTime()) {
+    } else if (fechaSeleccionada.toDateString() === fechaActual.toDateString()) {
         // Si la fecha seleccionada es la misma que la actual, validar la hora
         const horaActual = new Date();
         const [horaSeleccionada, minutosSeleccionados] = horaInput.split(':').map(Number);
-
+        horaActual.setMinutes(horaActual.getMinutes() + 15);
         if (horaSeleccionada < horaActual.getHours() || 
             (horaSeleccionada === horaActual.getHours() && minutosSeleccionados < horaActual.getMinutes())) {
-            errorMessage += 'La hora no puede ser menor a la hora actual.\n';
+            errorMessage += 'La hora tiene que ser dentro de 15 minutos como minimo.\n';
         }
     }
      else if (fechaSeleccionada < fechaActual) {

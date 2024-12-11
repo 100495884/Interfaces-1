@@ -415,12 +415,12 @@
         <section id="reserva-experiencias">
             <h2>Reserva tu experiencia</h2>
             <div class="experiences">
-                <div class="reserva-hotel">
+                <div class="reserva-fabrica">
                     <div>
                         <h3>Visita la fábrica de juguetes</h3>
                     </div>
                     <button onclick="mostrarFabrica()">
-                        <img src="images/casa papa noel.jpg" alt="reserva-fabrica">
+                        <img src="images/fabrica-juguetes1.jpg" alt="reserva-fabrica">
                     </button>
                 </div>
                 <div class="reserva-videollamada">
@@ -480,7 +480,7 @@
         <!-- Popup de pago -->
         <div id="popup-pago" class="popup-pagar" style="display: none;">
             <div class="popup-content-pagar">
-                <span class="close-popup" onclick="cerrarPopupPago()">&times;</span>
+                <span class="close-popup" onclick="cerrarPopupPago(), cancelarPopupPago()">&times;</span>
                 <h2>Información de Pago</h2>
                 <form id="pago-form">
                     <label for="num-tarjeta">Número de tarjeta:</label>
@@ -532,7 +532,7 @@
         <!-- Popup de pago -->
         <div id="popup-pago2" class="popup-pagar" style="display: none;">
             <div class="popup-content-pagar">
-                <span class="close-popup" onclick="cerrarPopupPago2()">&times;</span>
+                <span class="close-popup" onclick="cerrarPopupPago2(), cancelarPopupPago2()">&times;</span>
                 <h2>Información de Pago</h2>
                 <form id="pago-form">
                     <label for="num-tarjeta">Número de tarjeta:</label>
