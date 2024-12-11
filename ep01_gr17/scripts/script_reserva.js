@@ -1,9 +1,10 @@
+// Funcion para cambiar la seccion reserva por la seccion fabrica de juguetes
 function mostrarFabrica() {
     document.getElementById('reserva-experiencias').style.display = 'none';
     document.getElementById('fabrica-juguetes').style.display = 'block';
 }
 
-
+// Funcion para volver a la seccion reserva desde la seccion fabrica de juguetes
 function volverReserva() {
     document.getElementById('fabrica-juguetes').style.display = 'none';
     document.getElementById('reserva-experiencias').style.display = 'block';
@@ -20,12 +21,12 @@ function cerrarPopupReserva() {
 function abrirPopupPago() {
     document.getElementById('popup-pago').style.display = 'flex';
 }
-
+// Funcion para cancelar el pago de fabrica de juguetes y borrar los datos recogidos en el formulario de reservas
 function cancelarPopupPago() {
     document.getElementById('popup-pago').style.display = 'none';
-    // Elimina la información de la reserva del localStorage
     localStorage.removeItem('reserva');
 }
+
 function cerrarPopupPago() {
     document.getElementById('popup-pago').style.display = 'none';
 }
@@ -33,6 +34,7 @@ function cerrarPopupPago() {
 function abrirPopupPago2() {
     document.getElementById('popup-pago2').style.display = 'flex';
 }
+// Funcion para cancelar el pago de videollamadas y borrar los datos recogidos en el formulario de videollamadas
 function cancelarPopupPago2() {
     document.getElementById('popup-pago2').style.display = 'none';
     // Elimina la información de la reserva del localStorage
@@ -43,13 +45,13 @@ function cerrarPopupPago2() {
     // Elimina la información de la reserva del localStorage
 }
 
-
+// Funcion para saber el precio a pagar por las entradas a la fabrica de juguetes
 function calcularPrecio() {
     const numPersonas = document.getElementById('num-personas').value;
     const precioTotal = numPersonas * 15;
     document.getElementById('precio').value = `${precioTotal}€`;
 }
-
+// Funcion para verifvar que los datos introducidos en el formulario de reserva son correctos
 function pagarReserva() {
     const fechaInput = document.getElementById('fecha-visita').value;
     const fechaSeleccionada = new Date(fechaInput);
@@ -62,9 +64,6 @@ function pagarReserva() {
     const precio = document.getElementById('precio').value;
 
     let errorMessage = '';
-
-
-
 
     if (nombreComprador.trim() === '') {
         errorMessage += 'El nombre del comprador no puede estar vacío.\n';
@@ -102,7 +101,7 @@ function pagarReserva() {
         abrirPopupPago();
         }
 }
-
+// Funcion para confirmar que los datos introducidos en el formulario de pago estan correctos
 function confirmarPago() {
     const numTarjeta = document.getElementById('num-tarjeta').value;
     const cvv = document.getElementById('cvv').value;
@@ -134,12 +133,11 @@ function confirmarPago() {
     if (errorMessage) {
         alert(errorMessage);
     } else {
-        // Implementa la lógica para manejar la confirmación del pago
         alert('Pago confirmado con éxito');
         cerrarPopupPago();
     }
 }
-
+// Funcion para confirmar que los datos introducidos en el formulario de pago de videollamadas son correctos
 function confirmarPago2() {
     const numTarjeta = document.getElementById('num-tarjeta2').value;
     const cvv = document.getElementById('cvv2').value;
@@ -182,17 +180,12 @@ function cerrarPopupVideollamada() {
     document.getElementById('popup-videollamada-texto').style.display = 'none';
     document.getElementById('popup-videollamada-formulario').style.display = 'none';
 }
-
+// Funcion para abrir el poopup de texto informativo de la videollamada
 function entendidoVideollamada() {
     cerrarPopupVideollamada();
     document.getElementById('popup-videollamada-formulario').style.display = 'flex';
 }
-
-function validarCorreo(correo) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(correo);
-}
-
+// Funcion para verificar que los datos introducidos en el formulario de videollamadas son correctos
 function confirmarVideollamada() {
     const nombre = document.getElementById('nombre-videollamada').value;
     const correo = document.getElementById('correo-videollamada').value;

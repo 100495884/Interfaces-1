@@ -1107,9 +1107,9 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 .experiences {
     display: flex;
     justify-content: space-between;
-    align-items: stretch; /* Asegura que los elementos hijos se estiren para ocupar toda la altura */
-    gap: 2vw; /* Reduce el espacio entre las columnas */
-    flex: 1; /* Permite que la sección ocupe el espacio disponible */
+    align-items: stretch; 
+    gap: 2vw; 
+    flex: 1; 
 }
 
 .reserva-fabrica, .reserva-videollamada {
@@ -1118,7 +1118,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     flex-direction: column;
     align-items: center;
     gap: 1vw;
-    max-width: 45%; /* Reduce el ancho máximo de las columnas */
+    max-width: 45%;
     height: auto;
 }
 
@@ -1132,23 +1132,23 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 
 .reserva-fabrica img, .reserva-videollamada img {
     width: 100%;
-    max-width: 30vw; /* Aumenta el ancho máximo relativo al viewport */
+    max-width: 30vw; 
     height: auto;
-    aspect-ratio: 4/3; /* Mantiene la proporción de las imágenes */
+    aspect-ratio: 4/3; 
     border-radius: 1vw;
 }
 
 .reserva-fabrica h3, .reserva-videollamada h3 {
-    font-size: 2vw; /* Usa vw para el tamaño de la fuente */
+    font-size: 2vw;
     text-align: center;
-    margin-bottom: 1vw; /* Añade un margen inferior para separar el texto de la imagen */
+    margin-bottom: 1vw; 
 }
 .fabrica-juguetes {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%; /* Asegura que la sección ocupe toda la altura del contenedor */
+    height: 100%;
 }
 #fabrica-juguetes h2 {
     text-align: center;
@@ -1173,7 +1173,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 }
 
 .fabrica-izquierda, .fabrica-derecha {
-    width: 48%; /* Asegura que ambas columnas sean del mismo tamaño */
+    width: 48%;
 }
 
 .carousel {
@@ -1211,22 +1211,22 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 
 .fabrica-derecha {
     font-family: 'Merienda', cursive;
-    text-align: center; /* Centra el texto horizontalmente */
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el contenido verticalmente */
+    justify-content: center; 
     height: 100%;
-    padding: 2vw; /* Añade un poco de padding para el contenido */
+    padding: 2vw;
 }
 
 .fabrica-derecha p {
     font-size: 1.2vw;
     line-height: 1.5;
     margin-bottom: 2vw;
-    flex: 1; /* Permite que el párrafo crezca para ocupar el espacio disponible */
+    flex: 1;
     display: flex;
-    align-items: center; /* Centra el texto verticalmente */
-    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; 
+    justify-content: center;
 }
 
 .fabrica-derecha button {
@@ -1371,8 +1371,6 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 
 /* Sección de reseñas */
 /* Contenedor principal de la sección de reseñas */
-
-
 /* Estilo para las etiquetas */
 .reseña-form {
     background-color: #f9f9f9;
