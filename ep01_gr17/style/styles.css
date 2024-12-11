@@ -7,6 +7,7 @@ body { /*definiciones generales para el cuerpo de la pagina */
     margin: 0; 
     width: 100%;
     scroll-behavior: smooth;  /* Suaviza el desplazamiento  */
+    max-width: 100%;
 }
 
 header { /*definiciones para el encabezado de la pagina */
@@ -398,28 +399,21 @@ button.add-recipe-btn:active {
 
 }
 
-
-/*Mapa interactivo*/
+/*seccion mapa de papa noel*/
 #mapa {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
-#mapa h2 {
-    font-size: 3vw;
-    margin-bottom: 20px;
-}
-
 #background-image {
 position: relative;
-margin-top: 20px;
 background-size: contain;  
 background-position: center;  
 filter: blur(8px);  
 transition: filter 0.5s ease;
-display: inline-block; 
-width: 100%;
+width: 80%;
 height: 100%;
-background-image: url('../images/mapa-espana.jpg');  /* Asegúrate de poner la ruta correcta de la imagen */
+background-image: url('../images/mapa.jpg'); 
 z-index: 1;
 }
   
@@ -440,16 +434,37 @@ transform: translateX(-50%);
 position: absolute;
 top: 50%;
 left: 50%;
-width: 50px;
-height: 50px;
+width: 3vw;
+height: 3vw;
 transform: translate(-50%, -50%);
 z-index: 10;
 }
+#santa {
+    cursor: pointer; /* Cambia el cursor a pointer */
+    transition: transform 0.3s ease;
+}
+
+#santa:hover {
+    filter: drop-shadow(0 0 10px red) drop-shadow(0 0 10px red) 
+}
+
+#santa-message {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.527);
+    color: white;
+    padding: 1vw;
+    border-radius: 5px;
+    font-size: 1vw;
+    display: none; /* Ocultar por defecto */
+}
 
 
-.auth-buttons {  /* define las caracteristics generales del espacio de los botones de iniciar sesion y registro */ 
-    display: flex; 
+
+
+/* define las caracteristics generales del espacio de los botones de iniciar sesion y registro */ 
+.auth-buttons {  
     gap: 2vw;
+    display: flex; 
 }
 
 .auth-buttons button { /* define las caracteristicas de los botones de iniciar sesion y registro */
@@ -1891,9 +1906,7 @@ footer { /* define las caracteristicas del pie de pagina */
         padding: 1rem 2rem; /* Aumenta el relleno para hacerlo más grande */
     }
     
-    #mapa h2 {
-        font-size: 5vw;  /* Aumentar el tamaño de la fuente en pantallas más pequeñas */
-    }
+
 
     #background-image {
         background-size: cover;  /* Cambiar a cover para que la imagen de fondo ocupe todo el contenedor */
@@ -1965,10 +1978,6 @@ footer { /* define las caracteristicas del pie de pagina */
     button.add-recipe-btn {
         font-size: 150%; /* Aumenta aún más el tamaño de la fuente */
         padding: 1rem 2rem; /* Aumenta el relleno para hacerlo más grande */
-    }
-
-    #mapa h2 {
-        font-size: 6vw;  /* Aumentar aún más el tamaño de la fuente en pantallas más pequeñas */
     }
 
     #background-image {

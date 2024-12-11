@@ -12,61 +12,81 @@ document.getElementById('start-btn').addEventListener('click', function() {
 function startSantaAnimation() {
     const santa = document.getElementById('santa');
     const container = document.getElementById('background-image');
-    const maxWidth = container.offsetWidth;  
-    const maxHeight = container.offsetHeight; 
+    const backgroundImage = new Image();
+    backgroundImage.src = getComputedStyle(container).backgroundImage.slice(5, -2); // Obtener la URL de la imagen de fondo
 
-    let posX = maxWidth / 2; // Posición inicial de Santa en el centro
-    let posY = maxHeight / 2; 
-    let speed = 1; 
-    let directionX = Math.random() * 2 - 1; 
-    let directionY = Math.random() * 2 - 1;
+    backgroundImage.onload = () => {
+        const containerStyles = getComputedStyle(container);
+        const containerWidth = container.offsetWidth; // Ancho visible del contenedor
+        const containerHeight = container.offsetHeight; // Alto visible del contenedor
 
-    let distanceTraveled = 0; 
-    const changeDirectionDistance = 50; 
+        const backgroundScaleX = containerWidth / backgroundImage.width; // Escala horizontal
+        const backgroundScaleY = containerHeight / backgroundImage.height; // Escala vertical
 
-    // Asegurarse de que Santa se mueva en línea recta
-    setInterval(() => {
-        // Calcular la distancia recorrida
-        const prevPosX = posX;
-        const prevPosY = posY;
+        let posX = (containerWidth - santa.offsetWidth) / 2; // Centrar a Santa horizontalmente
+        let posY = (containerHeight - santa.offsetHeight) / 2; // Centrar a Santa verticalmente
+        let speed = 0.4;
+        let directionX = Math.random() * 2 - 1;
+        let directionY = Math.random() * 0.5 - 0.25; // Menor rango vertical
 
-        // Actualizar las posiciones de Santa
-        posX += directionX * speed;
-        posY += directionY * speed;
+        setInterval(() => {
+            // Actualizar las posiciones de Santa con movimientos más suaves
+            posX += directionX * speed;
+            posY += directionY * speed;
 
-        const deltaX = posX - prevPosX;
-        const deltaY = posY - prevPosY;
-        distanceTraveled += Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            // Cambiar la dirección gradualmente
+            directionX += (Math.random() * 0.2 - 0.1) * 2; // Aumentar peso horizontal
+            directionY += (Math.random() * 0.1 - 0.05); // Reducir rango vertical
 
-        // Cambiar dirección si Santa ha recorrido la distancia mínima
-        if (distanceTraveled >= changeDirectionDistance) {
-            directionX = Math.random() * 2 - 1;
-            directionY = Math.random() * 2 - 1; 
-            distanceTraveled = 0; 
-        }
+            // Normalizar la dirección para evitar movimientos demasiado rápidos
+            const magnitude = Math.sqrt(directionX ** 2 + directionY ** 2);
+            directionX /= magnitude;
+            directionY /= magnitude;
 
-        if (posX < 0) posX = 0; 
-        if (posY < 0) posY = 0;  
-        if (posX > maxWidth - santa.offsetWidth) posX = maxWidth - santa.offsetWidth;  
-        if (posY > maxHeight - santa.offsetHeight) posY = maxHeight - santa.offsetHeight;  
+            // Limitar a los bordes visibles del contenedor
+            const santaWidth = santa.offsetWidth;
+            const santaHeight = santa.offsetHeight;
 
-        // Actualizar la posición de Santa en la pantalla
-        santa.style.left = `${posX}px`;
-        santa.style.top = `${posY}px`;
+            if (posX < 15) {
+                posX = 15;
+                directionX *= -1; // Rebota en el borde izquierdo
+            }
+            if (posY < 15) {
+                posY = 15;
+                directionY *= -1; // Rebota en el borde superior
+            }
+            if (posX > containerWidth - santaWidth) {
+                posX = containerWidth - santaWidth;
+                directionX *= -1; // Rebota en el borde derecho
+            }
+            if (posY > containerHeight - santaHeight) {
+                posY = containerHeight - santaHeight;
+                directionY *= -1; // Rebota en el borde inferior
+            }
 
-        // Dibujar la línea discontinua
-        drawDottedLine(posX, posY);
+            // Actualizar la posición de Santa
+            santa.style.left = `${posX}px`;
+            santa.style.top = `${posY}px`;
 
-    }, 20); 
+            // Dibujar la línea discontinua
+            drawDottedLine(posX+2, posY+2); // Centrar la línea en Santa
+        }, 20);
+    };
 }
+
 
 function drawDottedLine(x, y) {
     const lineContainer = document.createElement('div');
+
+    // Tamaño del punto
+    const dotSize = 2;
+
+    // Calcular la posición exacta para centrar el punto
     lineContainer.style.position = 'absolute';
-    lineContainer.style.top = `${y}px`;
-    lineContainer.style.left = `${x}px`;
-    lineContainer.style.width = '2px';
-    lineContainer.style.height = '2px';
+    lineContainer.style.top = `${y - dotSize / 2}px`; // Centrar verticalmente
+    lineContainer.style.left = `${x - dotSize / 2}px`; // Centrar horizontalmente
+    lineContainer.style.width = `${dotSize}px`;
+    lineContainer.style.height = `${dotSize}px`;
     lineContainer.style.backgroundColor = '#ff6347';
     lineContainer.style.borderRadius = '50%';
 
@@ -77,3 +97,28 @@ function drawDottedLine(x, y) {
         lineContainer.remove();
     }, 2500);
 }
+
+
+
+document.getElementById('santa').addEventListener('click', function () {
+    const santa = document.getElementById('santa');
+    const message = document.createElement('div');
+    message.id = 'santa-message';
+    message.innerText = '¡Santa ya está de camino con tus regalos!';
+
+    // Calcular la posición del mensaje
+    const santaRect = santa.getBoundingClientRect();
+    const container = document.getElementById('background-image');
+
+    message.style.top = `${santa.offsetTop - 40}px`; // Un poco encima de Santa
+    message.style.left = `${santa.offsetLeft + santa.offsetWidth / 2 - 50}px`; // Centrado horizontalmente
+    container.appendChild(message);
+
+    // Mostrar el mensaje
+    message.style.display = 'block';
+
+    // Eliminar el mensaje después de 3 segundos
+    setTimeout(() => {
+        message.remove();
+    }, 3000);
+});
