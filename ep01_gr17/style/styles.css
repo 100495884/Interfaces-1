@@ -1439,7 +1439,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 
 .rating-container .star {
     font-size: 3vw;
-    color: gray; /* Color para estrellas no seleccionadas */
+    color: rgb(52, 52, 52); /* Color para estrellas no seleccionadas */
     cursor: pointer;
     transition: color 0.5s ease, text-shadow 0.5s ease; /* Suaviza el cambio de color y sombra */
 }
