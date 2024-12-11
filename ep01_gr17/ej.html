@@ -26,7 +26,7 @@
         <!-- cabecera de la página -->
         <div class="head">
             <!-- logo de la página -->
-            <a href="#home"><img src="images/logo.png" alt="Logo"></a>
+            <a href="#home"><img src="images/logo.png" alt="LogoPrincipal"></a>
             <div class="menu">
                 <nav>
                     <!-- botones de navegación -->
@@ -349,25 +349,26 @@
                     <!-- clase para agrupar los elementos de la sección envia-carta -->
                     <div id="form-group" class="form-group">
                         <!-- clase para definir cada elemento del formulario, excepto las dos ultimas -->
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="form-nombre" name="nombre">
+                        <label for="form-nombre">Nombre:
+                            <input type="text" id="form-nombre" name="form-nombre">
+                        </label>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="form-email" name="email">
+                        <label for="form-email">Email:</label>
+                        <input type="email" id="form-email" name="form-email">
                     </div>
                     <div class="form-group">
-                        <label for="ciudad">Ciudad:</label>
-                        <input type="text" id="form-ciudad" name="ciudad">
+                        <label for="form-ciudad">Ciudad:</label>
+                        <input type="text" id="form-ciudad" name="form-ciudad">
                     </div>
                     <div class="form-group">
-                        <label for="pais">País:</label>
-                        <input type="text" id="form-pais" name="pais">
+                        <label for="form-pais">País:</label>
+                        <input type="text" id="form-pais" name="form-pais">
                     </div>
                     <div class="form-full-width">
                         <!-- clase para representar el cuadro de texto y el boton, que son mas grandes que los demas elementos -->
-                        <label for="carta">Carta para Papá Noel:</label>
-                        <textarea id="form-carta" name="carta"></textarea>
+                        <label for="form-carta">Carta para Papá Noel:</label>
+                        <textarea id="form-carta" name="form-carta"></textarea>
                     </div>
                     <div class="form-full-width">
                         <button type="submit"><strong>Envía</strong></button>
@@ -460,14 +461,14 @@
                     <label for="num-personas">Número de personas:</label>
                     <input type="number" id="num-personas" name="num-personas" required oninput="calcularPrecio()">
                     
-                    <label for="fecha">Fecha:</label>
-                    <input type="date" id="fecha-visita" name="fecha" required>
+                    <label for="fecha-visita">Fecha:</label>
+                    <input type="date" id="fecha-visita" name="fecha-visita" required>
                     
                     <label for="nombre-comprador">Nombre del comprador:</label>
                     <input type="text" id="nombre-comprador" name="nombre-comprador" required>
 
-                    <label for="correo">Correo electrónico:</label>
-                    <input type="email" id="correo-visita" name="correo" required>
+                    <label for="correo-visita">Correo electrónico:</label>
+                    <input type="email" id="correo-visita" name="correo-visita" required>
                     
                     <label for="precio">Precio:</label>
                     <input type="text" id="precio" name="precio" readonly>
@@ -513,17 +514,17 @@
                 <span class="close-popup" onclick="cerrarPopupVideollamada()">&times;</span>
                 <h2>Reserva tu Videollamada</h2>
                 <form>
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre-videollamada" name="nombre" required>
+                    <label for="nombre-videollamada">Nombre:</label>
+                    <input type="text" id="nombre-videollamada" name="nombre-videollamada" required>
                     
-                    <label for="correo">Correo electrónico:</label>
-                    <input type="email" id="correo-videollamada" name="correo" required>
+                    <label for="correo-videollamada">Correo electrónico:</label>
+                    <input type="email" id="correo-videollamada" name="correo-videollamada" required>
                     
-                    <label for="fecha">Fecha:</label>
-                    <input type="date" id="fecha-videollamada" name="fecha" required>
+                    <label for="fecha-videollamada">Fecha:</label>
+                    <input type="date" id="fecha-videollamada" name="fecha-videollamada" required>
                     
-                    <label for="hora">Hora:</label>
-                    <input type="time" id="hora-videollamada" name="hora" required>
+                    <label for="hora-videollamada">Hora:</label>
+                    <input type="time" id="hora-videollamada" name="hora-videollamada" required>
                     
                     <button type="button" onclick="confirmarVideollamada()">Confirmar Videollamada</button>
                 </form>
@@ -535,14 +536,14 @@
                 <span class="close-popup" onclick="cerrarPopupPago2(), cancelarPopupPago2()">&times;</span>
                 <h2>Información de Pago</h2>
                 <form id="pago-form">
-                    <label for="num-tarjeta">Número de tarjeta:</label>
-                    <input type="text" id="num-tarjeta2" name="num-tarjeta" required>
+                    <label for="num-tarjeta2">Número de tarjeta:</label>
+                    <input type="text" id="num-tarjeta2" name="num-tarjeta2" required>
                     
-                    <label for="cvv">CVV:</label>
-                    <input type="text" id="cvv2" name="cvv" required>
+                    <label for="cvv2">CVV:</label>
+                    <input type="text" id="cvv2" name="cvv2" required>
                     
-                    <label for="fecha-expiracion">Fecha de expiración:</label>
-                    <input type="month" id="fecha-expiracion2" name="fecha de expiracion" required>
+                    <label for="fecha-expiracion2">Fecha de expiración:</label>
+                    <input type="month" id="fecha-expiracion2" name="fecha de expiracion2" required>
                     
                     <button type="button" onclick="confirmarPago2()">Confirmar Pago</button>
                 </form>
@@ -563,7 +564,7 @@
                 
             
                 <div class="rating-container">
-                    <label>Puntuación:</label>
+                    <a>Puntuación:</a>
                     <span class="star" data-value="1">★</span>
                     <span class="star" data-value="2">★</span>
                     <span class="star" data-value="3">★</span>

@@ -47,6 +47,7 @@ header img:hover { /* efecto al pasar el ratón */
     display: flex; 
     align-items: center;
     gap: 2vw; 
+    background-color: rgba(0, 0, 0, 0);
 }
 
 nav { /* define las caracteristicas del menu de navegación */
@@ -55,7 +56,7 @@ nav { /* define las caracteristicas del menu de navegación */
     gap: 0.7vw;
 }
 nav .active { /* pone el boton de inicio verde */
-    background-color: green;
+    background-color: rgb(0, 255, 0);
 }
 
 nav div { /* define las caracteristicas de los botones del menu de navegación */
@@ -66,18 +67,17 @@ nav div { /* define las caracteristicas de los botones del menu de navegación *
 }
 
 nav div a { /* define todos los botones excepto el inicio */
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
 nav div:hover {  /* pone los botones verdes al pasar el ratón */
-    background-color: green; 
+    background-color: rgb(0, 255, 0); 
 }
 
 
 nav div.active a {
-    color: white; /* Color del texto */
-    background-color: green; /* Fondo verde para el enlace activo */
+    background-color: rgb(0, 255, 0); /* Fondo verde para el enlace activo */
     font-weight: bold; /* Resalta el texto */
     border-radius: 5px; /* Bordes redondeados */
     text-decoration: none; /* Sin subrayado */
@@ -574,20 +574,20 @@ section h2 {  /* define las caracteristicas de los titulos de las secciones */
 }
 
 #home button { /* define las caracteristicas del boton de la primera sección */
-    background-color: red;
+    background-color: green;
     color: white;
     padding: 1% 2%;
     border-radius: 15px;
     cursor: pointer; /* cambia el cursor a una mano al pasar el raton  */
     width: 15%;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    border: 5px solid green; 
+    border: 5px solid red; 
     font-size: 1.3vw;
 }
 
 #home button:hover { /* aplica la transicion al pasar el raton */
-    background-color: darkred;
-    border: 5px solid darkgreen;
+    background-color: darkgreen;
+    border: 5px solid darkred;
 }
 
 
@@ -634,7 +634,7 @@ section h2 {  /* define las caracteristicas de los titulos de las secciones */
     background-image: url('../images/fondonieve.jpg'); /* añade una imagen de fondo */
     background-size: cover; /* ajusta la imagen para cubrir todo el contenedor */
     background-position: center; /* centra la imagen */
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column; /* organiza el texto dentro del contenedor */
     justify-content: stretch; /* alinea verticalmente el contenido para que ocupe el maximo de la columna */
@@ -815,7 +815,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 }
 
 .game-button { /* define las caracteristicas de los botones de juegos */
-    background-color: red; 
+    background-color: green; 
     color: white;
     padding: 0.75vw 2vw; 
     text-align: center; 
@@ -831,7 +831,7 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
 }
 
 .game-button:hover { /* aplica la transicion al pasar el raton */
-    background-color: darkred;
+    background-color: darkgreen;
 }
 
 .game-container {
@@ -1379,6 +1379,15 @@ label { /* define las caracteristicas de las etiquetas de los elementos */
     padding: 0.5vw 2vw;
 }
 #reseñas label {
+    font-weight: bold;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+    margin-top: 1.7vw;
+    display: block;
+    color: black;
+    white-space: nowrap;
+}
+.rating-container a {
     font-weight: bold;
     font-size: 1.5vw;
     margin-bottom: 1vw;
