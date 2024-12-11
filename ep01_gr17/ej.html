@@ -7,7 +7,6 @@
     <title>Viaje de Papá Noel</title>
     <link rel="stylesheet" href="style/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Merienda&family=Patrick+Hand&family=Rock+Salt&family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="scripts/script_countdown.js" async></script>
     <script src="scripts/script_authbuttons.js" async></script>
     <script src="scripts/script_exclusive.js" async></script>
@@ -19,7 +18,6 @@
     <script src="scripts/script_mapa.js" async></script>
     <script src="scripts/script_reserva.js" async></script>
     <script src="scripts/script_carrusel.js" async></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     </script>
 
 </head>
@@ -275,7 +273,10 @@
         
         <section id="mapa">
             <h2>¿Dónde está Papá Noel?</h2>
-            <div id="interactive_map"></div>
+            <button id="start-btn">Buscar a santa</button>
+            <div id="background-image">
+                <img id="santa" src="images/papa_noel_trineo_map_sin_fondo.png" alt="Santa Claus">
+            </div> 
         </section>
 
         <section id="cartas">

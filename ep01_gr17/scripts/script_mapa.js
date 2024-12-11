@@ -1,32 +1,79 @@
-const mymap = L.map('interactive_map', {center: [66.5,25.71], zoom: 6, minZoom: 4, maxZoom: 15});
+document.getElementById('start-btn').addEventListener('click', function() {
+    // Hacer desaparecer el botón
+    this.style.display = 'none';
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-    maxZoom: 18
-}).addTo(mymap);
+    // Quitar el difuminado de la imagen
+    document.getElementById('background-image').style.filter = 'none';
 
-var papaNoelIcon = L.icon({
-    iconUrl: 'images/papa_noel_trineo_map_sin_fondo.png', 
-    iconSize: [100, 100], // Tamaño del icono [ancho, alto]
+    // Iniciar animación de Papá Noel
+    startSantaAnimation();
 });
 
-const marcador = L.marker([66.5,25.71], { icon: papaNoelIcon }).addTo(mymap)
-.bindPopup("¡Aquí está Papá Noel!");
+function startSantaAnimation() {
+    const santa = document.getElementById('santa');
+    const container = document.getElementById('background-image');
+    const maxWidth = container.offsetWidth;  
+    const maxHeight = container.offsetHeight; 
 
-L.marker([40.3324, -3.7655]).addTo(mymap)
-    .bindPopup("¡Proximo destino!");
+    let posX = maxWidth / 2; // Posición inicial de Santa en el centro
+    let posY = maxHeight / 2; 
+    let speed = 1; 
+    let directionX = Math.random() * 2 - 1; 
+    let directionY = Math.random() * 2 - 1;
 
-const lineCoordinates = [
-    [66.5, 25.71],  // Coordenadas de Papá Noel
-    [40.3324, -3.7655] // Coordenadas de UC3M
-];
+    let distanceTraveled = 0; 
+    const changeDirectionDistance = 50; 
 
-const linea = L.polyline(lineCoordinates, {
-    color: 'red',    // Color de la línea
-    weight: 3,        // Grosor de la línea
-    opacity: 0.8,     // Opacidad de la línea
-    dashArray: '5, 10',
-}).addTo(mymap);
+    // Asegurarse de que Santa se mueva en línea recta
+    setInterval(() => {
+        // Calcular la distancia recorrida
+        const prevPosX = posX;
+        const prevPosY = posY;
 
-// Ajustar el mapa para mostrar los dos puntos y la línea
-mymap.fitBounds(linea.getBounds());
+        // Actualizar las posiciones de Santa
+        posX += directionX * speed;
+        posY += directionY * speed;
+
+        const deltaX = posX - prevPosX;
+        const deltaY = posY - prevPosY;
+        distanceTraveled += Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        // Cambiar dirección si Santa ha recorrido la distancia mínima
+        if (distanceTraveled >= changeDirectionDistance) {
+            directionX = Math.random() * 2 - 1;
+            directionY = Math.random() * 2 - 1; 
+            distanceTraveled = 0; 
+        }
+
+        if (posX < 0) posX = 0; 
+        if (posY < 0) posY = 0;  
+        if (posX > maxWidth - santa.offsetWidth) posX = maxWidth - santa.offsetWidth;  
+        if (posY > maxHeight - santa.offsetHeight) posY = maxHeight - santa.offsetHeight;  
+
+        // Actualizar la posición de Santa en la pantalla
+        santa.style.left = `${posX}px`;
+        santa.style.top = `${posY}px`;
+
+        // Dibujar la línea discontinua
+        drawDottedLine(posX, posY);
+
+    }, 20); 
+}
+
+function drawDottedLine(x, y) {
+    const lineContainer = document.createElement('div');
+    lineContainer.style.position = 'absolute';
+    lineContainer.style.top = `${y}px`;
+    lineContainer.style.left = `${x}px`;
+    lineContainer.style.width = '2px';
+    lineContainer.style.height = '2px';
+    lineContainer.style.backgroundColor = '#ff6347';
+    lineContainer.style.borderRadius = '50%';
+
+    document.getElementById('background-image').appendChild(lineContainer);
+
+    // Desaparecer la línea después de un tiempo
+    setTimeout(() => {
+        lineContainer.remove();
+    }, 2500);
+}
