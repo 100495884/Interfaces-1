@@ -1,11 +1,12 @@
+// Funcion para abrir popup exclusivo
 function openExclusivePopup() {
     document.getElementById('popup-exclusive').style.display = 'block';
 }
-
+// Funcion para cerrar popup exclusivo
 function closeExclusivePopup() {
     document.getElementById('popup-exclusive').style.display = 'none';
 }
-
+// Funcion para abrir el popup de detalles de la receta
 function openRecipeDetailsPopup(title, ingredients, instructions) {
     closeExclusivePopup();
     document.getElementById('recipe-details-title').innerText = title;
@@ -13,22 +14,22 @@ function openRecipeDetailsPopup(title, ingredients, instructions) {
     document.getElementById('recipe-details-instructions').innerText = instructions;
     document.getElementById('popup-recipe-details').style.display = 'block';
 }
-
+// Funcion para cerrar el popup de detalles de la receta
 function closeRecipeDetailsPopup() {
     document.getElementById('popup-recipe-details').style.display = 'none';
     openExclusivePopup();
 }
-
+// Funcion para abrir el popup de agregar receta
 function openAddRecipePopup() {
     closeExclusivePopup();
     document.getElementById('popup-add-recipe').style.display = 'block';
 }
-
+// Funcion para cerrar el popup de agregar receta
 function closeAddRecipePopup() {
     document.getElementById('popup-add-recipe').style.display = 'none';
     openExclusivePopup();
 }
-
+// Recetas prederterminadas
 document.querySelectorAll('.recipe-gallery img').forEach(img => {
     img.addEventListener('click', () => {
         const recipeDetails = {
@@ -84,7 +85,7 @@ function getCurrentUserName() {
     console.log("Usuario actual:", userLogged);
     return userLogged.username;
 }
-
+// Recoge los datos introducidos por el usuario para crear la nueva receta
 document.getElementById('upload-recipe-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -111,7 +112,7 @@ document.getElementById('upload-recipe-form').addEventListener('submit', functio
     };
     reader.readAsDataURL(imageInput.files[0]);
 });
-
+// Funcion para guardar la receta del usuario en el localStorage
 function saveUserRecipe(recipe) {
     let allRecipes = JSON.parse(localStorage.getItem('allRecipes')) || [];
     allRecipes.push(recipe);
